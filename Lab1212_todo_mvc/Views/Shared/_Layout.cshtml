@@ -1,0 +1,133 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="../css/owl.carousel.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="../css/layoutstyle.css">
+<link rel="stylesheet" href="../css/divstyle.css">
+
+</head>
+
+<body>
+
+
+  <div class="site-mobile-menu site-navbar-target" style="font-family:'GenSenRounded';">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close mt-3">
+        <span class="icon-close2 js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div> <!-- .site-mobile-menu -->
+
+
+
+  <div class="site-navbar site-navbar-target js-sticky-header" style="font-family:'GenSenRounded';">
+    <!--style="height:15vh;"-->
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-1 " style="vertical-align: middle; " >
+          <h1 class="my-0 site-logo"><a href="../../../"><img class="logo" style="width:100px ;   " src="../image/LOGO_text.png" /></a></h1>
+        </div>
+        <div class="col-11">
+          <nav class="site-navigation text-right" role="navigation">
+            <div class="container">
+              <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#"
+                  class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"
+                    style="color: rgb(31, 18, 18);"></span></a></div>
+
+              <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
+                <li><a href="../../../" class="nav-link">關於我們</a></li>
+                <li><a href="../Front/News" class="nav-link">最新消息</a></li>
+                <li class="has-children">
+                  <a href="#" class="nav-link">課程介紹</a>
+                  <ul class="dropdown arrow-top">
+                    <li><a href="#" class="nav-link">瑜珈</a></li>
+                    <li><a href="#" class="nav-link">有氧</a></li>
+                    <!-- <li class="has-children">
+                          <a href="#">More Links</a>
+                          <ul class="dropdown">
+                            <li><a href="#">Menu One</a></li>
+                            <li><a href="#">Menu Two</a></li>
+                            <li><a href="#">Menu Three</a></li>
+                          </ul>
+                        </li> -->
+                  </ul>
+                </li>
+                <li><a href="../Front/Coach" class="nav-link">認識教練</a></li>
+                <li><a href="../Front/Classroom" class="nav-link">環境簡介</a></li>
+                <li><a href="../Front/Knowledge" class="nav-link">知識專欄</a></li>
+
+                <!-- 注意!!!!!!!!!!!!!!!!，這邊需要判斷會員是否已經登入!! -->
+
+                <!-- 登入前 -->
+
+                <li><a href="../Front/Reserve" class="nav-link">預約表單</a></li>
+                <li><a href="#" class="nav-link">會員登入</a></li>
+
+                <!-- 登入前 結束 -->
+
+                <!-- 登入後 -->
+
+                <!-- <li class="has-children">
+                      <a href="#" class="nav-link">會員專區</a>
+                      <ul class="dropdown arrow-top">
+                        <li><a href="#" class="nav-link">個人資料</a></li>
+                        <li><a href="#" class="nav-link">個人課表</a></li>
+                        <li><a href="#" class="nav-link">課程紀錄</a></li>
+                        <li><a href="#" class="nav-link">InBody紀錄</a></li>
+                        <li>　</li>
+
+                      </ul>
+                    </li>  -->
+
+                <!-- 登入後 結束 -->
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+
+    <!-- <script src="js/jquery.sticky.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    @* ---------------------------------content--------------------------------------*@ 
+
+    @RenderBody()
+
+</body>
+</html>

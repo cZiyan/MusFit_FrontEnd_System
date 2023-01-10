@@ -1,0 +1,141 @@
+﻿@{
+    ViewData["Title"] = "Classroom";
+}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Style -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/divstyle.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/jquery.rwdImageMaps.min.js"></script>
+
+    <script>
+        $(function () {
+            // $('img[usemap]').rwdImageMaps();
+            // for demo use
+            $('.demo-img').rwdImageMaps();
+        });
+    </script>
+
+
+
+    <link rel="stylesheet" href="../css/coach_style.css">
+
+
+    <title>layout</title>
+</head>
+<style>
+    map {
+        transform: .5s;
+    }
+</style>
+
+<body>
+    <div style="display: flex; justify-content: center; align-items: center;
+            height:  50vh; font-size: 40px;
+            background-image: url(/image/3fb22876-1914-4414-8a38-fcd1bf6219e2.jpeg); 
+            background-position: center center;
+">環 境 簡 介</div>
+    <br>
+    <div style="position:relative; margin: 0px 30px ;">
+        <div style="width: 50%; position: absolute;;">
+            <!-- RWD Image With Rect Map Area -->
+            <img class="block w-full demo-img" id="Image-Maps-Com-image-maps-2023-01-05-033747"
+                src="/image/environment.png" border="0" width="1195" height="679" orgWidth="1195" orgHeight="679"
+                usemap="#image-maps-2023-01-05-033747" alt="" />
+            <map name="image-maps-2023-01-05-033747" id="ImageMapsCom-image-maps-2023-01-05-033747">
+                <area alt="" title="" href="#map1" onclick="map('諮詢室.jpg')" shape="rect" coords="1005,22,1156,131"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map2" onclick="map('員工休息室.jpg')" shape="rect" coords="1007,126,1155,327"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map3" onclick="map('1801.png')" shape="rect" coords="1006,326,1157,527"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map4" onclick="map('1802.png')" shape="rect" coords="947,528,1159,662"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map5" onclick="map('1803.png')" shape="rect" coords="746,528,946,664"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map6" onclick="map('1804.png')" shape="rect" coords="524,529,745,664"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map7" onclick="map('1805.png')" shape="rect" coords="326,529,526,662"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map8" onclick="map('更衣室.png')" shape="rect" coords="105,528,329,660"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map9" onclick="map('茶水間.jpg')" shape="rect" coords="106,382,279,532"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map10" onclick="map('公共空間.jpg')" shape="rect" coords="670,252,1007,528"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map10" onclick="map('公共空間.jpg')" shape="rect" coords="280,383,672,529"
+                    style="outline:none;" target="_self" />
+                <area alt="" title="" href="#map11" onclick="map('櫃台.jpg')" shape="rect" coords="670,22,1005,255"
+                    style="outline:none;" target="_self" />
+                <area shape="rect" coords="1193,677,1195,679" alt="Image Map" style="outline:none;" title="Image Map"
+                    href="https://www.image-maps.com/" />
+            </map>
+        </div>
+        <div style="width: 50%; left:50%; position: absolute;  padding:  0px 1vw;" id="mymap">
+        </div>
+    </div>
+</body>
+<script>
+
+    AOS.init();
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+<!-- <script src="js/jquery.sticky.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+
+<script src="../js/main.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script src="../js/jquery.rwdImageMaps.min.js"></script>
+
+<script>
+    $(() => {
+        $('image[usemap]').rwdImageMaps();
+    });
+
+    function delay(n) {
+        return new Promise(function (resolve) {
+            setTimeout(resolve, n * 1000);
+        });
+    }
+
+    async function map(x) {
+        document.getElementById("mymap").innerHTML = '<img style="opacity:.25" src="/image/room/' + x + '" alt="">';
+        await delay(0.03);
+        document.getElementById("mymap").innerHTML = '<img style="opacity:.5" src="/image/room/' + x + '" alt="">';
+        await delay(0.03);
+        document.getElementById("mymap").innerHTML = '<img style="opacity:.7" src="/image/room/' + x + '" alt="">';
+        await delay(0.03);
+        document.getElementById("mymap").innerHTML = '<img src="/image/room/' + x + '" alt="">';
+
+    }
+</script>
+
+</html>

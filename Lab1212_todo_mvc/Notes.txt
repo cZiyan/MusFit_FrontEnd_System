@@ -1,0 +1,55 @@
+﻿Install-Package Microsoft.EntityFrameworkCore.Tools -version 5
+install-package Microsoft.EntityFrameworkCore.SqlServer -version 5
+Scaffold-DbContext "Server=.\sqlexpress;Database=todoItemDb;Integrated Security=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+todoItemDbContext.cs, 去掉:
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+...
+}
+
+
+開啟 appSettings.json，加入 ConnectionStrings 屬性
+    "ConnectionStrings": {
+      "linkToTodoItemDb": "Server=.\\sqlexpress;Database=todoItemDb;Integrated Security=True;"
+    }
+
+
+開啟 Startup.cs，加入 using 參照:
+    using Microsoft.EntityFrameworkCore;
+    using 你的專案名稱.Models;
+
+
+一樣是Startup.cs，找到 ConfigureServices()，
+    加入下列程式到 ConfigureServices() 的第一行:
+      services.AddDbContext<todoItemDbContext>(options =>
+          options.UseSqlServer(Configuration.GetConnectionString("linkToTodoItemDb")));
+
+
+
+
+TodoController.cs
+using 你的專案名稱.Models;
+
+public class TodoController : Controller
+{
+    private todoItemDbContext _context;
+
+    public TodoController(todoItemDbContext _db)
+    {
+        this._context = _db;
+    }
+
+...
+
+
+
+@{
+    foreach (var item in Model) {
+        <tr>
+        ...
+           @item.Name
+        ...
+    }
+}

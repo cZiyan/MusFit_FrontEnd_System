@@ -1,0 +1,256 @@
+﻿@{
+    ViewData["Title"] = "News";
+}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Style -->
+    <link rel="stylesheet" href="../css/layoutstyle.css">
+    <link rel="stylesheet" href="../css/divstyle.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>layout</title>
+</head>
+
+<style>
+    /* https://github.com/ButTaiwan/gensen-font */
+    body {
+        font-family: "GenSenRounded";
+
+    }
+
+    dialog {
+
+        border: none;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 6px #ccc;
+        border-radius: 10px;
+        width: 80vw;
+        height: 80vh;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+
+
+
+    dialog::backdrop {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    #infoModal {
+        transition: 0.2s;
+    }
+
+    .infoModal {
+        transition: 0.2s;
+        /*opacity: 0.5; */
+
+    }
+
+    .close:hover {
+        transition: 0.2s;
+        color: red;
+    }
+
+    .close {
+        transition: 0.2s;
+        color: rgb(0, 0, 0);
+    }
+
+    #close:hover {
+        transition: 0.2s;
+        color: red;
+    }
+
+    #close {
+        transition: 0.2s;
+        color: rgb(0, 0, 0);
+    }
+
+
+    .w-full:hover {
+        transition: 0.2s;
+        scale: 1.05;
+    }
+
+    .w-full {
+        transition: 0.2s;
+
+    }
+</style>
+
+<body>
+
+    <div style="display: flex; justify-content: center; align-items: center;
+            height:  35vh; font-size: 40px;
+            background-image: url(/image/3fb22876-1914-4414-8a38-fcd1bf6219e2.jpeg); 
+            background-position: center center;">最 新 消 息</div>
+
+
+    <br>
+    <div style="width: 100%; text-align: center;">
+        <button class="btn btn-secondary">全部</button>
+        <button class="btn btn-secondary">瑜珈</button>
+        <button class="btn btn-secondary">有氧</button>
+        <button class="btn btn-secondary">飲食</button>
+        <button class="btn btn-secondary">其他</button>
+    </div>
+
+
+    <div class="flex flex-wrap -m-3"  style="margin: 2vw;">
+        <!-- 以下開始跑迴圈 -->
+        @{
+            for (var i = 1; i <= 8; i++)
+            {
+                var show = "show" + @i;
+                var infoModal = "infoModal" + @i;
+                var close = "close" + @i;
+                                        <div  id=@show data-aos="fade-up"
+                                    data-aos-delay="10"
+             data-aos-duration="800"class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
+                            <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
+                                <div class="bg-cover h-48"
+                            style="background-image: url(https://images.unsplash.com/photo-1523978591478-c753949ff840?w=900);">
+                                </div>
+                                <div class="p-4 flex-1 flex flex-col">
+                                    <h3 class="mb-4 text-2xl">靜夜思</h3>
+                                    <div class="mb-4 text-grey-darker text-sm flex-1">
+                                        <p>床前明月光，疑似地上霜..... </p>
+                                    </div>
+                                    <div class="mb-4 text-grey-darker text-sm flex-1" style="text-align: right;">
+                                        <span>2023/1/2</span> <span>課程公告</span>
+                                    </div>
+                                    <span
+                                class="border-t border-grey-light pt-2 text-xs text-grey hover:text-red uppercase no-underline tracking-wide">點我查看更多...</span>
+                                </div>
+                            </div>
+                    </div>
+                    <dialog id=@infoModal class="infoModal">
+                        <div style="display: flex;">
+                            <div style="width: 85%;">
+                                中部最大健身中心<br>
+                                台中太平店Sport<br>
+                                創始會員入會費0元<br>
+                                ★前200名搶先登記★<br>
+                                參觀地址：台中市太平區育賢路190號👆<br>
+                                <br>
+                                限時加碼！現在參觀就送"超商禮券"<br>
+                                中部最大健身中心<br>
+                                台中太平店Sport<br>
+                                創始會員入會費0元<br>
+                                ★前200名搶先登記★<br>
+                                參觀地址：台中市太平區育賢路190號👆<br>
+                                <br>
+                                限時加碼！現在參觀就送"超商禮券"<br>
+                                中部最大健身中心<br>
+                                台中太平店Sport<br>
+                                創始會員入會費0元<br>
+                                ★前200名搶先登記★<br>
+                                參觀地址：台中市太平區育賢路190號👆<br>
+                                <br>
+                                限時加碼！現在參觀就送"超商禮券"<br>
+
+                            </div>
+                            <div style="width: 15%;
+                                text-align: right;
+                                height:60px;
+                                position:fixed;
+                                top:12%;
+                                right:11%;
+                                "><span id=@close style="font-size: 50px;" class="close">×</span></div>
+                        </div>
+                    </dialog>
+            }
+        }
+
+    </div>
+
+</body>
+
+
+
+<script>
+
+    // let btn = document.querySelector("#show");
+    // let infoModal = document.querySelector("#infoModal");
+    // let close = document.querySelector("#close");
+    // btn.addEventListener("click", function () {
+    //     infoModal.showModal();
+    // })
+    // close.addEventListener("click", function () {
+    //     infoModal.close();
+    // })
+    for (let i = 1; i <= 8; i++) {
+        let btn = document.querySelector("#show" + i);
+        let infoModal = document.querySelector("#infoModal" + i);
+        let close = document.querySelector("#close" + i);
+        btn.addEventListener("click", function () {
+            document.getElementById("infoModal" + i).style.opacity = "0";
+            setTimeout(function () {
+                infoModal.showModal();
+                document.getElementById("infoModal" + i).style.opacity = "1";
+            }, 100);
+        }
+        )
+        close.addEventListener("click", function () {
+            document.getElementById("infoModal" + i).style.opacity = "0";
+            setTimeout(function () {
+                document.getElementById("infoModal" + i).style.opacity = "1";
+                infoModal.close();
+            }, 500);
+
+        })
+    }
+    function closedialog() {
+        close.addEventListener("click", function () {
+            document.getElementById("infoModal1").style.opacity = "0";
+            setTimeout(function () {
+                document.getElementById("infoModal1").style.opacity = "1";
+                infoModal.close();
+            }, 500);
+        })
+    }
+
+    AOS.init();
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+<!-- <script src="js/jquery.sticky.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+
+<script src="../js/main.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+</html>

@@ -1,0 +1,18 @@
+﻿CREATE DATABASE [todoItemDb]
+go
+
+use [todoItemDb]
+go
+
+CREATE TABLE [dbo].[TodoItems](
+	[TodoItemId] [bigint] IDENTITY(1,1) NOT NULL primary key,
+	[Name] [nvarchar](max) NOT NULL,
+	[IsComplete] [bit] NULL,
+)
+go
+
+insert into TodoItems (Name, IsComplete) values ('Job X', 1);
+insert into TodoItems (Name, IsComplete) values ('Job Y', 0);
+insert into TodoItems (Name, IsComplete) values ('Job Z', 1);
+go
+

@@ -1,0 +1,180 @@
+@font-face {
+   font-family:"GenSenRounded";
+   src: local("GenSenRounded"), url('../fonts/GenSenRounded-M.ttc')format('truetype');
+ }
+ /* https://github.com/ButTaiwan/gensen-font */
+
+
+.div_container {
+   display: flex;
+   /*一開始需要在父層宣告為 flex 才有效*/
+}
+
+.item-right {
+   flex: 1;
+   /*對應子層加上；1數值是內元件之間佔的比例*/
+}
+
+.item-left {
+   flex: 1;
+   /*對應子層加上*/
+}
+
+/* 小於768 用在首頁*/
+.hide-in-phone {
+   display: none;
+}
+
+@media only screen and (min-width:768px) {
+   .hide-in-phone {
+      display: flex;
+      width: 40%;
+   }
+}
+
+/* 小於768  首頁*/
+.nohide-in-phone {
+   width: 100%;
+}
+
+@media only screen and (min-width:768px) {
+   .nohide-in-phone {
+      display: block;
+      width: 60%;
+   }
+}
+
+/* 小於768 */
+.hide-in-phone-b {
+   display: none;
+}
+
+@media only screen and (min-width:768px) {
+   .hide-in-phone-b {
+      display: flex;
+   }
+}
+
+/* 小於768 */
+.nohide-in-phone-b {
+   width: 100%;
+}
+
+@media only screen and (min-width:768px) {
+   .nohide-in-phone-b {
+      display: block;
+   }
+}
+
+
+
+.bgimg {
+   height: 100vh;
+   /* background-image: url(../pink.jpg); */
+   background-size: 100% auto;
+   background-repeat: no-repeat;
+   background-position: bottom;
+}
+
+.bgimg-gradient {
+   height: 100vh;
+   /* background-image: linear-gradient(to right, rgb(255, 255, 255),  rgba(255, 0, 140, 0.126)); */
+
+   background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(124, 5, 160, 0.11), rgba(255, 0, 140, 0.21));
+
+}
+
+
+.bgimg-gradient-text {
+   height: 100vh;
+   justify-content: center;
+   align-items: center;
+   font-size: 8vw;
+   /* background-image: linear-gradient(to left, rgb(255, 255, 255), rgba(79, 60, 161, 0.498)); */
+}
+
+.bgimg-gradient-text-mobile {
+   display: flex;
+   height: 100vh;
+   justify-content: center;
+   align-items: center;
+   font-size: 15vw;
+   color: black;
+   
+}
+
+
+@media only screen and (min-width:768px) {
+   .bgimg-gradient-text-mobile {
+      display: none;
+
+   }
+}
+
+.nav-link{
+   text-shadow: 0px 0px 5px white;
+}
+
+.text-center{
+   
+   justify-content: center;
+   align-items: center;
+}
+
+.mobile-mode {
+   display: flex;
+
+}
+
+@media only screen and (min-width:768px) {
+   .mobile-mode {
+      display: none;
+
+   }
+}
+
+
+.nomobile-mode {
+   display: none;
+}
+
+@media only screen and (min-width:768px) {
+   .nomobile-mode {
+      display: flex;
+   }
+}
+
+.nomobile-mode2 {
+   background-image:url(/image/cherry.png);
+   background-size: 100% 100%;
+
+
+}
+
+@media only screen and (min-width:768px) {
+   .nomobile-mode2 {
+      background-image: none;
+
+   }
+}
+
+
+.mobile-cantsee {
+    width: 5%;
+}
+
+@media only screen and (min-width:768px) {
+    .mobile-cantsee {
+        width: 20%;
+    }
+}
+
+.mobile-see {
+    width: 90%;
+}
+
+@media only screen and (min-width:768px) {
+    .mobile-see {
+        width: 60%;
+    }
+}

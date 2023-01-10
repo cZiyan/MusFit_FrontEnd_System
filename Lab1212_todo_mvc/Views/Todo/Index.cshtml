@@ -1,0 +1,15 @@
+﻿@model List<Employee>
+<div class="container">
+   
+    <h1>
+        待辦事項清單 @Model.Count
+@{
+                foreach (var item in Model) {
+
+                                @item.EId
+                    }
+                    }
+        </h1>
+
+
+    </div>
