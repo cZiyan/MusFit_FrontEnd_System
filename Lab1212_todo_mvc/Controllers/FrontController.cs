@@ -25,7 +25,7 @@ namespace Lab1212_todo_mvc.Controllers
         public IActionResult Index()
         {
             var query = from o in this._context.Employees
-                       select o;
+                        select o;
             List<Employee> dataList = query.ToList();
             return View("Index", dataList);
 
@@ -45,9 +45,18 @@ namespace Lab1212_todo_mvc.Controllers
         }
         public IActionResult Coach()
         {
-            var query = from o in this._context.Employees
-                        select o;
+            var query = from e in this._context.Employees
+                        select e;
             List<Employee> dataList = query.ToList();
+    //        var innerJoinQuery =
+    //from employee in this._context.Employees
+    //select new Employee
+    //{
+    //    EId = employee.EId,
+    //    EName = employee.EName
+    //};
+    //        List<Employee> dataList = innerJoinQuery.ToList();
+
             return View("Coach", dataList);
 
         }
