@@ -1,7 +1,6 @@
 ﻿@{
-	ViewData["Title"] = "Coach";
+	ViewBag.Title = "Coach";
 }
-@model List<Employee>
 <!doctype html>
 <html lang="en">
 
@@ -54,34 +53,30 @@
 		<div class="slider slider-nav center">
 
 			@{
-				foreach (var item in Model)
+				foreach (var item in @ViewBag.Coach)
 				{
-					if (@item.EIsCoach == true)
-					{
 										  <div style="position: relative;">
 											<span class="coach-text">
 								@item.EName
 											</span>
 											<img class="coach-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=1" alt="">    
 										</div>
-					}
 				}
 			}
 
 
 		</div>
 		<div class="slider slider-for" style="width: 100%;">
-
-
 			@{
-				foreach (var item in Model)
+				foreach (var item in @ViewBag.Coach)
 				{
-					if (@item.EIsCoach == true)
-					{
-									<div class="coach-text2">
-										@item.EExplain
-											</div>
-					}
+				<div class="coach-text2">
+				@item.EExplain
+				}
+				foreach (var item in @ViewBag.Coach)
+				{
+				@item.EExplain
+				</div>
 				}
 			}
 

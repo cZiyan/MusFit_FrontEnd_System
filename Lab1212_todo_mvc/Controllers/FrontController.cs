@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Xml.Linq;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Lab1212_todo_mvc.Controllers
 {
@@ -33,10 +36,41 @@ namespace Lab1212_todo_mvc.Controllers
 
         public IActionResult Test()
         {
-            var query = from o in this._context.Employees
-                        select o;
-            List<Employee> dataList = query.ToList();
-            return View("Test", dataList);
+            var query =
+            (from cs in this._context.CoachSpecials
+             join e in this._context.Employees
+             on cs.EId equals e.EId
+             join lc in this._context.LessionCategories
+             on cs.LcId equals lc.LcId
+             select new //Employee
+             {
+                 EId = e.EId,
+                 EName = e.EName,
+                 EEngName = e.EEngName,
+                 EPhoto = e.EPhoto,
+                 LcTyle = lc.LcType,
+                 EExplain = e.EExplain,
+                 LcName = lc.LcName
+             }).ToList();
+
+            ViewBag.Mytest = query;
+
+
+
+            //var query =
+            //from  e in this._context.Employees
+            //where e.EIsCoach==true
+            // select new Employee
+            // {
+            //     EId = e.EId,
+            //     EName = e.EName,
+            //     EEngName = e.EEngName,
+            //     EPhoto = e.EPhoto,
+            //     EExplain = e.EExplain,
+            // };
+
+            //ViewBag.Mytest = query.ToList();
+            return View();
         }
 
         public IActionResult Classroom()
@@ -45,19 +79,20 @@ namespace Lab1212_todo_mvc.Controllers
         }
         public IActionResult Coach()
         {
-            var query = from e in this._context.Employees
-                        select e;
-            List<Employee> dataList = query.ToList();
-    //        var innerJoinQuery =
-    //from employee in this._context.Employees
-    //select new Employee
-    //{
-    //    EId = employee.EId,
-    //    EName = employee.EName
-    //};
-    //        List<Employee> dataList = innerJoinQuery.ToList();
+            var query2 =
+            from e in this._context.Employees
+            where e.EIsCoach == true
+            select new Employee
+            {
+                EId = e.EId,
+                EName = e.EName,
+                EEngName = e.EEngName,
+                EPhoto = e.EPhoto,
+                EExplain = e.EExplain,
+            };
+            ViewBag.Coach = query2.ToList();
+            return View();
 
-            return View("Coach", dataList);
 
         }
         public IActionResult Knowledge()
@@ -76,6 +111,7 @@ namespace Lab1212_todo_mvc.Controllers
         {
             return View();
         }
+
 
 
         //[HttpPost]
