@@ -1,5 +1,15 @@
 ﻿@{
 	ViewBag.Title = "Coach";
+	List<int> LCI = new List<int>() {};
+	List<string> LCN = new List<string>() { };
+	List<string> LCT = new List<string>() { };
+
+
+	foreach (var item in @ViewBag.LessionCategory){
+		LCI.Add(@item.LcId);
+		LCN.Add(@item.LcName);
+		LCT.Add(@item.LcType);
+	}
 }
 <!doctype html>
 <html lang="en">
@@ -55,12 +65,12 @@
 			@{
 				foreach (var item in @ViewBag.Coach)
 				{
-										  <div style="position: relative;">
-											<span class="coach-text">
-								@item.EName
-											</span>
-											<img class="coach-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=1" alt="">    
-										</div>
+													  	<div style="position: relative;">
+															<span class="coach-text">
+											@item.EName
+															</span>
+															<img class="coach-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=1" alt="">    
+														</div>
 				}
 			}
 
@@ -70,13 +80,29 @@
 			@{
 				foreach (var item in @ViewBag.Coach)
 				{
-				<div class="coach-text2">
-				@item.EExplain
-				}
-				foreach (var item in @ViewBag.Coach)
-				{
-				@item.EExplain
-				</div>
+					<div class="coach-text2">
+					@item.EExplain
+					<br>
+					專長：
+					@{foreach (var item2 in @ViewBag.CoachSpecial)
+					{
+						
+
+						if (@item.EId ==@item2.EId)
+						{
+								<br>
+								int a = Convert.ToInt32(@item2.LcId);
+								@LCN[a-1];
+								<span>(@LCT[a-1])</span>
+								
+								
+						}
+						
+					}
+					}
+			
+
+		</div>
 				}
 			}
 
