@@ -31,7 +31,6 @@ namespace Lab1212_todo_mvc.Controllers
                         select o;
             List<Employee> dataList = query.ToList();
             return View("Index", dataList);
-
         }
 
         public IActionResult Test()
@@ -79,7 +78,7 @@ namespace Lab1212_todo_mvc.Controllers
         }
         public IActionResult Coach()
         {
-            var query2 =
+            var query =
             from e in this._context.Employees
             where e.EIsCoach == true
             select new Employee
@@ -90,18 +89,79 @@ namespace Lab1212_todo_mvc.Controllers
                 EPhoto = e.EPhoto,
                 EExplain = e.EExplain,
             };
-            ViewBag.Coach = query2.ToList();
+            ViewBag.Coach = query.ToList();
+
+            var query2 =
+            from cs in this._context.CoachSpecials
+            select new CoachSpecial
+            {
+                EId = cs.EId,
+                LcId = cs.LcId
+            };
+            ViewBag.CoachSpecial = query2.ToList();
+
+            var query3 =
+            from lc in this._context.LessionCategories
+            select new LessionCategory
+            {
+                LcId = lc.LcId,
+                LcName = lc.LcName,
+                LcType = lc.LcType
+            };
+            ViewBag.LessionCategory = query3.ToList();
+
             return View();
 
 
         }
         public IActionResult Knowledge()
         {
-            return View();
+            var query2 = from n in this._context.KnowledgeColumns
+                         select n;
+            List<KnowledgeColumn> dataList = query2.ToList();
+            var query =
+            from kc in this._context.KnowledgeColumns
+            orderby kc.KDate descending
+            select new KnowledgeColumn
+            {
+                KColumnId = kc.KColumnId,
+                KTitle = kc.KTitle,
+                KContent = kc.KContent,
+                KAuthor = kc.KAuthor,
+                KDate = kc.KDate,
+                KPhoto1 = kc.KPhoto1,
+                KPhoto2 = kc.KPhoto2
+            };
+            ViewBag.KnowledgeColumn = query.ToList();
+            return View("Knowledge", dataList);
+
+            //return View();
         }
         public IActionResult News()
         {
-            return View();
+            var query2 = from n in this._context.News
+                         where n.NTakeDownTime == null
+                         select n;
+            List < News > dataList = query2.ToList();
+
+            var query =
+            from n in this._context.News
+            where n.NTakeDownTime == null
+            orderby n.NPostDate descending
+            select new News
+            {
+                NTitle = n.NTitle,
+                NContent = n.NContent,
+                NCategory = n.NCategory,
+                NPostDate = n.NPostDate,
+                NPhoto = n.NPhoto,
+                NTakeDownTime = n.NTakeDownTime
+            };
+            ViewBag.News = query.ToList();
+
+            return View("News", dataList);
+
+            //return View();
         }
         public IActionResult Privacy()
         {
