@@ -77,11 +77,17 @@
 }
 
 .bgimg-gradient {
-   height: 100vh;
-   /* background-image: linear-gradient(to right, rgb(255, 255, 255),  rgba(255, 0, 140, 0.126)); */
+    height: 100vh;
+    /* background-image: linear-gradient(to right, rgb(255, 255, 255),  rgba(255, 0, 140, 0.126)); */
+    background-image: linear-gradient(to top, rgb(255, 255, 255), rgb(255, 255, 255,0), rgb(255, 255, 255,0), rgb(255, 255, 255,0), rgb(255, 255, 255,0), rgb(255, 255, 255,0));
+    /*background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(112, 212, 255, 0.11), rgba(0, 149, 255, 0.21));*/
+}
 
-   background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(124, 5, 160, 0.11), rgba(255, 0, 140, 0.21));
-
+.bgimg-gradient2 {
+    height: 100vh;
+    background-image: linear-gradient(to right, rgb(255, 255, 255),rgb(255, 255, 255,0.2), rgba(255, 0, 140, 0.126), rgba(255, 0, 140, 0.226));
+    /*background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(177, 176, 217, 0.11), rgba(122, 166, 248, 0.31));*/
+    /*background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(177, 176, 217, 0.11), rgba(194, 166, 248, 0.21));*/
 }
 
 

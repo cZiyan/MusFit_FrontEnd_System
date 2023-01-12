@@ -52,26 +52,97 @@
 	<title>layout</title>
 </head>
 
+<style>
+	    .ml5 {
+  position: relative;
+  font-weight: 300;
+  font-size: 4.5em;
+  color: #402d2d;
+}
+
+.ml5 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+  line-height: 1em;
+}
+
+.ml5 .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #D39080;
+  transform-origin: 0.5 0;
+}
+
+.ml5 .ampersand {
+  font-family: Baskerville, serif;
+  font-style: italic;
+  font-weight: 400;
+  width: 1em;
+  margin-right: -0.1em;
+  margin-left: -0.1em;
+}
+
+.ml5 .letters {
+  display: inline-block;
+  opacity: 0;
+}
+</style>
+
+
 <body>
-	<div style="display: flex; justify-content: center; align-items: center;
-            height:  35vh; font-size: 40px;
-            background-image: url(/image/3fb22876-1914-4414-8a38-fcd1bf6219e2.jpeg); 
-            background-position: center center;
-">認 識 教 練</div>
 
-	<div class="main" style="margin-top: 10vh;">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+
+<div style="height:  45vh;background-image: url(/image/sakura.jpg);
+background-size: 100% auto;
+background-position:top">
+    <div style="display: flex; justify-content: center; 
+                align-items: center;
+                height: 45vh;
+                background-size: 100% auto;
+                background-image: linear-gradient(to top, rgb(255, 255, 255),rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+                "> 
+                    <span class="ml5" style="color:#753b2d;
+                       font-family: 'GenSenRounded';font-size:3em">
+                      <span class="text-wrapper">
+                        <span class="line line1"></span>
+                        <span class="letters letters-left">教 練</span>
+                        @*<span class="letters ampersand"></span>*@
+                        <span class="letters letters-right">介紹</span>
+                        <span class="line line2"></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+
+	<div class="main" style="margin-top: 10vh; "data-aos="fade-up" data-aos-duration="1400" data-aos-delay="700">
 		<div class="slider slider-nav center">
-
+			
 			@{
+				var i = 1;
+
 				foreach (var item in @ViewBag.Coach)
 				{
-													  	<div style="position: relative;">
-															<span class="coach-text">
-											@item.EName
-															</span>
-															<img class="coach-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=1" alt="">    
-														</div>
+				string j = "https://picsum.photos/200/200/?random="+i;
+					<div style="position: relative;">
+					<span class="coach-text">
+					@item.EName
+					</span>
+					<img class="coach-img" 
+					style="width: 100%;" src=@j alt="">    
+					</div>
+					i++;
 				}
+				
 			}
 
 
@@ -114,7 +185,7 @@
 </body>
 
 
-
+<script src="../js/title.js"></script>
 <script>
 
 

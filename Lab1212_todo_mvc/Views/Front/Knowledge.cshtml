@@ -99,15 +99,74 @@ ViewData["Title"] = "Knowledge";
 
     }
 
-    img {}
+        .ml5 {
+  position: relative;
+  font-weight: 300;
+  font-size: 4.5em;
+  color: #402d2d;
+}
+
+.ml5 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+  line-height: 1em;
+}
+
+.ml5 .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #D39080;
+  transform-origin: 0.5 0;
+}
+
+.ml5 .ampersand {
+  font-family: Baskerville, serif;
+  font-style: italic;
+  font-weight: 400;
+  width: 1em;
+  margin-right: -0.1em;
+  margin-left: -0.1em;
+}
+
+.ml5 .letters {
+  display: inline-block;
+  opacity: 0;
+}
 </style>
 
 <body>
 
-    <div style="display: flex; justify-content: center; align-items: center;
-                height:  35vh; font-size: 40px;
-                background-image: url(/image/3fb22876-1914-4414-8a38-fcd1bf6219e2.jpeg); 
-                background-position: center center;">知 識 專 欄</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+<div style="height:  45vh;background-image: url(/image/sakura.jpg);
+background-size: 100% auto;
+background-position:top">
+    <div style="display: flex; justify-content: center; 
+                align-items: center;
+                height: 45vh;
+                background-size: 100% auto;
+                background-image: linear-gradient(to top, rgb(255, 255, 255),rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+                "> 
+                    <span class="ml5" style="color:#753b2d;
+                       font-family: 'GenSenRounded';font-size:3em">
+                      <span class="text-wrapper">
+                        <span class="line line1"></span>
+                        <span class="letters letters-left">知 識</span>
+                    @*<span class="letters ampersand"></span>*@
+                        <span class="letters letters-right">專 欄</span>
+                        <span class="line line2"></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
 
 
     <br>
@@ -119,15 +178,20 @@ ViewData["Title"] = "Knowledge";
             var i = 1;
             foreach (var item in @ViewBag.KnowledgeColumn)
             {
-         var show="show" + @i; var infoModal="infoModal" + @i; var close="close" + @i; <div
+                string j = "https://picsum.photos/900/500/?random=" + @i;
+                var show = "show" + @i; var infoModal = "infoModal" + @i; var close = "close" + @i;
+                <div data-aos="fade-up"
+             data-aos-duration="1000" data-aos-delay="900"
                 id=@show class="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
+                        <a href="#review">
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
                     <div class="bg-cover h-48"
-                        style="background-image: url(https://images.unsplash.com/photo-1523978591478-c753949ff840?w=900);">
+                        style="background-image: url(@j);">
                     </div>
-                    <div class="p-4 flex-1 flex flex-col">
-                        <h3 class="mb-4 text-2xl">@item.KTitle</h3>
-                        <div class="mb-4 text-grey-darker text-sm flex-1">
+                            <div class="p-4 flex-1 flex flex-col">
+                                                    <h3 class="mb-1 text-2xl" style="color:black;font-weight:bold">@item.KTitle</h3>
+                                            <span class="mb-3" style="color:black">@item.KDate</span>
+                                            <div class="mb-4 text-grey-darker text-sm flex-1">
                         @if (@item.KContent.Length>=15){<p>@item.KContent.Substring(0, 15)......(點我查看更多)
                         </p>
                         }else{
@@ -138,11 +202,13 @@ ViewData["Title"] = "Knowledge";
                         
                         </div>
                         <div class="mb-4 text-grey-darker text-sm flex-1" style="text-align: right;">
-                                    <span>@item.KDate</span>
+                                
                         </div>
                     </div>
                 </div>
+                        </a>
         </div>
+        
         <dialog id=@infoModal class="infoModal">
             <div style="display: flex;">
                 <div style="width: 85%;">
@@ -154,9 +220,10 @@ ViewData["Title"] = "Knowledge";
                      height:60px;
                      position:fixed;
                      top:12%;
-                     right:11%;
-                     "><span id=@close style="font-size: 50px;" class="close">×</span></div>
+                     right:11%;">
+                <span id=@close class="close"><a href="#close" class="close" style="font-size: 50px;" >×</a></span></div>
             </div>
+                    
                     </dialog>
                 i++;
             }
@@ -166,6 +233,7 @@ ViewData["Title"] = "Knowledge";
 
 </body>
 
+<script src="../js/title.js"></script>
 
 
 <script>

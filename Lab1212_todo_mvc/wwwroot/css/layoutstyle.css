@@ -6,6 +6,7 @@
 body {
     font-family: "GenSenRounded";
 }
+
 .btn {
     font-family: "GenSenRounded";
 }
@@ -162,10 +163,12 @@ a {
 
             .site-navbar .site-navigation .site-menu > li > a {
                 padding: 20px 10px;
-                color: #D39080;
+                color: #000;
                 /* 導覽列字色 */
+                /*text-shadow: 1px 1px 5px #000;*/
                 font-size: 15px;
                 text-decoration: none !important;
+                text-shadow: 0px 0px 5px #FFF;
             }
 
                 .site-navbar .site-navigation .site-menu > li > a.active {
@@ -173,7 +176,7 @@ a {
                 }
 
                 .site-navbar .site-navigation .site-menu > li > a:hover {
-                    color: rgb(255, 130, 190);
+                    color: #888;
                 }
 
             /* 字色HOVER */
@@ -253,11 +256,11 @@ a {
                     -webkit-transition: 0s all;
                     -o-transition: 0s all;
                     transition: 0s all;
-                    color: #D39080;
+                    color: #777777;
                 }
 
                     .site-navbar .site-navigation .site-menu .has-children .dropdown a.active {
-                        color: #fa296f;
+                        color: #888;
                     }
 
                 .site-navbar .site-navigation .site-menu .has-children .dropdown .active > a {
@@ -287,8 +290,9 @@ a {
                     }
 
                         .site-navbar .site-navigation .site-menu .has-children .dropdown > li > a:hover {
-                            background: #fff5f2;
-                            color: #D39080;
+                            /* 下拉HOVER背景以及字色 */
+                            background: #dedede;
+                            color: #000000;
                         }
 
                     .site-navbar .site-navigation .site-menu .has-children .dropdown > li.has-children > a:before {
@@ -312,7 +316,7 @@ a {
             .site-navbar .site-navigation .site-menu .has-children:hover > a,
             .site-navbar .site-navigation .site-menu .has-children:focus > a,
             .site-navbar .site-navigation .site-menu .has-children:active > a {
-                color: rgb(255, 130, 190);
+                color: #888;
             }
 
             /* 字色 下拉 HOVER 變色 */
@@ -429,7 +433,7 @@ a {
 
         .site-mobile-menu .site-nav-wrap a.active,
         .site-mobile-menu .site-nav-wrap a:hover {
-            color: #fa296f;
+            color: #888;
         }
 
     .site-mobile-menu .site-nav-wrap li {
@@ -438,7 +442,7 @@ a {
     }
 
         .site-mobile-menu .site-nav-wrap li.active > a {
-            color: #fa296f;
+            color: #888;
         }
 
     .site-mobile-menu .site-nav-wrap .arrow-collapse {
@@ -542,7 +546,8 @@ a {
 
     .sticky-wrapper.is-sticky .site-navbar {
         /* background-image: url(/底.png); */
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: #ffd5e490;
+        backdrop-filter: blur(5px);
         background-repeat: repeat-x;
         /* background-size: auto 15vh; */
     }
@@ -567,19 +572,20 @@ a {
 
             .sticky-wrapper.is-sticky .site-navbar .site-navigation .site-menu > li > a {
                 padding: 10px 10px;
-                color: #D39080;
+                color: #000;
                 /* 導覽列字色 下拉後 */
                 font-size: 15px;
+                text-shadow: 0px 0px 5px #FFF;
             }
 
                 .sticky-wrapper.is-sticky .site-navbar .site-navigation .site-menu > li > a:hover {
-                    color: rgb(255, 151, 196) !important;
+                    color: #888 !important;
                 }
 
                 .sticky-wrapper.is-sticky .site-navbar .site-navigation .site-menu > li > a.active {
-                    color: rgb(255, 22, 76) !important;
+                    color: #888 !important;
                 }
 
             .sticky-wrapper.is-sticky .site-navbar .site-navigation .site-menu > li.active a {
-                color: rgb(255, 22, 123);
+                color: #888;
             }
