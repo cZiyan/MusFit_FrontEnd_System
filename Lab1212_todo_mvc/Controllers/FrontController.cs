@@ -171,7 +171,18 @@ namespace Lab1212_todo_mvc.Controllers
         {
             return View();
         }
-
+        public IActionResult Class()
+        {
+            return View();
+        }
+        public IActionResult Yoga()
+        {
+            return View();
+        }
+        public IActionResult Aerobic()
+        {
+            return View();
+        }
 
 
         //[HttpPost]
