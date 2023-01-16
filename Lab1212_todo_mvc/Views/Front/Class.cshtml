@@ -1,0 +1,180 @@
+﻿@{
+    ViewData["Title"] = "Classroom";
+}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Style -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/divstyle.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script>
+
+    </script>
+
+
+
+    <link rel="stylesheet" href="../css/coach_style.css">
+
+
+    <title>layout</title>
+</head>
+<style>
+        .ml5 {
+  position: relative;
+  font-weight: 300;
+  font-size: 4.5em;
+  color: #402d2d;
+}
+
+.ml5 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+  line-height: 1em;
+}
+
+.ml5 .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #D39080;
+  transform-origin: 0.5 0;
+}
+
+.ml5 .ampersand {
+  font-family: Baskerville, serif;
+  font-style: italic;
+  font-weight: 400;
+  width: 1em;
+  margin-right: -0.1em;
+  margin-left: -0.1em;
+}
+
+.ml5 .letters {
+  display: inline-block;
+  opacity: 0;
+}
+.t{
+    font-family:'GenSenRounded';
+    font-size: 33vh;
+    background-position: center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image:url(../image/class_boxing.jpg);
+}
+.t2{
+    font-family:'GenSenRounded';
+    font-size: 33vh;
+    background-position: center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image:url(../image/class_yoga.jpg);
+}
+</style>
+
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<div style="height:  45vh;background-image: url(/image/sakura.jpg);
+background-size: 100% ;
+background-position:top">
+    <div style="display: flex; justify-content: center; 
+                align-items: center;
+                height: 45vh;
+                background-size: 100% auto;
+                background-image: linear-gradient(to top, rgb(255, 255, 255),rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+                "> 
+                    <span class="ml5" style="color:#753b2d;
+                       font-family: 'GenSenRounded';font-size:3em">
+                      <span class="text-wrapper">
+                        <span class="line line1"></span>
+                        <span class="letters letters-left">課 程</span>
+                    @*<span class="letters ampersand"></span>*@
+                        <span class="letters letters-right">介 紹</span>
+                        <span class="line line2"></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+        <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700" >
+            <a href="../Front/Yoga">
+            <div style="width:100%; height:45vh;" 
+                onmouseover="ani('t2')" onmouseout="ani2('t2')">
+                <div style=" background-image:url(../image/class_yoga.jpg);
+                background-position: center;height:45vh;">
+                <div style=" background-color:#FFFFFF99;
+                text-align: center; height:45vh;">
+                <span class="t2" id="t2"  style="">瑜珈</span>
+                    </div></div>
+            </div>
+            </a>
+            <a href="../Front/Aerobic">
+            <div style="width:100%;height:45vh;"onmouseover="ani('t')"
+            onmouseout="ani2('t')">
+                <div  style=" background-image:url(../image/class_boxing.jpg);
+                        height:45vh;
+                background-position: center;">
+                <div style=" background-color:#FFFFFF99;
+                text-align: center; "height:45vh;">
+                <span id="t" class="t" onclick="ani('t')" style="">有氧</span>
+                    </div>
+                    </div>
+            </div>
+            </a>
+        </div>
+</body>
+
+<script src="../js/title.js"></script>
+<script>
+
+    AOS.init();
+    function ani(x){
+        document.getElementById(x).style="-webkit-text-fill-color: #ff678199;";
+    }
+    function ani2(x){
+        document.getElementById(x).style="-webkit-text-fill-color: transparent;";
+    }
+
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+<!-- <script src="js/jquery.sticky.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+
+<script src="../js/main.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+</html>
