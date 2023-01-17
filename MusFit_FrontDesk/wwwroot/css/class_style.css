@@ -56,3 +56,25 @@ body{
 .form-control:focus{
     border-color: transparent;
 }
+
+
+.mobile-cantsee {
+    width: 5%;
+}
+
+@media only screen and (min-width:768px) {
+    .mobile-cantsee {
+        width: 20%;
+    }
+}
+
+.mobile-cantsee2 {
+    width: 45%;
+}
+
+@media only screen and (min-width:768px) {
+    .mobile-cantsee2 {
+        width: 30%;
+        border-radius: 10px;
+    }
+}

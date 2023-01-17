@@ -18,7 +18,7 @@
 
   <!-- Style -->
   <link rel="stylesheet" href="../css/layoutstyle.css">
-<link rel="stylesheet" href="../css/divstyle.css">
+  <link rel="stylesheet" href="../css/divstyle.css">
 
 </head>
 
@@ -36,7 +36,7 @@
 
 
 
-  <div class="site-navbar site-navbar-target js-sticky-header" style="font-family:'GenSenRounded';">
+  <div class="site-navbar site-navbar-target js-sticky-header" style="font-family:'GenSenRounded';position: fixed; z-index:100; ">
     <!--style="height:15vh;"-->
     <div class="container">
       <div class="row align-items-center">
@@ -121,11 +121,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../js/main.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
     @* ---------------------------------content--------------------------------------*@ 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
     @RenderBody()
 
 </body>
