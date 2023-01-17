@@ -67,28 +67,31 @@
         </div>
 
         <div style="padding: 0 30px;">
-            <form action="" method="GET">
+            <form action="../" method="POST">
                 <label class="form-group" style="border-color: transparent;">
                     <input style="background-color: rgba(0, 0, 0, 0); box-shadow :none; webkit-box-shadow:none;"
-                        type="text" class="form-control" name="name" required>
+                        type="text" class="form-control"  name="sName" required>
                     <span>姓名</span>
                     <span class="border"></span>
                 </label>
                 <span for="">性別　</span>
-                <input style="accent-color: rgb(255, 59, 141);" type="radio" id="male" name="gender" value="male"><label
-                    for="male">男</label>　
-                <input style="accent-color: rgb(255, 59, 141);" type="radio" id="female" name="gender"
-                    value="female"><label for="female" 　>女</label>
+                <input style="accent-color: rgb(255, 59, 141);" 
+                        type="radio" id="male" name="sGender" value=True>
+                <label for="male">男</label>　
+                <input style="accent-color: rgb(255, 59, 141);"
+                        type="radio" id="female" name="sGender" value=False>
+                    <label for="female">女</label>
                 <span><br>　</span>
                 <label class="form-group">
-                    <input style="background-color: rgba(0, 0, 0, 0); box-shadow :none; webkit-box-shadow:none;"
-                        type="phone" class="form-control" name="phone" required>
+                    <input style="background-color: rgba(0, 0, 0, 0);
+                        box-shadow :none; webkit-box-shadow:none;"
+                        type="phone" class="form-control" name="sPhone" required>
                     <span for="">電話</span>
                     <span class="border"></span>
                 </label>
                 <label class="form-group">
                     <input style="background-color: rgba(0, 0, 0, 0); box-shadow :none; webkit-box-shadow:none;"
-                        type="text" class="form-control" name="email" required>
+                        type="text" class="form-control" name="sMail" required>
                     <span for="">電子郵件</span>
                     <span class="border"></span>
                 </label>
