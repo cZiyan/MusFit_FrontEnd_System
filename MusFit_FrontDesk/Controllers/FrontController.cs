@@ -203,6 +203,41 @@ namespace MusFit_FrontDesk.Controllers
         }
         public IActionResult Aerobic()
         {
+            var query =
+            from c in this._context.Classes
+            select new Class
+            {
+                CId = c.CId,
+                CName = c.CName,
+                LcId = c.LcId,
+                Cprice = c.Cprice,
+                CActual = c.CActual,
+                CExpect = c.CExpect,
+                CTotalLession = c.CTotalLession
+            };
+            ViewBag.Class = query.ToList();
+
+            //抓取開課時間，報名截止日是第一堂課的前一天
+            var query2 =
+            from c in this._context.ClassTimes
+            where c.CtLession == 1
+            select new ClassTime
+            {
+                CId = c.CId,
+                CtDate = c.CtDate
+            };
+            ViewBag.ClassTime = query2.ToList();
+
+            var query3 =
+            from lc in this._context.LessionCategories
+            select new LessionCategory
+            {
+                LcId = lc.LcId,
+                LcName = lc.LcName,
+                LcType = lc.LcType
+            };
+            ViewBag.LC = query3.ToList();
+
             return View();
         }
 
