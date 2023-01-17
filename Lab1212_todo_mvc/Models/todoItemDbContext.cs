@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace Lab1212_todo_mvc.Models
+namespace MusFit_FrontDesk.Models
 {
     public partial class todoItemDbContext : DbContext
     {

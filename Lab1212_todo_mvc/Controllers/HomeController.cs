@@ -1,4 +1,4 @@
-﻿using Lab1212_todo_mvc.Models;
+﻿using MusFit_FrontDesk.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lab1212_todo_mvc.Controllers
+namespace MusFit_FrontDesk.Controllers
 {
     public class HomeController : Controller
     {

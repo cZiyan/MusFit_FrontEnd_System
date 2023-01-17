@@ -1,10 +1,10 @@
-﻿using Lab1212_todo_mvc.Models;
+﻿using MusFit_FrontDesk.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Lab1212_todo_mvc.Controllers
+namespace MusFit_FrontDesk.Controllers
 {
     public class TodoController : Controller
     {

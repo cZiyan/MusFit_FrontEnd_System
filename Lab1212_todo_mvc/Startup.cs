@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Lab1212_todo_mvc.Models;
+using MusFit_FrontDesk.Models;
 
-namespace Lab1212_todo_mvc
+namespace MusFit_FrontDesk
 {
     public class Startup
     {

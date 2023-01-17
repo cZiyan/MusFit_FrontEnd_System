@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lab1212_todo_mvc
+namespace MusFit_FrontDesk
 {
     public class Program
     {

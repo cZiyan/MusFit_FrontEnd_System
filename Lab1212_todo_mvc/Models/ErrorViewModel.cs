@@ -1,6 +1,6 @@
 using System;
 
-namespace Lab1212_todo_mvc.Models
+namespace MusFit_FrontDesk.Models
 {
     public class ErrorViewModel
     {

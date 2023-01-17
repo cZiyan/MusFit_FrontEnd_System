@@ -1,4 +1,4 @@
-﻿using Lab1212_todo_mvc.Models;
+﻿using MusFit_FrontDesk.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols;
@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Xml.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace Lab1212_todo_mvc.Controllers
+namespace MusFit_FrontDesk.Controllers
 {
     public class FrontController : Controller
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Lab1212_todo_mvc.Models
+namespace MusFit_FrontDesk.Models
 {
     public partial class VwCoachSchedule
     {
