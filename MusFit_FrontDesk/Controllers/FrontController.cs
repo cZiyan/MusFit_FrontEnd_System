@@ -171,6 +171,27 @@ namespace MusFit_FrontDesk.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Reserve(Student item)
+        {
+            _context.Students.Add(item);
+            _context.SaveChanges();
+            return Redirect("../");
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Student item)
+        {
+            _context.Students.Add(item);
+            _context.SaveChanges();
+            return Redirect("../");
+        }
+
+
         public IActionResult Class()
         {
             return View();
@@ -178,6 +199,7 @@ namespace MusFit_FrontDesk.Controllers
         public IActionResult Yoga()
         {
             return View();
+            //return View("News", dataList);
         }
         public IActionResult Aerobic()
         {
