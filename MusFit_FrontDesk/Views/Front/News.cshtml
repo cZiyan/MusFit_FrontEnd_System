@@ -185,7 +185,11 @@ background-position:top">
                   style="background-image: url(@j);">
                     </div>
                     <div class="p-4 flex-1 flex flex-col" >
-                      <h3 class="mb-1 text-2xl" style="color:black;font-weight:bold">@item.NTitle</h3>
+                      @item.NCategory
+                      <h3 class="mb-1 text-2xl" 
+                      style="color:black;font-weight:bold">
+                      @item.NTitle
+                      </h3>
                       <span class="mb-3" style="color:black">@item.NPostDate</span>
                       <div class="mb-4 text-grey-darker text-sm flex-1">
                                     @if (@item.NContent.Length >= 15)
