@@ -114,7 +114,7 @@
             </div>
             <br /><br /><br /><br />
 
-
+            
     <div  style="text-align:center">
             <div data-aos="fade-up" > 
                     <span style="font-size:32px ; font-family:'GenSenRounded';">目前課程，招生中！</span><br></div>
@@ -172,12 +172,13 @@
                                 { @if (@DateTime.Now <
                           @item2.CtDate)
                                     {
-                                                                    <div class="class-text2">
-                                                                        價錢：@item.Cprice<br>
-                                                                        堂數：@item.CTotalLession<br>
-                                                                        人數上限：@item.CExpect<br>
-
-                                                                </div>
+                        string date = @item2.CtDate.ToString();
+                       <div class="class-text2">
+                   價錢：@item.Cprice<br>
+                    堂數：@item.CTotalLession<br>
+                  人數上限：@item.CExpect<br>
+                 開課日：@date.Substring(0,date.Length - 12)
+                   </div>
                                     }
                                 }
                             }

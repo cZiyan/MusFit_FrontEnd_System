@@ -17,7 +17,7 @@
         
     <!-- Style -->
     <link rel="stylesheet" href="../css/style.css">
-    
+    <link rel="stylesheet" href="../css/title.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -77,7 +77,8 @@
 }
 .t{
     font-family:'GenSenRounded';
-    font-size: 33vh;
+    font-size: 20vh;
+    line-height:45vh;
     background-position: center;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -85,7 +86,8 @@
 }
 .t2{
     font-family:'GenSenRounded';
-    font-size: 33vh;
+    font-size: 20vh;
+    line-height:45vh;
     background-position: center;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -96,12 +98,10 @@
 <body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-<div style="height:  45vh;background-image: url(/image/sakura.jpg);
-background-size: 100% ;
-background-position:top">
+<div  class="see">
     <div style="display: flex; justify-content: center; 
                 align-items: center;
-                height: 45vh;
+                height:  300px;
                 background-size: 100% auto;
                 background-image: linear-gradient(to top, rgb(255, 255, 255),rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
                 "> 
@@ -119,12 +119,12 @@ background-position:top">
                 </div>
         <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700" >
             <a href="../Front/Yoga">
-            <div style="width:100%; height:45vh;" 
+            <div style="width:100%; height:45vh; " 
                 onmouseover="ani('t2')" onmouseout="ani2('t2')">
                 <div style=" background-image:url(../image/class_yoga.jpg);
                 background-position: center;height:45vh;">
                 <div style=" background-color:#FFFFFF99;
-                text-align: center; height:45vh;">
+                text-align: center;  height:45vh;">
                 <span class="t2" id="t2"  style="">瑜珈</span>
                     </div></div>
             </div>
@@ -136,7 +136,7 @@ background-position:top">
                         height:45vh;
                 background-position: center;">
                 <div style=" background-color:#FFFFFF99;
-                text-align: center; "height:45vh;">
+                text-align: center; height:45vh;">
                 <span id="t" class="t" onclick="ani('t')" style="">有氧</span>
                     </div>
                     </div>
