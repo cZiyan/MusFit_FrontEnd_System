@@ -1,0 +1,130 @@
+﻿@model MusFit_FrontDesk.Models.Student
+<head>
+    <title>個人資料修改 | MusFit - 享受生活</title>
+</head>
+
+
+<link rel="stylesheet" href="~/css/Change_Information.css" />
+
+<div >
+    <form class="change_information container-fluid" method="post"  action="@Url.Action("SEdit","Front")">
+        <div class="row mt-5 justify-content-center">
+
+            <div class="mt-4">
+                <a href="@Url.Action("MemberArea","Front")" class="btn btnStudent btn-lg ">會員中心</a>
+                <button type="button" class="btn btn-lg btnChange">個人資料修改</button>
+                <a href="@Url.Action("EditPassword","Front")" class="btn btnPasswordEdit btn-lg ">密碼修改</a>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-3"></div>
+            <div class="col-6 ">
+                <hr>
+                <div>
+                    <img class="d-block mx-auto mb-4" src="~/img/login-1.jpg" alt="" width="200" height="180">
+                    <div class="row justify-content-center">
+                        <div class="input-group mb-3 w-75">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">請選擇檔案</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="inputGroupFileAddon02">上傳</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-3 col-form-label" asp-for="SName">姓名</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" data-val="true" data-val-required="*此欄為必填" asp-for="SName"
+                               name="SName" type="text" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="studentName"
+                              data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-3 col-form-label" asp-for="SGender">性別</label>
+                    <div class="col-sm-8 ">
+
+                        <label class="form-check-label " id="SGender">
+                            <input class="form-check-label" data-val="true" data-val-required="*此欄為必填" asp-for="SGender"
+                                   name="SGender" type="radio" value="false" />女
+                        </label>
+
+                        <label class="form-check-label ml-lg-5" id="SGender">
+                            <input class="form-check-label" data-val="true" data-val-required="*此欄為必填" asp-for="SGender"
+                                   name="SGender" type="radio" value="true" />男
+                        </label>
+
+                        <span class="field-validation-valid text-danger" data-valmsg-for="studentGender"
+                              data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-3 col-form-label" asp-for="SBirth">生日</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" data-val="true" data-val-required="*此欄為必填" asp-for="SBirth"
+                               name="SBirth" type="date"  />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="studentBirth"
+                              data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-3 col-form-label" asp-for="SPhone">手機號碼</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" data-val="true" data-val-required="*此欄為必填" asp-for="SPhone"
+                               name="SPhone" type="tel"  />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="studentPhone"
+                              data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-3 col-form-label" asp-for="SMail">電子郵件</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" data-val="true" data-val-required="*此欄為必填" asp-for="SMail"
+                               name="SMail" type="email"  />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="sudentEmail"
+                              data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-3 col-form-label" asp-for="SAddress">地址</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" data-val="true" data-val-required="*此欄為必填" asp-for="SAddress"
+                               name="SAddress" type="text" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="studentAddress"
+                              data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-3 col-form-label" asp-for="SContactor">緊急連絡人</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" data-val="true" data-val-required="*此欄為必填" asp-for="SContactor"
+                               name="SContactor" type="text" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="studentContactor"
+                              data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-3 col-form-label" asp-for="SContactPhone">緊急聯絡人<br>電話</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" data-val="true" data-val-required="*此欄為必填" asp-for="SContactPhone"
+                               name="SContactPhone" type="tel"  />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="studentContactorPhone"
+                              data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row mt-3 ">
+            <div class="col-7"></div>
+            <div class="col">
+                <button type="submit" class="btn btnCheck mb-5" style="width: 100px" href="@Url.Action("SEdit","Manage")">儲存</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,4 +1,9 @@
-﻿<!doctype html>
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor hca
+@{
+    string sAccount = hca.HttpContext.Session.GetString("SAccount") ?? "Guest";
+}
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -71,31 +76,31 @@
                 <li><a href="../Front/Coach" class="nav-link">認識教練</a></li>
                 <li><a href="../Front/Classroom" class="nav-link">環境簡介</a></li>
                 <li><a href="../Front/Knowledge" class="nav-link">知識專欄</a></li>
+                <li><a href="../Front/Create" class="nav-link">預約表單</a></li>
 
                 <!-- 注意!!!!!!!!!!!!!!!!，這邊需要判斷會員是否已經登入!! -->
+                @{
+                    if (sAccount == "Guest")
+                    {
+                        <!-- 登入前  -->
+                        <li><a href="@Url.Action("Login","Front")" class="nav-link">會員登入</a></li>
+                    }
+                    else
+                    {
+                        <!-- 登入後 -->
+                        <li class="has-children">
+                            <a href="#" class="nav-link"><span class="icon-user-circle-o"></span>@(sAccount)</a>
+                            <ul class="dropdown arrow-top">
+                                <li><a href="@Url.Action("MemberArea","Front")" class="nav-link">會員中心</a></li>
+                                <li><a href="@Url.Action("SearchSchedule","Front")" class="nav-link">我的課表</a></li>
+                                <li><a href="@Url.Action("ClassRecord","Front")" class="nav-link">我的課程紀錄</a></li>
+                                <li><a href="@Url.Action("InBody","Front")" class="nav-link">我的InBody紀錄</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="@Url.Action("Logout","Front")" class="nav-link"><span class="icon-sign-out"></span></a></li>
+                    }
 
-                <!-- 登入前 -->
-
-                <li><a href="../Front/Create" class="nav-link">預約表單</a></li>
-                <li><a href="#" class="nav-link">會員登入</a></li>
-
-                <!-- 登入前 結束 -->
-
-                <!-- 登入後 -->
-
-                <!-- <li class="has-children">
-                      <a href="#" class="nav-link">會員專區</a>
-                      <ul class="dropdown arrow-top">
-                        <li><a href="#" class="nav-link">個人資料</a></li>
-                        <li><a href="#" class="nav-link">個人課表</a></li>
-                        <li><a href="#" class="nav-link">課程紀錄</a></li>
-                        <li><a href="#" class="nav-link">InBody紀錄</a></li>
-                        <li>　</li>
-
-                      </ul>
-                    </li>  -->
-
-                <!-- 登入後 結束 -->
+                }
               </ul>
             </div>
           </nav>
@@ -107,8 +112,8 @@
 
   <a href="../../../"><img src="../image/LOGO_text.png" style="position: fixed; z-index:100; width:100px; top:3%; left:5%"></a>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
       crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

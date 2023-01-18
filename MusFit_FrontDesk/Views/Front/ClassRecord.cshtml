@@ -1,0 +1,132 @@
+﻿@model MusFit_FrontDesk.ViewModels.ClassRecordViewModel
+@{
+    var message = (string)ViewData["error"] ?? string.Empty;
+    var messageSelect = (string)ViewData["errorSelect"] ?? string.Empty;
+    var classRecord = ViewData["classRecord"] as List<MusFit_FrontDesk.ViewModels.ClassRecordViewModel> ?? null;
+}
+<head>
+    <title>課程紀錄 | MusFit - 享受生活</title>
+</head>
+
+<link rel="stylesheet" href="~/css/Class_Record.css">
+
+<div class="row container-fuild classRecord justify-content-center" method="get" action="@Url.Action("ClassRecord","Front")">
+
+    <div class="row container-fuild classRecord_up pb-3" style="width:100%;">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h4 class="text-center"><span class="icon-list-alt"> </span>課程紀錄</h4>
+        </div>
+    </div>
+    <div class="from-group col-12 classRecord_center" method="get" asp-action="@Url.Action("ClassRecord","Front")">
+        <label asp-for="CtDateFrom" class="ml-3 mr-2 mt-2">日期</label>
+        <input asp-for="CtDateFrom" class="form-control" type="date" name="CtDate" style="width: 15%;">
+        <label asp-for="CtDateTo" class="ml-3 mr-2 mt-2">～</label>
+        <input asp-for="CtDateTo" class="form-control" type="date" name="CtDate" style="width: 15%;">
+
+        <label asp-for="LcName" class="ml-3 mr-2 mt-2">課程項目</label>
+        <div class="input-group" style="width: 20%;">
+            <select class="custom-select " asp-for="LcName" onChange="LcNameChang(this);">
+                <option>請選擇</option>
+                @{
+                    foreach (var item in classRecord)
+                    {
+                                <option>@item.LcName (第 @item.CtLession 堂) </option>
+                    }
+                }
+            </select>
+        </div>
+
+
+        <button type="button" id="search" class="btn"> 查詢</button>
+
+
+    </div>
+
+    <div class="col-10 classRecord_down">
+        <table id="classRecord"
+               class="table table-hover"
+               data-response-handler="responseHandler"
+               data-side-pagination="server"
+               data-pagination="true"
+               data-url="Manage/ClassRecord"
+               data-id-table="advancedTable">
+            <thead>
+                <tr>
+                    <th scope="col" data-field="CNumber">課程代號</th>
+                    <th scope="col" data-field="CName">課程名稱</th>
+                    <th scope="col" data-field="CtDate">日期</th>
+                    <th scope="col" data-field="Time">時段</th>
+                    <th scope="col" data-field="CtLession">堂數</th>
+                    <th scope="col" data-field="CrAttendance">出缺席</th>
+                    <th scope="col" data-field="CrContent">課程內容</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in ViewData["classRecord"] as List<MusFit_FrontDesk.ViewModels.ClassRecordViewModel>)
+                    {
+                                        <tr>
+                                            <th scope="row">@item.CNumber</th>
+                                            <td>@item.CName</td>
+                                            <td>@item.CtDate ( @item.Weekday )</td>
+                                            <td>@item.Time</td>
+                                            <td>@item.CtLession</td>
+                                            <td>@item.CrAttendance</td>
+                                            <td>@item.CrContent</td>
+                                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+        @{
+            if (message != "")
+            {
+                                <p id="error" style="color: red"><b>@ViewData["error"]</b></p>
+            }
+            if (messageSelect != "")
+            {
+                                <p id="error" style="color: red"><b>@ViewData["errorSelect"]</b></p>
+            }
+        }
+    </div>
+</div>
+
+@section Scripts{
+        <script>
+            var lcNameAndCtLession = "";
+
+            function LcNameChang(sel) {
+                lcNameAndCtLession = sel.options[sel.selectedIndex].text;
+            }
+
+
+
+            $('#search').click(function () {
+
+                var dateFrom = $('input[id="CtDateFrom"]').val();
+                var dateTo = $('input[id="CtDateTo"]').val();
+
+                var result = "";
+
+                //若符合一個或多值時
+                if (dateFrom != "") {
+                    result += 'CtDateFrom=' + dateFrom + '&';
+                }
+
+                if (dateTo != "") {
+                    result += 'CtDateTo=' + dateTo + '&';
+                }
+
+                if (lcNameAndCtLession != "") {
+                    result += 'LcNameAndCtLession=' + lcNameAndCtLession + '&';
+                }
+
+
+                window.location.href = '@Url.Action("ClassRecord", "Front")?' + result;
+            })
+
+
+        </script>
+}

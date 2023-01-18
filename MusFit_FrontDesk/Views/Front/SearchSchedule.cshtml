@@ -1,0 +1,121 @@
+﻿@model MusFit_FrontDesk.ViewModels.ClassScheduleViewModel
+@{
+    var ClassSchedule = ViewData["ClassSchedule"] as List<MusFit_FrontDesk.ViewModels.ClassScheduleViewModel> ?? null;
+}
+<head>
+    <title>我的課表 | MusFit - 享受生活</title>
+</head>
+
+<link rel="stylesheet" href="~/css/SearchSchedule.css" />
+
+<div class="container-fluid">
+    <h2 style="padding-top:70px;">我的課表</h2>
+    <div id="calendar"></div>
+</div>
+
+
+<div id="myModal" class="modal" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div id="classTitle"></div>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="classInfo"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnconfirm" type="button" class="btn btn-primary" onclick="closeModal()">確認</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+        <script src="~/js/SearchSchedule.js"></script>
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.1/index.global.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.1/package.json"></script>
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function () {
+                    var calendarEl = document.getElementById('calendar');
+                    var date = new Date();
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        headerToolbar: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'dayGridMonth'
+                        },
+                        initialDate: date.toISOString().split('T')[0],
+                        locale: 'zh-tw',
+                        buttonText: { today: '今天'},
+                        navLinks: true,
+                        selectable: true,
+                        selectHelper: true,
+                        selectMirror: true,
+                        dayMaxEvents: true,
+                        allDay: false,
+                        eventTimeFormat:{
+                            //meridiem: false,
+                            hour12: false // 设置时间为24小时
+                        },
+                        events: function (info, successCallback, failureCallback) {
+                            var events = [];
+                            //撈取後端資料
+                            $.ajax({
+                                url: '@Url.Action("GetScheduleData","Front")',
+                                method: 'POST',
+                                dataType: 'json',
+                                success: function (data) {
+                                    var json = JSON.parse(data);
+                                    $.each(json, function (c) {
+                                        var CtDate = json[c].CtDate.substring(0, 10);
+                                        events.push({
+                                            title: json[c].TStartTime.substring(0, 5) + json[c].CName,
+                                            start: CtDate,
+                                            classNames: [json[c].CNumber, json[c].RoomName, json[c].TStartTime, json[c].TEndTime, json[c].Weekday, json[c].CtLession, json[c].EName],
+                                            color: json[c].LcThemeColor
+                                        });
+                                    })
+                                successCallback(events);
+                                },
+                                error: function (error) {
+                                }
+                            });
+
+                        },
+                        eventClick: function (info) {
+                            var date = new Date(info.event.startStr).toLocaleDateString();
+                            $('#classTitle').html(`<strong>${info.event.title}(第${info.event.classNames[5]}堂)</strong>`);
+                            $('#classInfo').html(`課程代號 : ${info.event.classNames[0]}<br>上課日期 : ${date}(${info.event.classNames[4]})<br>課程時間 : ${info.event.classNames[2].substring(0, 5)} ~ ${info.event.classNames[3].substring(0, 5)}<br>上課教室 : ${info.event.classNames[1]}<br>教練 : ${info.event.classNames[6]}`);
+                            $('.modal').css('display', 'block');
+                            info.el.style.borderColor = 'red';
+                        }                 
+                    });
+                    calendar.render();
+            });
+
+        //關閉視窗
+        //var Modal = document.getElementById("myModal");
+        function closeModal() {
+            document.getElementById("myModal").style.display="none";
+        }
+
+    </script>
+
+
+
+
+
+
+
+}
+
+
+
+

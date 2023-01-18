@@ -1,0 +1,548 @@
+﻿@model MusFit_FrontDesk.Models.VwInBody
+@{
+    var message = (string)ViewData["error"] ?? string.Empty;
+    var date = ViewData["date"] as List<DateTime> ?? null;
+}
+<head>
+    <title>InBody紀錄 | MusFit - 享受生活</title>
+</head>
+
+
+<link rel="stylesheet" href="~/css/Inbody.css">
+
+<div class="container-fluid">
+    <main class="inbody">
+
+        <div class="row container-fluid " >
+
+            <div class="col-12 mt-5"></div>
+            <div class="col-12 mt-5"></div>
+
+            <div class="col-4 mb-3 mt-2" style="display: flex;">
+                @*<input type="hidden" name="submitted_on_change" value="0">*@
+                <label class="pr-3 mt-2" asp-for="Date">日期</label>
+                <form id="dateSelect" class="input-group" style="width: 70%;" method="post" asp-action="InBody">
+                    <select class="custom-select " asp-for="Date" onChange='DateChange(this)'>
+                        <option>請選擇</option>
+                        @{
+                            if (date != null)
+                            {
+                                foreach (var item in date)
+                                {
+                                                <option>@item</option>
+                                }
+                            }
+
+                        }
+                    </select>
+                </form>
+            </div>
+            <div class="col-4 mb-3">
+                <h3 class="text-center mt-3">我的InBody紀錄</h3>
+            </div>
+            <div class="col-4"></div>
+            @{
+                if (message != null)
+                {
+                                    <p id="error" style="color:red;">@ViewData["error"]</p>
+                }
+            }
+
+            @{
+                if (Model != null)
+                {
+                            <div class="col-8" id="inBodyOne" hidden>
+                                                    <table class="table table-bordered mt-4">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">性別<br>@((Model.SGender == true) ? "男" : "女")</th>
+                                                                <th scope="col">年齡<br>@Model.Age</th>
+                                                                <th scope="col">身高<br>@Model.Height</th>
+                                                                <th scope="col">日期<br>@Model.Date</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                            <div class="col-4"></div>
+
+                            <div class="col-8" id="inBodyTwo" hidden>
+                                <div class="row">
+
+                                    <div class="col-6">
+                                        <h4>身體組成分析</h4>
+                                        <table class="table table-bordered text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"></th>
+                                                    <th scope="col">數值</th>
+                                                    <th scope="col">正常範圍</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row" class="text-left">體重</th>
+                                                    <td scope="col">@Model.Weight kg</td>
+                                                    <td scope="col" class="text-center">@Model.WeightMinRange ~ @Model.WeightMaxRange</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-left">骨骼肌重</th>
+                                                    <td scope="col">@Model.Smm kg</td>
+                                                    <td scope="col" class="text-center">@Model.SmmminRange ~ @Model.SmmmaxRange</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-left">體脂肪重</th>
+                                                    <td scope="col">@Model.BodyFatMass kg</td>
+                                                    <td scope="col" class="text-center">@Model.BodyFatMassMinRange ~ @Model.BodyFatMassMaxRange</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-6"></div>
+                                    <div class="col-6">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"></th>
+                                                    <th scope="col">數值</th>
+                                                    <th scope="col">正常範圍</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">身體總水量<small>TBW</small></th>
+                                                    <td>@Model.TotalBodyWater kg</td>
+                                                    <td>@Model.TotalBodyWaterMinRange ~ @Model.TotalBodyWaterMaxRange</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">蛋白質重</th>
+                                                    <td>@Model.Protein kg</td>
+                                                    <td>@Model.ProteinMinRange ~ @Model.ProteinMaxRange</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-6">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"></th>
+                                                    <th scope="col">數值</th>
+                                                    <th scope="col">正常範圍</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">除脂體重<small>FFM</small></th>
+                                                    <td>@Model.Ffm kg</td>
+                                                    <td>@Model.FfmminRange ~ @Model.FfmmaxRange</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">礦物質重</th>
+                                                    <td>@Model.Mineral kg</td>
+                                                    <td>@Model.MineralMinRange ~ @Model.MineralMaxRange</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-6">
+                                        <h4>肥胖診斷</h4>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"></th>
+                                                    <th scope="col">數值</th>
+                                                    <th scope="col">正常範圍</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row" class="p-4">體質量指數<small>BMI(kg/m2)</small></th>
+                                                    <td class="p-4">@Model.Bmi</td>
+                                                    <td class="p-4">@Model.BmiminRange ~ @Model.BmimaxRange</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="p-4">體脂肪率<small>PBF</small></th>
+                                                    <td class="p-4">@Model.Pbf</td>
+                                                    <td class="p-4">@Model.PbfminRange ~ @Model.PbfmaxRange</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="p-4">腰臀圍比<small>WHR</small></th>
+                                                    <td class="p-4">@Model.Whr</td>
+                                                    <td class="p-4">@Model.WhrminRange ~ @Model.WhrmaxRange</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="p-4">基礎代謝率<small>BMR(kcal)</small></th>
+                                                    <td class="p-4">@Model.Bmr</td>
+                                                    <td class="p-4">@Model.BmrminRange ~ @Model.BmrmaxRange</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col-12" style="font-size: 10px;">
+                                                <h6>營養評估</h6>
+                                                <table class="table table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">蛋白質</th>
+                                                            <th scope="col"><input asp-for="ProteinLevel" type="radio" value="1">正常</th>
+                                                            <th scope="col"><input asp-for="ProteinLevel" type="radio" value="0">不足</th>
+                                                            <th scope="col"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">礦物質</th>
+                                                            <th scope="col"><input asp-for="BoneMineralLevel" type="radio" value="1">正常</th>
+                                                            <th scope="col"><input asp-for="BoneMineralLevel" type="radio" value="0">不足</th>
+                                                            <th scope="col"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">脂肪重</th>
+                                                            <th scope="col"><input asp-for="BodyFatMassLevel" type="radio" value="1">正常</th>
+                                                            <th scope="col"><input asp-for="BodyFatMassLevel" type="radio" value="0">不足</th>
+                                                            <th scope="col"><input asp-for="BodyFatMassLevel" type="radio" value="2">過量</th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <div class="col-12" style="font-size: 10px;">
+                                                <h6>體重管理</h6>
+                                                <table class="table table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">體重</th>
+                                                            <th scope="col"><input asp-for="WeightLevel" type="radio" value="1">正常</th>
+                                                            <th scope="col"><input asp-for="WeightLevel" type="radio" value="0">低</th>
+                                                            <th scope="col"><input asp-for="WeightLevel" type="radio" value="2">高</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">骨骼肌重</th>
+                                                            <th scope="col"><input asp-for="Smmlevel" type="radio" value="1">正常</th>
+                                                            <th scope="col"><input asp-for="Smmlevel" type="radio" value="0">低</th>
+                                                            <th scope="col"><input asp-for="Smmlevel" type="radio" value="2">強健</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">體脂肪重</th>
+                                                            <th scope="col"><input asp-for="BodyFatMassLevel" type="radio" value="1">正常</th>
+                                                            <th scope="col"><input asp-for="BodyFatMassLevel" type="radio" value="0">低</th>
+                                                            <th scope="col"><input asp-for="BodyFatMassLevel" type="radio" value="2">高</th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-12" style="font-size: 10px;">
+                                                <h6>肥胖診斷</h6>
+                                                <table class="table table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">體質量指數</th>
+                                                            <th scope="col"><input asp-for="Bmilevel" type="radio" value="1">正常</th>
+                                                            <th scope="col"><input asp-for="Bmilevel" type="radio" value="0">低 <input asp-for="Bmilevel" type="radio" value="-1">極低</th>
+                                                            <th scope="col"><input asp-for="Bmilevel" type="radio" value="2">高</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">體脂肪率</th>
+                                                            <th scope="col"><input asp-for="Pbflevel" type="radio" value="1">正常</th>
+                                                            <th scope="col"><input asp-for="Pbflevel" type="radio" value="0">低</th>
+                                                            <th scope="col"><input asp-for="Pbflevel" type="radio" value="2">高</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">腰臀圍比</th>
+                                                            <th scope="col"><input asp-for="Whrlevel" type="radio" value="1">正常</th>
+                                                            <th scope="col"><input asp-for="Whrlevel" type="radio" value="0">低</th>
+                                                            <th scope="col"><input asp-for="Whrlevel" type="radio" value="2">高</th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <h6>肌肉-脂肪控制</h6>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">肌肉控制</th>
+                                                    <th scope="col">@Model.MuscleControl kg</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="col-4">
+                                        <table class="table table-bordered mt-4">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">脂肪控制</th>
+                                                    <th scope="col">@Model.FatControl kg</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="col-4">
+                                        <table class="table table-bordered mt-4">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">健身評分</th>
+                                                    <th scope="col">@Model.InBodyScore</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-4" id="inBodyThree" hidden>
+                                <div class="col-12 text-center" >
+                                    <h6><b>部位別肌肉量</b></h6>
+                                    <img src="~/image/InBody Man.png" style="height: 55%;width: 70%;">
+                            @{
+                                if (Model.UpperLeftMuscleLevel == 0)
+                                {
+                                                    <label id="ulMuscle" style="position: absolute; top: 30px; left: 70px;">@Model.UpperLeftMuscle<br>不足</label>
+                                }
+                                else if (Model.UpperLeftMuscleLevel == 1)
+                                {
+                                                    <label id="ulMuscle" style="position: absolute; top: 30px; left: 70px;">@Model.UpperLeftMuscle<br>正常</label>
+                                }
+                                else
+                                {
+                                                    <label id="ulMuscle" style="position: absolute; top: 30px; left: 70px;">@Model.UpperLeftMuscle<br>高</label>
+                                }
+
+                                if (Model.UpperRightMuscleLevel == 0)
+                                {
+                                                    <label id="urMuscle" style="position: absolute; top: 30px; right: 80px;">@Model.UpperRightMuscle<br>不足</label>
+                                }
+                                else if (Model.UpperRightMuscleLevel == 1)
+                                {
+                                                    <label id="urMuscle" style="position: absolute; top: 30px; right: 80px;">@Model.UpperRightMuscle<br>正常</label>
+                                }
+                                else
+                                {
+                                                    <label id="urMuscle" style="position: absolute; top: 30px; right: 80px;">@Model.UpperRightMuscle<br>高</label>
+                                }
+
+                                if (Model.CenterMuscleLevel == 0)
+                                {
+                                                    <label id="cMuscle" style="position: absolute; top: 140px; right: 170px;">@Model.CenterMuscle<br>不足</label>
+
+                                }
+                                else if (Model.CenterMuscleLevel == 1)
+                                {
+                                                    <label id="cMuscle" style="position: absolute; top: 140px; right: 170px;">@Model.CenterMuscle<br>正常</label>
+                                }
+                                else
+                                {
+                                                    <label id="cMuscle" style="position: absolute; top: 140px; right: 170px;">@Model.CenterMuscle<br>高</label>
+                                }
+
+                                if (Model.BottomLeftMuscleLevel == 0)
+                                {
+                                                    <label id="blMuscle" style="position: absolute; bottom: 5px; left: 70px;">@Model.BottomLeftMuscle<br>不足</label>
+                                }
+                                else if (Model.BottomLeftMuscleLevel == 1)
+                                {
+                                                   <label id="blMuscle" style="position: absolute; bottom: 5px; left: 70px;">@Model.BottomLeftMuscle<br>正常</label>
+                                }
+                                else
+                                {
+                                                    <label id="blMuscle" style="position: absolute; bottom: 5px; left: 70px;">@Model.BottomLeftMuscle<br>高</label>
+                                }
+
+                                if (Model.BottomRightMuscleLevel == 0)
+                                {
+                                                    <label id="brMuscle" style="position: absolute; bottom: 5px; right: 80px;">@Model.BottomRightMuscle<br>不足</label>
+                                }
+                                else if (Model.BottomRightMuscleLevel == 1)
+                                {
+                                                    <label id="brMuscle" style="position: absolute; bottom: 5px; right: 80px;">@Model.BottomRightMuscle<br>正常</label>
+                                }
+                                else
+                                {
+                                                    <label id="brMuscle" style="position: absolute; bottom: 5px; right: 80px;">@Model.BottomRightMuscle<br>高</label>
+                                }
+                            }
+                                </div>
+                                <div class="col-12 text-center">
+                                    <h6><b>部位別脂肪量</b></h6>
+                                    <img src="~/image/InBody Man.png" style="height: 55%;width: 70%;">
+                            @{
+                                if (Model.UpperLeftFatLevel == 0)
+                                {
+                                                   <label id="ulFat" style="position: absolute; top: 30px; left: 70px;">@Model.UpperLeftFat<br>@Model.UpperLeftFatPercentage %<br>不足</label>
+                                }
+                                else if (Model.UpperLeftFatLevel == 1)
+                                {
+                                                   <label id="ulFat" style="position: absolute; top: 30px; left: 70px;">@Model.UpperLeftFat<br>正常</label>
+                                }
+                                else
+                                {
+                                                   <label id="ulFat" style="position: absolute; top: 30px; left: 70px;">@Model.UpperLeftFat<br>高</label>
+                                }
+
+                                if (Model.UpperRightFatLevel == 0)
+                                {
+                                                    <label id="urFat" style="position: absolute; top: 30px; right: 80px;">@Model.UpperRightFat<br>@Model.UpperRightFatPercentage %<br>不足</label>
+                                }
+                                else if (Model.UpperRightFatLevel == 1)
+                                {
+                                                    <label id="urFat" style="position: absolute; top: 30px; right: 80px;">@Model.UpperRightFat<br>@Model.UpperRightFatPercentage %<br>正常</label>
+                                }
+                                else
+                                {
+                                                    <label id="urFat" style="position: absolute; top: 30px; right: 80px;">@Model.UpperRightFat<br>@Model.UpperRightFatPercentage %<br>高</label>
+                                }
+
+                                if (Model.CenterFatLevel == 0)
+                                {
+                                                   <label id="cFat" style="position: absolute; top: 120px; right: 165px;">@Model.CenterFat<br>@Model.CenterFatPercentage %<br>不足</label>
+                                }
+                                else if (Model.CenterFatLevel == 1)
+                                {
+                                                   <label id="cFat" style="position: absolute; top: 120px; right: 165px;">@Model.CenterFat<br>@Model.CenterFatPercentage %<br>正常</label>
+                                }
+                                else
+                                {
+                                                   <label id="cFat" style="position: absolute; top: 120px; right: 165px;">@Model.CenterFat<br>@Model.CenterFatPercentage %<br>高</label>
+                                }
+
+                                if (Model.BottomLeftFatLevel == 0)
+                                {
+                                                    <label id="blFat" style="position: absolute; bottom: 5px; left: 70px;">@Model.BottomLeftFat<br>@Model.BottomLeftFatPercentage %<br>不足</label>
+                                }
+                                else if (Model.BottomLeftFatLevel == 1)
+                                {
+                                                    <label id="blFat" style="position: absolute; bottom: 5px; left: 70px;">@Model.BottomLeftFat<br>@Model.BottomLeftFatPercentage %<br>正常</label>
+                                }
+                                else
+                                {
+                                                    <label id="blFat" style="position: absolute; bottom: 5px; left: 70px;">@Model.BottomLeftFat<br>@Model.BottomLeftFatPercentage %<br>高</label>
+                                }
+
+                                if (Model.BottomRightFatLevel == 0)
+                                {
+                                                    <label id="brFat" style="position: absolute; bottom: 5px; right: 80px;">@Model.BottomRightFat<br>@Model.BottomRightFatPercentage %<br>不足</label>
+
+                                }
+                                else if (Model.BottomRightFatLevel == 1)
+                                {
+                                                    <label id="brFat" style="position: absolute; bottom: 5px; right: 80px;">@Model.BottomRightFat<br>@Model.BottomRightFatPercentage %<br>不足</label>
+                                }
+                                else
+                                {
+                                                    <label id="brFat" style="position: absolute; bottom: 5px; right: 80px;">@Model.BottomRightFat<br>@Model.BottomRightFatPercentage %<br>不足</label>
+                                }
+
+                            }
+
+                                </div>
+                                <div class="col-12">
+                                    <h6>阻抗</h6>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Z</th>
+                                                <th scope="col">右上臂</th>
+                                                <th scope="col">左上臂</th>
+                                                <th scope="col">軀幹</th>
+                                                <th scope="col">右腿</th>
+                                                <th scope="col">左腿</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">20kHz</th>
+                                                <td>@Model.EI20kHzRightArm</td>
+                                                <td>@Model.EI20kHzLefttArm</td>
+                                                <td>@Model.EI20kHzBody</td>
+                                                <td>@Model.EI20kHzRightLeg</td>
+                                                <td>@Model.EI20kHzLefttLeg</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">100kHz</th>
+                                                <td>@Model.EI100kHzRightArm</td>
+                                                <td>@Model.EI100kHzLeftArm</td>
+                                                <td>@Model.EI100kHzBody</td>
+                                                <td>@Model.EI100kHzRightLeg</td>
+                                                <td>@Model.EI100kHzLeftLeg</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                }
+            }
+
+
+        </div>
+
+
+    </main>
+
+</div>
+
+@section Scripts{
+        <script >
+
+            $(document).ready(function() {
+                if ($('#Date').val() != "請選擇") {
+
+                    $('#inBodyOne').removeAttr('hidden');
+                    $('#inBodyTwo').removeAttr('hidden');
+                    $('#inBodyThree').removeAttr('hidden');
+                }
+
+            });
+
+            function DateChange(sel) {
+
+                $('#inBodyOne').removeAttr('hidden');
+                $('#inBodyTwo').removeAttr('hidden');
+                $('#inBodyThree').removeAttr('hidden');
+                sel.form.submit();
+            }
+
+
+
+
+            //function DateChange(sel) {
+            //    var inBodyDate = "";
+            //    inBodyDate = sel.options[sel.selectedIndex].text;
+            //    //宣告一個json格式的viewmodel傳過去GetStudentData
+            //    var viewModel = {
+            //        "Date": inBodyDate
+            //    };
+
+            //    $.ajax({
+            //        type: "post",
+            //        url: "/Manage/GetInBodyData",
+            //        data: viewModel,
+            //        datatype: "json",
+            //        //cache: false, //不會緩存，post 本身就不會緩存，get 會緩存(會顯示在Url上)才需要設定
+            //        success: function (data) {
+            //            if (data != "") {
+            //                var jsonData = JSON.parse(data);  //將json格式轉回物件使用
+
+            //                $('#inBodyOne').removeAttr('hidden');
+            //                $('#inBodyTwo').removeAttr('hidden');
+            //                $('#inBodyThree').removeAttr('hidden');
+
+
+            //            }
+            //        },
+            //        error:function(err) { console.log(err); }
+
+            //    });
+
+            //}
+
+        </script>
+}
+

@@ -35,6 +35,7 @@ namespace MusFit_FrontDesk.Models
         public string EToken { get; set; }
         public bool EIsCoach { get; set; }
         public string EExplain { get; set; }
+        public string EIdentityCard { get; set; }
 
         public virtual ICollection<ClassIntroduce> ClassIntroduces { get; set; }
         public virtual ICollection<ClassOrder> ClassOrders { get; set; }
