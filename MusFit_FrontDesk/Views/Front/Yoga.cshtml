@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Yoga";
+    ViewData["Title"] = "Aerobic";
 }
 <!doctype html>
 <html lang="en">
@@ -9,23 +9,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    
+
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-    
+    <link rel="stylesheet" href="../css/title.css">
     <!-- Bootstrap CSS -->
-    
-        
+
+
     <!-- Style -->
+<style>
+    body{
+    font-family:"GenSenRounded";
+
+}
+</style>
     <link rel="stylesheet" href="../css/style.css">
-    
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
@@ -35,9 +39,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
 
 
-    <script>
-
-    </script>
 
 
 
@@ -47,92 +48,85 @@
     <title>瑜珈課程 | MusFit - 享受生活</title>
 </head>
 <style>
-.ml5 {
-  position: relative;
-  font-weight: 300;
-  font-size: 4.5em;
-  color: #402d2d;
-}
+    .ml5 {
+        position: relative;
+        font-weight: 300;
+        font-size: 4.5em;
+        color: #402d2d;
+    }
 
-.ml5 .text-wrapper {
-  position: relative;
-  display: inline-block;
-  padding-top: 0.1em;
-  padding-right: 0.05em;
-  padding-bottom: 0.15em;
-  line-height: 1em;
-}
+    .ml5 .text-wrapper {
+        position: relative;
+        display: inline-block;
+        padding-top: 0.1em;
+        padding-right: 0.05em;
+        padding-bottom: 0.15em;
+        line-height: 1em;
+    }
 
-.ml5 .line {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  height: 1px;
-  width: 100%;
-  background-color: #D39080;
-  transform-origin: 0.5 0;
-}
+    .ml5 .line {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 1px;
+        width: 100%;
+        background-color: #D39080;
+        transform-origin: 0.5 0;
+    }
 
-.ml5 .ampersand {
-  font-family: Baskerville, serif;
-  font-style: italic;
-  font-weight: 400;
-  width: 1em;
-  margin-right: -0.1em;
-  margin-left: -0.1em;
-}
+    .ml5 .ampersand {
+        font-family: Baskerville, serif;
+        font-style: italic;
+        font-weight: 400;
+        width: 1em;
+        margin-right: -0.1em;
+        margin-left: -0.1em;
+    }
 
-.ml5 .letters {
-  display: inline-block;
-  opacity: 0;
-}
+    .ml5 .letters {
+        display: inline-block;
+        opacity: 0;
+    }
 </style>
 
 <body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-<div style="height:  45vh;background-image: url(/image/sakura.jpg);
-background-size: 100% auto;
-background-position:top">
-    <div style="display: flex; justify-content: center; 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <div  class="see">
+        <div style="display: flex; justify-content: center; 
                 align-items: center;
-                height: 45vh;
+                height:  300px;
                 background-size: 100% auto;
                 background-image: linear-gradient(to top, rgb(255, 255, 255),rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-                "> 
-                    <span class="ml5" style="color:#753b2d;
+                ">
+            <span class="ml5" style="color:#753b2d;
                        font-family: 'GenSenRounded';font-size:3em">
-                      <span class="text-wrapper">
-                        <span class="line line1"></span>
-                        <span class="letters letters-left">瑜</span>
+                <span class="text-wrapper">
+                    <span class="line line1"></span>
+                    <span class="letters letters-left">瑜</span>
                     @*<span class="letters ampersand"></span>*@
-                        <span class="letters letters-right">珈</span>
-                        <span class="line line2"></span>
-                      </span>
-                    </span>
-                  </div>
-                </div>
+                    <span class="letters letters-right">珈</span>
+                    <span class="line line2"></span>
+                </span>
+            </span>
+        </div>
+    </div>
 
 
 
 
     <br>
-    <div@* data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="700"*@
-    style="text-align:center;">
-        <div style="display: flex; align-items: center;" >
-            <div class="mobile-cantsee" data-aos-delay="100" 
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-sine" 
+    <div@* data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="700" *@ style="text-align:center;">
+        <div style="display: flex; align-items: center;">
+            <div class="mobile-cantsee" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                 data-aos="fade-right">
             </div>
-            <div class="mobile-cantsee2" 
-                data-aos-duration="1500" data-aos-delay="700"
-                data-aos-easing="ease-in-sine" 
+            <div class="mobile-cantsee2" data-aos-duration="1500" data-aos-delay="700" data-aos-easing="ease-in-sine"
                 data-aos="fade-right">
                 <span style="font-size:32px">
-                瑜珈
+                    瑜珈
                 </span><br>
                 <div style="text-align:left;padding:0 20px 0 0">　　瑜珈源於古印度文化，
                     是探尋梵我一如的道理與方法。
@@ -140,156 +134,149 @@ background-position:top">
                     包括調身的體位法、調息的呼吸法、調心的冥想法等，以達至身心的合一。
                 </div>
             </div>
-            <div class="mobile-cantsee2" 
-                data-aos-duration="1000" data-aos-delay="700"
-                data-aos-easing="ease-in-sine" 
-                data-aos="fade-left"
-                style="text-align:left; ">
+            <div class="mobile-cantsee2" data-aos-duration="1000" data-aos-delay="700" data-aos-easing="ease-in-sine"
+                data-aos="fade-left" style="text-align:left; ">
                 <div style="text-align:left;">
-                <img src="../image/class/class_yoga.jpg"
-                    style="width:100%; border-radius: 10px;" />
-                    </div>
+                    <img src="../image/class/class_yoga.jpg" style="width:100%; border-radius: 10px;" />
+                </div>
             </div>
-            <div class="mobile-cantsee"data-aos-delay="100" 
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-sine" 
+            <div class="mobile-cantsee" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                 data-aos="fade-left">
             </div>
         </div>
         <br>
-        <div style="display: flex; align-items: center;" >
-            <div class="mobile-cantsee" data-aos-delay="100" 
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-sine" 
+        <div style="display: flex; align-items: center;">
+            <div class="mobile-cantsee" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                 data-aos="fade-left">
             </div>
-            <div class="mobile-cantsee2" data-aos-delay="100" 
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-sine" 
-                data-aos="fade-right"
-                style="text-align:right;">
+            <div class="mobile-cantsee2" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
+                data-aos="fade-right" style="text-align:right;">
                 <div style="text-align:right;">
-                <img src="../image/class/class_aerialyoga.jfif"
-                    style="width:100%; border-radius: 10px;" />
-                    </div>
+                    <img src="../image/class/class_aerialyoga.jfif" style="width:100%; border-radius: 10px;" />
+                </div>
             </div>
-            <div class="mobile-cantsee2" data-aos-delay="100" 
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-sine" 
+            <div class="mobile-cantsee2" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                 data-aos="fade-left">
                 <span style="font-size:32px;">
-                空中瑜珈
+                    空中瑜珈
                 </span><br>
-                <div style="text-align:left;padding:0 0 0 20px ">　　空中瑜珈的原理即是運用吊掛在空中的絲質掛布做出各種瑜珈和花式動作。由於掛布相當柔軟，需透過身體發力才能達到平衡的狀態，因此練習空中瑜珈不只能增進核心和臂力，還可以提升身體的協調感、柔軟度和穩定性
+                <div style="text-align:left;padding:0 0 0 20px ">
+                      空中瑜珈的原理即是運用吊掛在空中的絲質掛布做出各種瑜珈和花式動作。由於掛布相當柔軟，需透過身體發力才能達到平衡的狀態，因此練習空中瑜珈不只能增進核心和臂力，還可以提升身體的協調感、柔軟度和穩定性
                 </div>
             </div>
-            <div class="mobile-cantsee"data-aos-delay="100" 
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-sine" 
+            <div class="mobile-cantsee" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                 data-aos="fade-left">
             </div>
         </div>
         <br>
-        <div style="display: flex; align-items: center;" >
-            <div class="mobile-cantsee" data-aos-delay="100" 
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-sine" 
+        <div style="display: flex; align-items: center;">
+            <div class="mobile-cantsee" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                 data-aos="fade-left">
             </div>
-            <div class="mobile-cantsee2" "data-aos-delay="100" 
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-sine" 
+            <div class="mobile-cantsee2" "data-aos-delay=" 100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                 data-aos="fade-right">
                 <span style="font-size:32px">
-                皮拉提斯
+                    皮拉提斯
                 </span><br>
-                <div style="text-align:left;padding:0 20px 0 0">　　由德國人約瑟夫·皮拉提斯（Joseph Pilates）在二十世紀發展的體適能運動，這項運動的核心，就在於對肌肉的控制，透過皮拉提斯可達到雕塑線條、訓練平衡感以及增加柔軟度，亦可矯正姿勢、改善腰背痠痛的問題。
+                <div style="text-align:left;padding:0 20px 0 0">　　由德國人約瑟夫·皮拉提斯（Joseph
+                    Pilates）在二十世紀發展的體適能運動，這項運動的核心，就在於對肌肉的控制，透過皮拉提斯可達到雕塑線條、訓練平衡感以及增加柔軟度，亦可矯正姿勢、改善腰背痠痛的問題。
                 </div>
             </div>
-            <div class="mobile-cantsee2" data-aos-delay="100" 
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-sine" 
-                data-aos="fade-left"
-                style="text-align:left;">
+            <div class="mobile-cantsee2" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
+                data-aos="fade-left" style="text-align:left;">
                 <div style="text-align:left;">
-                <img src="../image/class/class_pilates.jpg"
-                    style="width:100%; border-radius: 10px;" />
-                    </div>
+                    <img src="../image/class/class_pilates.jpg" style="width:100%; border-radius: 10px;" />
+                </div>
             </div>
-            <div class="mobile-cantsee"data-aos-delay="100" 
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-sine" 
+            <div class="mobile-cantsee" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                 data-aos="fade-left">
             </div>
         </div>
-    </div>
-    <br><br>
-        <div data-aos="fade-up" data-aos-duration="1000"
-        style="text-align:center">
-        <span style="font-size:32px">目前開課</span><br>
-        
+        </div>
+        <br><br>
+
+
+        <div data-aos="fade-up" data-aos-duration="1000" style="text-align:center">
+            <span style="font-size:32px">目前開課</span><br>
             <div class="main" style="margin-top: 10vh;">
-        <div class="slider slider-nav center">
-            <div style="position: relative;">
-                <span class="class-text">
-                    有氧拳擊<br>初學班
-                </span>
-                <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=1" alt="">
+                <div class="slider slider-nav center">
+
+
+
+                @{
+                    foreach (var item in @ViewBag.Class)
+                    {
+                        foreach (var item2 in @ViewBag.ClassTime)
+                        {
+                            foreach (var item3 in @ViewBag.LC)
+                            {
+                                if (@item.LcId == @item3.LcId && @item.LcId > 3)
+                                {
+                                    if (@item.CId == @item2.CId)
+                                    {
+                                        @if (@DateTime.Now < @item2.CtDate)
+                                        {
+                                            string date = @item2.CtDate.ToString();
+                                            <div style="position: relative;">
+                                                    <span class="class-text">
+                                                    @item.CName
+                                                    </span>
+                                                    <img class="class-img" style="height:200px;" src="https://picsum.photos/200/200/?random=1"
+                                alt="">
+                                            </div>
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                <div style="position: relative;">
+                    <span class="class-text">
+                    </span>
+                    <img class="class-img" style="width: 600px; height:200px"
+                        src="../image/transparent.png" alt="">
+                </div>
+
+
             </div>
-            <div style="position: relative;">
-                <span class="class-text">
-                    教練2<br>HI?
-                </span>
-                <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=2" alt="">
-            </div>
-            <div style="position: relative;">
-                <span class="class-text">
-                    教練3<br>HI?
-                </span>
-                <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=3" alt="">
-            </div>
-            <div style="position: relative;">
-                <span class="class-text">
-                    教練4<br>HI?
-                </span>
-                <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=4" alt="">
-            </div>
-            <div style="position: relative;">
-                <span class="class-text">
-                    教練5<br>HI?</span>
-                <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=5" alt="">
-            </div>
-            <div style="position: relative;">
-                <span class="class-text">
-                    教練6<br>HI?</span>
-                <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=6" alt="">
-            </div>
+            <div class="slider slider-for" style="width: 100%;">
+                @{
+                    foreach (var item in @ViewBag.Class)
+                    {
+                        foreach (var item2 in @ViewBag.ClassTime)
+                        {
+                            foreach (var item3 in @ViewBag.LC)
+                            {
+                                if (@item.LcId == @item3.LcId && @item.LcId > 3)
+                                {
+                                    if (@item.CId == @item2.CId)
+                                    { @if (@DateTime.Now <
+                             @item2.CtDate)
+                                        {
+                                            string date = @item2.CtDate.ToString();
+                                            <div class="class-text2">
+                                                價錢：@item.Cprice<br>
+                                                堂數：@item.CTotalLession<br>
+                                                人數上限：@item.CExpect<br>
+                            開課日：@date.Substring(0,date.Length - 12)
+                                        </div>
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            <div class="class-text2"></div>
+
         </div>
-        <div class="slider slider-for" style="width: 100%;">
-            <div class="class-text2">
-                6堂課<br>價錢:3500元<br>想要學習拳擊，但又擔心底子不足嗎? 來MusFit有氧拳擊，再也不用擔心協接不上的問題，教練專業細心的教學，讓你動得開心又健康
-            </div>
-            <div class="class-text2">
-                XXXXXXXX教練B
-            </div>
-            <div class="class-text2">
-                XXXXXXXX教練C
-            </div>
-            <div class="class-text2">
-                XXXXXXXX教練D
-            </div>
-            <div class="class-text2">
-                XXXXXXXX教練E
-            </div>
-            <div class="class-text2">
-                XXXXXXXX教練F
-            </div>
-        </div>
-
-    </div>
-
-
         想報名課程請洽客服(02)22334455，或填寫<a href="../Front/Create">預約表單</a>
+
+        </div>
+        </div>
+
+
         </div>
         <br><br><br><br><br><br><br><br><br>
 
@@ -298,34 +285,14 @@ background-position:top">
 <script src="../js/title.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
 <script>
-        $('.slider-nav').slick({
-        centerMode: true,
+    $('.slider-nav').slick({
+        //centerMode: true,
         slidesToScroll: 1,
         asNavFor: '.slider-for',
         dots: false,
+        variableWidth: true,
         centerMode: true,
         focusOnSelect: true,
-        responsive: [
-            {
-                breakpoint: 9999,
-                settings: {
-                    slidesToShow: 5
-                }
-            },
-            {
-                breakpoint: 1080,
-                settings: {
-                    slidesToShow: 3
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
-
     });
     $('.slider-for').slick({
         centerMode: true,
@@ -349,6 +316,7 @@ background-position:top">
     });
     AOS.init();
 </script>
+
 
 
 <!-- <script src="js/jquery.sticky.js"></script> -->
