@@ -34,11 +34,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
 
+<style>
+    body{
+    font-family:"GenSenRounded";
 
-    <script>
-
-    </script>
-
+}
+</style>
 
 
     <link rel="stylesheet" href="../css/class_style.css">
@@ -130,7 +131,7 @@ background-position:top">
                     飛輪
                 </span><br>
                 <div style="text-align:left;padding:0 20px 0 0">
-                      飛輪是固定腳踏車的一種變化，可以透過調整座椅的高度、手握把的高度以致自己最舒服的騎乘，透過老師的帶領模擬實際路況的騎車訓練，結合音樂的踩踏讓心率快速上升以達燃脂效果。
+                    飛輪是固定腳踏車的一種變化，可以透過調整座椅的高度、手握把的高度以致自己最舒服的騎乘，透過老師的帶領模擬實際路況的騎車訓練，結合音樂的踩踏讓心率快速上升以達燃脂效果。
                 </div>
             </div>
             <div class="mobile-cantsee2" data-aos-duration="1000" data-aos-delay="700" data-aos-easing="ease-in-sine"
@@ -160,7 +161,7 @@ background-position:top">
                     有氧泰拳
                 </span><br>
                 <div style="text-align:left;padding:0 0 0 20px ">
-                      是泰國的傳統徒搏技術，特點是可以在極短的距離內，任意使用拳、腿、膝、肘攻擊對手，為一種注重實用的剛猛的競技型徒手武術。</div>
+                    是泰國的傳統徒搏技術，特點是可以在極短的距離內，任意使用拳、腿、膝、肘攻擊對手，為一種注重實用的剛猛的競技型徒手武術。</div>
             </div>
             <div class="mobile-cantsee" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
                 data-aos="fade-left">
@@ -177,7 +178,7 @@ background-position:top">
                     有氧拳擊
                 </span><br>
                 <div style="text-align:left;padding:0 20px 0 0">
-                      是一種將有氧運動原理與拳擊動作相結合的體能活動，動作可能包括擊拳、踢腿、抬膝、跨步、側步、深蹲、弓步...節奏通常很快，不過不同於一般的拳擊，不需要與人接觸，只要進行拳擊的動作，相對來說比較安全。
+                    是一種將有氧運動原理與拳擊動作相結合的體能活動，動作可能包括擊拳、踢腿、抬膝、跨步、側步、深蹲、弓步...節奏通常很快，不過不同於一般的拳擊，不需要與人接觸，只要進行拳擊的動作，相對來說比較安全。
                 </div>
             </div>
             <div class="mobile-cantsee2" data-aos-delay="100" data-aos-duration="1000" data-aos-easing="ease-in-sine"
@@ -196,9 +197,10 @@ background-position:top">
 
         <div data-aos="fade-up" data-aos-duration="1000" style="text-align:center">
             <span style="font-size:32px">目前開課</span><br>
-
             <div class="main" style="margin-top: 10vh;">
                 <div class="slider slider-nav center">
+
+
 
                 @{
                     foreach (var item in @ViewBag.Class)
@@ -207,20 +209,19 @@ background-position:top">
                         {
                             foreach (var item3 in @ViewBag.LC)
                             {
-                                if (@item.LcId == @item3.LcId && @item.LcId <4)
+                                if (@item.LcId == @item3.LcId && @item.LcId < 4)
                                 {
                                     if (@item.CId == @item2.CId)
-                                    {
-                                        @if (@DateTime.Now < @item2.CtDate)
+                                    { 
+                                        @if (@DateTime.Now <
+                                            @item2.CtDate)
                                         {
                                             <div style="position: relative;">
-                                                <span class="class-text">
+                                                    <span class="class-text">
                                                     @item.CName
-                                                </span>
-                                                <img class="class-img"
-                                            style="width: 100%;"
-                                        src="https://picsum.photos/200/200/?random=1"
-                                         alt="">
+                                                    </span>
+                                                    <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=1"
+                                alt="">
                                             </div>
                                         }
                                     }
@@ -228,29 +229,34 @@ background-position:top">
                             }
                         }
                     }
-                 }
+                }
+                <div style="position: relative;">
+                    <span class="class-text">
+                    </span>
+                    <img class="class-img" style="width: 600px; height:200px"
+                        src="https://wimg.ruan8.com/uploadimg/image/20190402/20190402163328_31815.jpg" alt="">
                 </div>
-                <div class="slider slider-for" style="width: 100%;">
-                    @{
+            </div>
+            <div class="slider slider-for" style="width: 100%;">
+                @{
                     foreach (var item in @ViewBag.Class)
                     {
                         foreach (var item2 in @ViewBag.ClassTime)
                         {
                             foreach (var item3 in @ViewBag.LC)
                             {
-                                if (@item.LcId == @item3.LcId && @item.LcId <4)
+                                if (@item.LcId == @item3.LcId && @item.LcId < 4)
                                 {
                                     if (@item.CId == @item2.CId)
-                                    {
-                                        @if (@DateTime.Now < @item2.CtDate)
+                                    { @if (@DateTime.Now <
+                             @item2.CtDate)
                                         {
-                
-                                <div class="class-text2">
-                                價錢：@item.Cprice<br>
-                                堂數：@item.CTotalLession<br>
-                                人數上限：@item.CExpect<br>
-                                          
-                                </div>
+                                            <div class="class-text2">
+                                                價錢：@item.Cprice<br>
+                                                堂數：@item.CTotalLession<br>
+                                                人數上限：@item.CExpect<br>
+
+                                        </div>
                                         }
                                     }
                                 }
@@ -258,13 +264,15 @@ background-position:top">
                         }
                     }
                 }
-                        
-                </div>
+            <div class="class-text2"></div>
+        </div>
+        想報名課程請洽客服(02)22334455，或填寫<a href="../Front/Create">預約表單</a>
 
-            </div>
+        </div>
+
+        </div>
 
 
-            想報名課程請洽客服(02)22334455，或填寫<a href="../Front/Create">預約表單</a>
         </div>
         <br><br><br><br><br><br><br><br><br>
 
@@ -274,33 +282,13 @@ background-position:top">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
 <script>
     $('.slider-nav').slick({
-        centerMode: true,
+        //centerMode: true,
         slidesToScroll: 1,
         asNavFor: '.slider-for',
         dots: false,
+        variableWidth: true,
         centerMode: true,
         focusOnSelect: true,
-        responsive: [
-            {
-                breakpoint: 9999,
-                settings: {
-                    slidesToShow: 5
-                }
-            },
-            {
-                breakpoint: 1080,
-                settings: {
-                    slidesToShow: 3
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
-
     });
     $('.slider-for').slick({
         centerMode: true,
