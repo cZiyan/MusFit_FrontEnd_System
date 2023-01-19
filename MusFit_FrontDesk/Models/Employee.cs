@@ -28,14 +28,13 @@ namespace MusFit_FrontDesk.Models
         public byte[] EPassword { get; set; }
         public string EContactor { get; set; }
         public string EContactorPhone { get; set; }
-        public byte[] EPhoto { get; set; }
+        public string EPhoto { get; set; }
         public string EAddress { get; set; }
         public DateTime? EEnrollDate { get; set; }
         public DateTime? EResignDate { get; set; }
         public string EToken { get; set; }
         public bool EIsCoach { get; set; }
         public string EExplain { get; set; }
-        public string EIdentityCard { get; set; }
 
         public virtual ICollection<ClassIntroduce> ClassIntroduces { get; set; }
         public virtual ICollection<ClassOrder> ClassOrders { get; set; }
