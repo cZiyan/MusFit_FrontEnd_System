@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="~/css/Change_Information.css" />
 
 <div >
-    <form class="change_information container-fluid" method="post"  action="@Url.Action("SEdit","Front")">
+    <form class="change_information container-fluid" method="post"  action="@Url.Action("SEdit","Front")" enctype="multipart/form-data">
         <div class="row mt-5 justify-content-center">
 
             <div class="mt-4">
@@ -21,17 +21,9 @@
             <div class="col-6 ">
                 <hr>
                 <div>
-                    <img class="d-block mx-auto mb-4" src="~/img/login-1.jpg" alt="" width="200" height="180">
-                    <div class="row justify-content-center">
-                        <div class="input-group mb-3 w-75">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">請選擇檔案</label>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="inputGroupFileAddon02">上傳</span>
-                            </div>
-                        </div>
+                    <img src="@string.Format("data:image/png;base64,{0}", Model.SPhoto)" class="d-block mx-auto mb-4" id="myPhoto" width="180" height="200">
+                    <div class="row justify-content-center ml-5 mb-2">
+                        <input type="file" class="w-50" asp-for="SPhoto" id="SPhoto" accept=".png, .jpg, .jpeg" onchange='imgUploadCheck(this)' />
                     </div>
 
                 </div>
@@ -128,3 +120,64 @@
         </div>
     </form>
 </div>
+
+@section Scripts{
+    <script>
+        function imgUploadCheck(){
+          //當檔案改變後，做一些事 
+         readURL(this);   // this代表<input id="imgInp">
+       };
+
+       var base64String = "";
+       var file;
+       function readURL(input){
+          //因為單選的關係，所以有檔案一定是在第0個
+         file = document.getElementById("SPhoto").files[0];
+        
+         //預覽
+         var reader = new FileReader();
+         reader.onload = function (e) {
+            base64String = e.target.result;//目標結果存入字串
+
+             var addPhoto = document.getElementById("myPhoto");
+             addPhoto.src = base64String;
+
+             alert(base64String);
+          }
+          //給URL
+          reader.readAsDataURL(file);
+        }
+
+
+
+
+        //function imgUploadCheck() {
+
+        //    file = document.getElementById('input[id="SPhoto"]').files[0];
+
+        //    var reader = new FileReader();
+        //    console.log("next");
+        //    console.log(file);
+
+
+        //    reader.onload = function () {
+        //        base64String = reader.result.replace("data:", "")
+        //            .replace(/^.+,/, "");
+
+        //        var addPhoto = document.getElementById("myPhoto");
+        //        addPhoto.src = `data:${file.type};base64,${base64String}`;
+        //        addPhoto.style = "width:30%; height:40%; object-fit:contain; margin-left:2%; margin-top:2%; border-radius:1%; ";
+
+        //        console.log(`data:${file.type};base64,${base64String}`);
+        //    }
+        //    reader.readAsDataURL(file);
+        //}
+
+
+
+
+
+
+
+    </script>
+}

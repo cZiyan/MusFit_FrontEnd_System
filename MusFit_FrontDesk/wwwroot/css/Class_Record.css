@@ -523,7 +523,7 @@ a {
     background-color: #ebedef;
     padding: 90px 25px;
     justify-content: center;
-    height: 100%;
+    height:auto;
 }
 
 

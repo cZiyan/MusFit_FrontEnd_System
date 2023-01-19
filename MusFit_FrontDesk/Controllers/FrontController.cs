@@ -8,12 +8,16 @@ using System.Security.Cryptography;
 using System.Xml.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 using System.Text;
 using System.Threading.Tasks;
 using MusFit_FrontDesk.Utilities;
 using MusFit_FrontDesk.ViewModels;
 using Newtonsoft.Json;
 using System;
+using System.IO;
+using static System.Net.WebRequestMethods;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace MusFit_FrontDesk.Controllers
 {
@@ -376,7 +380,7 @@ namespace MusFit_FrontDesk.Controllers
 
             //取到SAccount 傳到Server 存下 Session
             HttpContext.Session.SetString("SAccount", SAccount);
-            return View("index", query[0]);
+            return View("Index", query[0]);
         }
 
         public IActionResult ForgetPassword()
@@ -480,7 +484,7 @@ namespace MusFit_FrontDesk.Controllers
                         .Where(x => x.SAccount == sAccount)
                         .ToList();
 
-
+               
                 return View("MemberArea", query[0]);
             }
             catch (System.Exception e)
@@ -515,7 +519,7 @@ namespace MusFit_FrontDesk.Controllers
         }
 
         [Authentication]
-        public IActionResult SEdit(string SAccount)
+        public async Task<IActionResult> SEdit(string SAccount)
         {
             string sAccount = HttpContext.Session.GetString("SAccount") ?? "Guest";
             if (sAccount == "Guest")
@@ -525,9 +529,9 @@ namespace MusFit_FrontDesk.Controllers
 
             try
             {
-                var query = _context.Students.AsNoTracking()
+                var query = await _context.Students.AsNoTracking()
                         .Where(x => x.SAccount == sAccount)
-                        .ToList();
+                        .ToListAsync();
 
 
                 return View("EditInformation", query[0]);
@@ -542,7 +546,7 @@ namespace MusFit_FrontDesk.Controllers
 
         [HttpPost]
         [Authentication]
-        public async Task<IActionResult> SEdit(Student student)
+        public async Task<IActionResult> SEdit(Student student, IFormFile SPhoto)
         {
             string sAccount = HttpContext.Session.GetString("SAccount") ?? "Guest";
             if (sAccount == "Guest")
@@ -565,12 +569,25 @@ namespace MusFit_FrontDesk.Controllers
                 user.SContactPhone = student.SContactPhone;
                 user.SAddress = student.SAddress;
                 user.SPhone = student.SPhone;
-                user.SPhoto = student.SPhoto;
+
+
+                if (SPhoto.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        SPhoto.CopyTo(ms);
+                        var fileBytes = ms.ToArray();
+                        user.SPhoto = Convert.ToBase64String(fileBytes);
+                    }
+                }
+
 
 
                 if (user != null)
                 {
                     await _context.SaveChangesAsync();
+                    //回傳更改後的資料
+                    return View("MemberArea", user); 
                 }
 
             }
@@ -752,6 +769,7 @@ namespace MusFit_FrontDesk.Controllers
                          }).ToList();
 
 
+            ViewData["className"] = query;
             if (!string.IsNullOrEmpty(LcNameAndCtLession))
             {
                 query = query.Where(x => (x.LcName + " (第 " + x.CtLession + " 堂)") == LcNameAndCtLession).ToList();
@@ -768,6 +786,7 @@ namespace MusFit_FrontDesk.Controllers
             }
 
             ViewData["classRecord"] = query;
+
             return View("ClassRecord");
 
         }

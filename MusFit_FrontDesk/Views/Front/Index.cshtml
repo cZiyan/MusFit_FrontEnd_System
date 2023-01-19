@@ -123,34 +123,30 @@
 
 
 
-                @{
-                foreach (var item in @ViewBag.Class)
-                {
-                    foreach (var item2 in @ViewBag.ClassTime)
+               @* @{
+                    foreach (var item in ViewBag.Class)
                     {
-                        foreach (var item3 in @ViewBag.LC)
+                        foreach (var item2 in ViewBag.ClassTime)
                         {
-                            if (@item.LcId == @item3.LcId )
+                            foreach (var item3 in ViewBag.LC)
                             {
-                                if (@item.CId == @item2.CId)
-                                { 
-                                        @if (@DateTime.Now <
-                                   @item2.CtDate)
-                                    {
-                                                                    <div style="position: relative;">
-                                                                            <span class="class-text">
-                                                    @item.CName
-                                                                            </span>
-                                                                            <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=1"
-                                alt="">
-                                                                    </div>
+                                if (@item.LcId == @item3.LcId )
+                                {
+                                    if (@item.CId == @item2.CId)
+                                    { 
+                                        @if (@DateTime.Now <@item2.CtDate)
+                                        {
+                                            <div style="position: relative;">
+                                                <span class="class-text">@item.CName</span>
+                                                <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=1" alt="">
+                                            </div>
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                }
-            }
+                }*@
         <div style="position: relative;">
             <span class="class-text">
             </span>
@@ -159,7 +155,7 @@
         </div>
     </div>
     <div class="slider slider-for" style="width: 100%;">
-            @{
+            @*@{
                 foreach (var item in @ViewBag.Class)
                 {
                     foreach (var item2 in @ViewBag.ClassTime)
@@ -169,41 +165,36 @@
                             if (@item.LcId == @item3.LcId )
                             {
                                 if (@item.CId == @item2.CId)
-                                { @if (@DateTime.Now <
-                          @item2.CtDate)
+                                { @if (@DateTime.Now <@item2.CtDate)
                                     {
-                        string date = @item2.CtDate.ToString();
-                       <div class="class-text2">
-                   價錢：@item.Cprice<br>
-                    堂數：@item.CTotalLession<br>
-                  人數上限：@item.CExpect<br>
-                 開課日：@date.Substring(0,date.Length - 12)
-                   </div>
+                                        string date = @item2.CtDate.ToString();
+                                        <div class="class-text2">
+                                            價錢：@item.Cprice<br>
+                                            堂數：@item.CTotalLession<br>
+                                            人數上限：@item.CExpect<br>
+                                            開課日：@date.Substring(0,date.Length - 12)
+                                        </div>
                                     }
                                 }
                             }
                         }
                     }
                 }
-            }
+            }*@
     <div class="class-text2"></div>
 </div>
 </div>
 </div>
 <br><br><br>
             <div style=" background-color: rgba(241, 209, 203, 0.9); height: 20%;">
-              <div data-aos="fade-up"
-    style="display: flex; justify-content: center;  align-items: center;  font-size: 4rem; height: 40%;  ">
-                Join MusFit!
-              </div>
-              <div class="group-pic" id="joinus"
-    style="display: flex; justify-content: center;  align-items: center; font-size: 2rem; font-family:'GenSenRounded'; height: 20%;">
-              </div>
-              <div id="joinus2"
-    style="display: flex; height: 7vw; justify-content: center;  align-items: center;  font-size: 4rem; height: 40%;">
-
-              </div>
-            </div>
+                  <div data-aos="fade-up" style="display: flex; justify-content: center;  align-items: center;  font-size: 4rem; height: 40%;  ">
+                    Join MusFit!
+                  </div>
+                  <div class="group-pic" id="joinus" style="display: flex; justify-content: center;  align-items: center; font-size: 2rem; font-family:'GenSenRounded'; height: 20%;">
+                  </div>
+                  <div id="joinus2" style="display: flex; height: 7vw; justify-content: center;  align-items: center;  font-size: 4rem; height: 40%;">
+                  </div>
+                </div>
             <div style="height: 60vh;"></div>
 
 

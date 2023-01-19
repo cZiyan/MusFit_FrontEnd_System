@@ -3,6 +3,7 @@
     var message = (string)ViewData["error"] ?? string.Empty;
     var messageSelect = (string)ViewData["errorSelect"] ?? string.Empty;
     var classRecord = ViewData["classRecord"] as List<MusFit_FrontDesk.ViewModels.ClassRecordViewModel> ?? null;
+    var className = ViewData["className"] as List<MusFit_FrontDesk.ViewModels.ClassRecordViewModel> ?? null;
 }
 <head>
     <title>課程紀錄 | MusFit - 享受生活</title>
@@ -29,16 +30,16 @@
             <select class="custom-select " asp-for="LcName" onChange="LcNameChang(this);">
                 <option>請選擇</option>
                 @{
-                    foreach (var item in classRecord)
+                    foreach (var item in className)
                     {
-                                <option>@item.LcName (第 @item.CtLession 堂) </option>
+                        <option>@item.LcName (第 @item.CtLession 堂) </option>
                     }
                 }
             </select>
         </div>
 
 
-        <button type="button" id="search" class="btn"> 查詢</button>
+        <button type="button" id="search" class="btn" onclick="Search()"> 查詢</button>
 
 
     </div>
@@ -64,7 +65,7 @@
             </thead>
             <tbody>
                 @{
-                    foreach (var item in ViewData["classRecord"] as List<MusFit_FrontDesk.ViewModels.ClassRecordViewModel>)
+                    foreach (var item in classRecord)
                     {
                                         <tr>
                                             <th scope="row">@item.CNumber</th>
@@ -103,13 +104,11 @@
 
 
 
-            $('#search').click(function () {
-
+            function Search() {
                 var dateFrom = $('input[id="CtDateFrom"]').val();
                 var dateTo = $('input[id="CtDateTo"]').val();
 
                 var result = "";
-
                 //若符合一個或多值時
                 if (dateFrom != "") {
                     result += 'CtDateFrom=' + dateFrom + '&';
@@ -123,9 +122,10 @@
                     result += 'LcNameAndCtLession=' + lcNameAndCtLession + '&';
                 }
 
-
+            
                 window.location.href = '@Url.Action("ClassRecord", "Front")?' + result;
-            })
+               
+            }
 
 
         </script>

@@ -17,12 +17,13 @@ namespace MusFit_FrontDesk.Models
         public int SId { get; set; }
         public string SNumber { get; set; }
         public string SName { get; set; }
+        
         public string SMail { get; set; }
         public DateTime? SBirth { get; set; }
         public bool SGender { get; set; }
         public string SContactor { get; set; }
         public string SContactPhone { get; set; }
-        public byte[] SPhoto { get; set; }
+        public string SPhoto { get; set; }
         public string SAddress { get; set; }
         public string SPhone { get; set; }
         public string SAccount { get; set; }
