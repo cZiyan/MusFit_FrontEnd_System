@@ -175,6 +175,7 @@
             foreach (var item in @ViewBag.News)
             {
                 var photo = item.NPhoto;
+                string date = @item.NPostDate.ToString();
                 
                 string j = "https://picsum.photos/900/500/?random=" + @i;
                 var show = "show" + @i; var infoModal = "infoModal" + @i; var close = "close" + @i;
@@ -192,7 +193,7 @@
                               style="color:black;font-weight:bold">
                               @item.NTitle
                               </h3>
-                              <span class="mb-3" style="color:black">@item.NPostDate</span>
+                                      <span class="mb-3" style="color:black">@date.Substring(0,date.Length - 12)</span>
                               <div class="mb-4 text-grey-darker text-sm flex-1">
                        @if (@item.NContent.Length >= 15)
                                     {
