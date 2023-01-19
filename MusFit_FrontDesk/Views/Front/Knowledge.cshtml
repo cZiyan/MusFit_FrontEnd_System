@@ -179,7 +179,10 @@ background-position:top">
             var i = 1;
             foreach (var item in @ViewBag.KnowledgeColumn)
             {
-                string j = "https://picsum.photos/900/500/?random=" + @i;
+                var photo = item.KPhoto1;
+                var photo2 = item.KPhoto2;
+
+                //string j = "https://picsum.photos/900/500/?random=" + @i;
                 var show = "show" + @i; var infoModal = "infoModal" + @i; var close = "close" + @i;
                 <div data-aos="fade-up"
              data-aos-duration="1000" data-aos-delay="900"
@@ -187,7 +190,7 @@ background-position:top">
                         <a href="#review">
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col">
                     <div class="bg-cover h-48"
-                        style="background-image: url(@j);">
+                            style="background-image: url(@photo);">
                     </div>
                             <div class="p-4 flex-1 flex flex-col">
                                                     <h3 class="mb-1 text-2xl" style="color:black;font-weight:bold">@item.KTitle</h3>
@@ -214,7 +217,9 @@ background-position:top">
             <div style="display: flex;">
                 <div style="width: 85%;">
                      <h1>@item.KTitle</h1>
+                            @photo
                      @item.KContent
+                            @photo2
                 </div>
                 <div style="width: 15%;
                      text-align: right;
