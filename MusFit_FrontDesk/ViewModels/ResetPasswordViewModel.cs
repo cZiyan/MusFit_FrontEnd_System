@@ -1,17 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
 namespace MusFit_FrontDesk.ViewModels
 {
-    public class StudentPasswordViewModel
+    public class ResetPasswordViewModel
     {
-        [Display(Name = "舊密碼：")]
-        [DataType(DataType.Password)]   //表示此欄位為密碼欄位，所以輸入時會產生隱碼
-        [Required(ErrorMessage = "您必須輸入舊密碼！")]
-        [Remote("EditPassword", "Front", HttpMethod = "POST", ErrorMessage = "舊密碼輸入錯誤!")]
-        public string OldPassword { get; set; }
-
         [Display(Name = "新密碼：")]
         [DataType(DataType.Password)]   //表示此欄位為密碼欄位，所以輸入時會產生隱碼
         [Required(ErrorMessage = "您必須輸入新密碼！")]

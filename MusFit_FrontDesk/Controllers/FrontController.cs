@@ -18,6 +18,11 @@ using System;
 using System.IO;
 using static System.Net.WebRequestMethods;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Authorization;
+using System.Web;
+using System.Net.Mail;
+using System.Net;
+using System.Security.Principal;
 
 namespace MusFit_FrontDesk.Controllers
 {
@@ -388,87 +393,189 @@ namespace MusFit_FrontDesk.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> ForgetPassword(Student student)
-        //{
-        //    var json = "";
-        //    var passwordResult = await _context.Students.FirstOrDefaultAsync(x => x.SMail == student.SMail);
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgetPassword(Student student)
+        {
+            var query = await _context.Students.FirstOrDefaultAsync(x => x.SAccount == student.SAccount);
+            if (query == null)
+            {
+                ViewData["error"] = "此帳號不存在，請重新查詢!";
+                return View();
+            }
+            else
+            {
+                var studentResult = await _context.Students.FirstOrDefaultAsync(x => x.SAccount == student.SAccount);
 
-        //    if (passwordResult != null)
-        //    {
-        //        //將物件轉成json 格式的字串
-        //        json = JsonConvert.SerializeObject(passwordResult);
+                // 取得系統自定密鑰
+                string SecretKey = "myKey";
 
-        //        // 取出會員信箱
-        //        string UserEmail = dt.Rows[0]["UserEmail"].ToString();
+                // 產生帳號+時間驗證碼
+                string sVerify = studentResult.SAccount + "|" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
 
-        //        // 取得系統自定密鑰，在 Web.config 設定
-        //        string SecretKey = ConfigurationManager.AppSettings["SecretKey"];
+                // 將驗證碼使用 3DES 加密
+                TripleDESCryptoServiceProvider DES = new TripleDESCryptoServiceProvider();
+                MD5 md5 = new MD5CryptoServiceProvider();
+                byte[] buf = Encoding.UTF8.GetBytes(SecretKey);
+                byte[] result = md5.ComputeHash(buf);
+                string md5Key = BitConverter.ToString(result).Replace("-", "").ToLower().Substring(0, 24);
+                DES.Key = UTF8Encoding.UTF8.GetBytes(md5Key);
+                DES.Mode = CipherMode.ECB;
+                ICryptoTransform DESEncrypt = DES.CreateEncryptor();
+                byte[] Buffer = UTF8Encoding.UTF8.GetBytes(sVerify);
+                sVerify = Convert.ToBase64String(DESEncrypt.TransformFinalBlock(Buffer, 0, Buffer.Length)); // 3DES 加密後驗證碼
 
-        //        // 產生帳號+時間驗證碼
-        //        string sVerify = inModel.UserID + "|" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                // 將加密後密碼使用網址編碼處理
+                sVerify = HttpUtility.UrlEncode(sVerify);
 
-        //        // 將驗證碼使用 3DES 加密
-        //        TripleDESCryptoServiceProvider DES = new TripleDESCryptoServiceProvider();
-        //        MD5 md5 = new MD5CryptoServiceProvider();
-        //        byte[] buf = Encoding.UTF8.GetBytes(SecretKey);
-        //        byte[] result = md5.ComputeHash(buf);
-        //        string md5Key = BitConverter.ToString(result).Replace("-", "").ToLower().Substring(0, 24);
-        //        DES.Key = UTF8Encoding.UTF8.GetBytes(md5Key);
-        //        DES.Mode = CipherMode.ECB;
-        //        ICryptoTransform DESEncrypt = DES.CreateEncryptor();
-        //        byte[] Buffer = UTF8Encoding.UTF8.GetBytes(sVerify);
-        //        sVerify = Convert.ToBase64String(DESEncrypt.TransformFinalBlock(Buffer, 0, Buffer.Length)); // 3DES 加密後驗證碼
+                //網站網址
+                string webPath = Request.Scheme + "://" + Request.Host + Url.Content("~/");
 
-        //        // 將加密後密碼使用網址編碼處理
-        //        sVerify = HttpUtility.UrlEncode(sVerify);
+                // 從信件連結回到重設密碼頁面
+                string receivePage = "Front/ResetPassword";
 
-        //        // 網站網址
-        //        string webPath = Request.Url.Scheme + "://" + Request.Url.Authority + Url.Content("~/");
+                // 信件內容範本
+                string mailContent = "請點擊以下連結，返回網站重新設定密碼，逾期 30 分鐘後，此連結將會失效。<br><br>";
+                mailContent = mailContent + "<a href='" + webPath + receivePage + "?verify=" + sVerify + "'  target='_blank'>點此連結</a>";
 
-        //        // 從信件連結回到重設密碼頁面
-        //        string receivePage = "Member/ResetPwd";
+                // 信件主題
+                string mailSubject = "[測試] 重設密碼申請信";
 
-        //        // 信件內容範本
-        //        string mailContent = "請點擊以下連結，返回網站重新設定密碼，逾期 30 分鐘後，此連結將會失效。<br><br>";
-        //        mailContent = mailContent + "<a href='" + webPath + receivePage + "?verify=" + sVerify + "'  target='_blank'>點此連結</a>";
+                // Google 發信帳號密碼
+                string GoogleMailUserID = "xc1120215@gmail.com";
+                string GoogleMailUserPwd = "igosdtssppcuelwd";
 
-        //        // 信件主題
-        //        string mailSubject = "[測試] 重設密碼申請信";
+                // 使用 Google Mail Server 發信
+                string SmtpServer = "smtp.gmail.com";
+                int SmtpPort = 587;
+                MailMessage mms = new MailMessage();
+                mms.From = new MailAddress(GoogleMailUserID);
+                mms.Subject = mailSubject;
+                mms.Body = mailContent;
+                mms.IsBodyHtml = true;
+                mms.SubjectEncoding = Encoding.UTF8;
+                mms.To.Add(new MailAddress(studentResult.SMail));
+                using (SmtpClient client = new SmtpClient(SmtpServer, SmtpPort))
+                {
+                    client.EnableSsl = true;
+                    client.Credentials = new NetworkCredential(GoogleMailUserID, GoogleMailUserPwd);//寄信帳密 
+                    client.Send(mms); //寄出信件
+                }
 
-        //        // Google 發信帳號密碼
-        //        string GoogleMailUserID = ConfigurationManager.AppSettings["GoogleMailUserID"];
-        //        string GoogleMailUserPwd = ConfigurationManager.AppSettings["GoogleMailUserPwd"];
+                ViewData["message"] = "請至信箱查收重設密碼連結信件!!";
+            
 
-        //        // 使用 Google Mail Server 發信
-        //        string SmtpServer = "smtp.gmail.com";
-        //        int SmtpPort = 587;
-        //        MailMessage mms = new MailMessage();
-        //        mms.From = new MailAddress(GoogleMailUserID);
-        //        mms.Subject = mailSubject;
-        //        mms.Body = mailContent;
-        //        mms.IsBodyHtml = true;
-        //        mms.SubjectEncoding = Encoding.UTF8;
-        //        mms.To.Add(new MailAddress(UserEmail));
-        //        using (SmtpClient client = new SmtpClient(SmtpServer, SmtpPort))
-        //        {
-        //            client.EnableSsl = true;
-        //            client.Credentials = new NetworkCredential(GoogleMailUserID, GoogleMailUserPwd);//寄信帳密 
-        //            client.Send(mms); //寄出信件
-        //        }
-        //        outModel.ResultMsg = "請於 30 分鐘內至你的信箱點擊連結重新設定密碼，逾期將無效";
-        //    }
-        //    else
-        //    {
-        //        outModel.ErrMsg = "查無此帳號";
-        //    }
+                return View("ForgetPassword");
+            }
+        }
 
-        //    SendMailTokenOut outModel = new SendMailTokenOut();
+        public IActionResult ResetPassword(string verify)
+        {
+            
+            // 由信件連結回來會帶參數 verify
+            if (verify == "")
+            {
+                ViewData["ErrorMsg"] = "缺少驗證碼";
+                return View();
+            }
 
-        //    // 回傳 Json 給前端
-        //    return Json(outModel);
-        //}
+            // 取得系統自定密鑰
+            string SecretKey = "myKey";
+
+            try
+            {
+                // 使用 3DES 解密驗證碼
+                TripleDESCryptoServiceProvider DES = new TripleDESCryptoServiceProvider();
+                MD5 md5 = new MD5CryptoServiceProvider();
+                byte[] buf = Encoding.UTF8.GetBytes(SecretKey);
+                byte[] md5result = md5.ComputeHash(buf);
+                string md5Key = BitConverter.ToString(md5result).Replace("-", "").ToLower().Substring(0, 24);
+                DES.Key = UTF8Encoding.UTF8.GetBytes(md5Key);
+                DES.Mode = CipherMode.ECB;
+                DES.Padding = System.Security.Cryptography.PaddingMode.PKCS7;
+                ICryptoTransform DESDecrypt = DES.CreateDecryptor();
+                byte[] Buffer = Convert.FromBase64String(verify);
+                string deCode = UTF8Encoding.UTF8.GetString(DESDecrypt.TransformFinalBlock(Buffer, 0, Buffer.Length));
+
+                verify = deCode; //解密後還原資料
+            }
+            catch (Exception ex)
+            {
+                ViewData["ErrorMsg"] = "驗證碼錯誤";
+                return View();
+            }
+
+            // 取出帳號
+            string SAccount = verify.Split('|')[0];
+
+            // 取得重設時間
+            string ResetTime = verify.Split('|')[1];
+
+            // 檢查時間是否超過 30 分鐘
+            DateTime dResetTime = Convert.ToDateTime(ResetTime);
+            TimeSpan TS = new System.TimeSpan(DateTime.Now.Ticks - dResetTime.Ticks);
+            double diff = Convert.ToDouble(TS.TotalMinutes);
+            if (diff > 30)
+            {
+                ViewData["ErrorMsg"] = "超過驗證碼有效時間，請重寄驗證碼";
+                return View();
+            }
+
+            // 驗證碼檢查成功，加入 Session
+            HttpContext.Session.SetString("SAccount", SAccount);
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel password)
+        {
+            
+            if (!ModelState.IsValid)
+            {
+                return View("ResetPassword");
+            }
+            else
+            {
+                try
+                {
+                    if (password.NewPassword != password.CheckPassword)
+                    {
+                        ViewData["errorNew"] = "新密碼與確認密碼不符!";
+                        return View("ResetPassword");
+
+                    }
+                    else
+                    {
+
+
+                        // 轉換 password -> sha2_256 比較 (轉使用者輸入的新密碼)
+                        byte[] data = Encoding.GetEncoding(1252).GetBytes(password.NewPassword);
+                        var sha = new SHA256Managed();
+                        byte[] bytesEncode = sha.ComputeHash(data);
+
+                        string sAccount = HttpContext.Session.GetString("SAccount") ?? "Guest";
+
+                        var query = await _context.Students.FirstOrDefaultAsync(x => x.SAccount == sAccount);
+
+                        query.SPassword = bytesEncode;
+                        await _context.SaveChangesAsync();
+
+                        return View("Login", query);
+                    }
+
+                }
+                catch (System.Exception e)
+                {
+
+                    throw e;
+                }
+
+            }
+            
+
+
+        }
 
         [Authentication]
         public IActionResult MemberArea()
@@ -546,50 +653,73 @@ namespace MusFit_FrontDesk.Controllers
 
         [HttpPost]
         [Authentication]
-        public async Task<IActionResult> SEdit(Student student, IFormFile SPhoto)
+        public async Task<IActionResult> SEdit(Student student, [FromForm(Name = "SPhoto")] IFormFile SPhoto)
         {
             string sAccount = HttpContext.Session.GetString("SAccount") ?? "Guest";
             if (sAccount == "Guest")
             {
                 return Redirect("/Front/Index");
             }
+
             if (student == null)
             {
                 return NotFound();
             }
             else
             {
-                var user = await _context.Students.FirstOrDefaultAsync(u => u.SAccount == sAccount);
-
-                user.SName = student.SName;
-                user.SMail = student.SMail;
-                user.SBirth = student.SBirth;
-                user.SGender = student.SGender;
-                user.SContactor = student.SContactor;
-                user.SContactPhone = student.SContactPhone;
-                user.SAddress = student.SAddress;
-                user.SPhone = student.SPhone;
-
-
-                if (SPhoto.Length > 0)
+                if (!ModelState.IsValid)
                 {
-                    using (var ms = new MemoryStream())
+                    if (SPhoto != null && SPhoto.Length > 0)
                     {
-                        SPhoto.CopyTo(ms);
-                        var fileBytes = ms.ToArray();
-                        user.SPhoto = Convert.ToBase64String(fileBytes);
+                        using (var ms = new MemoryStream())
+                        {
+                            SPhoto.CopyTo(ms);
+                            var fileBytes = ms.ToArray();
+                            student.SPhoto = Convert.ToBase64String(fileBytes);
+                        }
                     }
+                    else
+                    {
+                        var user = await _context.Students.FirstOrDefaultAsync(u => u.SAccount == sAccount);
+                        student.SPhoto = user.SPhoto;
+                    }
+                    return View("EditInformation",student);
                 }
-
-
-
-                if (user != null)
+                else
                 {
-                    await _context.SaveChangesAsync();
-                    //回傳更改後的資料
-                    return View("MemberArea", user); 
-                }
 
+                    var user = await _context.Students.FirstOrDefaultAsync(u => u.SAccount == sAccount);
+
+                    user.SName = student.SName;
+                    user.SMail = student.SMail;
+                    user.SBirth = student.SBirth;
+                    user.SGender = student.SGender;
+                    user.SContactor = student.SContactor;
+                    user.SContactPhone = student.SContactPhone;
+                    user.SAddress = student.SAddress;
+                    user.SPhone = student.SPhone;
+
+
+                    if (SPhoto != null && SPhoto.Length > 0 )
+                    {
+                        using (var ms = new MemoryStream())
+                        {
+                            SPhoto.CopyTo(ms);
+                            var fileBytes = ms.ToArray();
+                            user.SPhoto = Convert.ToBase64String(fileBytes);
+                        }
+                    }
+
+
+
+                    if (user != null)
+                    {
+                        await _context.SaveChangesAsync();
+                        //回傳更改後的資料
+                        return View("MemberArea", user); 
+                    }
+
+                }
             }
             return View("MemberArea", student);
         }
@@ -609,48 +739,68 @@ namespace MusFit_FrontDesk.Controllers
         [Authentication]
         public async Task<IActionResult> EditPassword(StudentPasswordViewModel password)
         {
-            if (password.OldPassword == null || password.NewPassword == null ||
+            if (ModelState.IsValid)
+            {
+                
+                // 轉換 password -> sha2_256 比較 (轉使用者輸入的舊密碼與資料庫比較)
+                byte[] data = Encoding.GetEncoding(1252).GetBytes(password.OldPassword);
+                var sha = new SHA256Managed();
+                byte[] bytesEncode = sha.ComputeHash(data);
+
+                string sAccount = HttpContext.Session.GetString("SAccount") ?? "Guest";
+
+                var query = await _context.Students.FirstOrDefaultAsync(
+                                   x => x.SPassword == bytesEncode &&
+                                               x.SAccount == sAccount);
+
+                bool isDataError = false;
+
+                if (query == null)
+                {
+                    ViewData["errorOld"] = "舊密碼輸入錯誤!";
+                    isDataError = true;
+
+                }
+                
+                if (password.NewPassword != password.CheckPassword)
+                {
+                    ViewData["errorNew"] = "新密碼與確認密碼不符!";
+                    isDataError = true;
+
+                }
+
+                if (password.OldPassword == password.NewPassword)
+                {
+                    ViewData["errorDouble"] = "舊密碼與新密碼不可以一樣!";
+                    isDataError = true;
+                }
+
+                if (isDataError)
+                {
+                    return View("EditPassword");
+
+                }
+
+                // 轉換 password -> sha2_256 比較  (轉新密碼存進資料庫)
+                data = Encoding.GetEncoding(1252).GetBytes(password.NewPassword);
+                bytesEncode = sha.ComputeHash(data);
+                query.SPassword = bytesEncode;
+                await _context.SaveChangesAsync();
+                return View("MemberArea", query);
+            }
+            else
+            {
+                if (password.OldPassword == null || password.NewPassword == null ||
                 password.CheckPassword == null)
-            {
-                ViewData["error"] = "*請填寫欄位!";
-                return View("EditPassword");
-            }
-            // 轉換 password -> sha2_256 比較 (轉使用者輸入的舊密碼與資料庫比較)
-            byte[] data = Encoding.GetEncoding(1252).GetBytes(password.OldPassword);
-            var sha = new SHA256Managed();
-            byte[] bytesEncode = sha.ComputeHash(data);
+                {
+                    ViewData["error"] = "請填寫欄位!";
+                }
 
-            string sAccount = HttpContext.Session.GetString("SAccount") ?? "Guest";
-
-            var query = await _context.Students.FirstOrDefaultAsync(
-                               x => x.SPassword == bytesEncode &&
-                                           x.SAccount == sAccount);
-
-
-
-            if (query == null)
-            {
-                ViewData["errorOld"] = "*舊密碼輸入錯誤!";
-                return View("EditPassword");
-            }
-            else if (password.NewPassword != password.CheckPassword)
-            {
-                ViewData["errorNew"] = "*新密碼與確認密碼不符!";
-                return View("EditPassword");
-            }
-            else if (password.OldPassword == password.NewPassword)
-            {
-                ViewData["errorDouble"] = "*舊密碼與新密碼不可以一樣!";
-                return View("EditPassword");
+                return View("EditPassword",password);
             }
 
-            // 轉換 password -> sha2_256 比較  (轉新密碼存進資料庫)
-            data = Encoding.GetEncoding(1252).GetBytes(password.NewPassword);
-            bytesEncode = sha.ComputeHash(data);
-            query.SPassword = bytesEncode;
-            await _context.SaveChangesAsync();
 
-            return View("MemberArea", query);
+
         }
 
         [Authentication]

@@ -10,7 +10,6 @@ namespace MusFit_FrontDesk.Models
         public string SName { get; set; }
         public int InBodyId { get; set; }
         public int SId { get; set; }
-        public bool SGender { get; set; }
         public DateTime Date { get; set; }
         public short Age { get; set; }
         public double Height { get; set; }
@@ -93,5 +92,6 @@ namespace MusFit_FrontDesk.Models
         public double EI100kHzRightLeg { get; set; }
         public double EI100kHzLeftLeg { get; set; }
         public short InBodyScore { get; set; }
+        public bool SGender { get; set; }
     }
 }
