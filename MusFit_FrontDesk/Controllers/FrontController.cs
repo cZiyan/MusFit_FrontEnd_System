@@ -190,7 +190,7 @@ namespace MusFit_FrontDesk.Controllers
             var query2 = from n in this._context.News
                          where n.NTakeDownTime == null
                          select n;
-            List < News > dataList = query2.ToList();
+            List<News> dataList = query2.ToList();
 
             var query =
             from n in this._context.News

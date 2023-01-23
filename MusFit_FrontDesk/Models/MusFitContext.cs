@@ -39,8 +39,10 @@ namespace MusFit_FrontDesk.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-AUT5BK8;Database=MusFit;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=MusFit;Integrated Security=True;");
+
             }
         }
 
@@ -774,7 +776,11 @@ namespace MusFit_FrontDesk.Models
             modelBuilder.Entity<Term>(entity =>
             {
                 entity.HasKey(e => e.TId)
+
                     .HasName("PK__Term__DC115707E6ED16FC");
+
+                    //.HasName("PK__Term__DC1157076352C7A4");
+
 
                 entity.ToTable("Term");
 
