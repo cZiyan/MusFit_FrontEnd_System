@@ -50,9 +50,7 @@ namespace MusFit_FrontDesk.Models
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^09[0-9]{8}$",ErrorMessage = "請輸入正確手機號碼格式!")]
         public string SContactPhone { get; set; }
-
-
-        public string SPhoto { get; set; }
+        public byte[] SPhoto { get; set; }
         public string SAddress { get; set; }
 
         [Required]
