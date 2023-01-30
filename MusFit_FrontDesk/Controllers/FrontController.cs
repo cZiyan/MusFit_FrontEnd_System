@@ -324,33 +324,7 @@ namespace MusFit_FrontDesk.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult Edit(long id, TodoItem itemForm)
-        //{
-        //    TodoItem itemDb = this._context.TodoItems.Find(id);
-        //    itemDb.Name = itemForm.Name;
-        //    itemDb.IsComplete = itemForm.IsComplete ?? false;
-        //    this._context.SaveChanges();
-        //    return Redirect("/todo/index");
-        //    // return Content("OK");
-        //    // return Content("OK: name: " + item.TodoItemId);
-        //}
-
-        //public ActionResult Edit(long id)
-        //{
-        //    var query = from o in this._context.TodoItems
-        //               where o.TodoItemId == id
-        //               select o;
-        //    TodoItem item = query.FirstOrDefault();
-        //    if (item == null) {
-        //        return Content("Not found");
-        //    }
-        //    return View("Edit", item);
-        //    // TodoItem item = this._context.TodoItems.Find(id);
-        //    // return Content(item.Name);
-        //    // return View();
-        //    // return Content("OK: " + id.ToString());
-        //}
+       
 
         public IActionResult Login()
         {
@@ -439,7 +413,7 @@ namespace MusFit_FrontDesk.Controllers
                 mailContent = mailContent + "<a href='" + webPath + receivePage + "?verify=" + sVerify + "'  target='_blank'>點此連結</a>";
 
                 // 信件主題
-                string mailSubject = "[測試] 重設密碼申請信";
+                string mailSubject = "重設密碼申請信";
 
                 // Google 發信帳號密碼
                 string GoogleMailUserID = "xc1120215@gmail.com";
