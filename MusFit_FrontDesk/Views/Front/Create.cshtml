@@ -225,6 +225,13 @@ dialog::backdrop {
 
 
 <script>
+
+    function del(){
+              var obj = document.getElementById( "subm" );
+                   var parentObj = obj.parentNode; //獲取div的父對象
+                   parentObj.removeChild(obj);
+                          }
+
     console.log("1");
 
 
@@ -301,7 +308,7 @@ dialog::backdrop {
         if(war==""){
             //location.assign="/Complete";
             //alert("謝謝，專員會在1個工作天內與你聯繫");
-            setInterval(function(){document.getElementById("subm").click();},300);
+            setInterval(function(){document.getElementById("subm").click(); del();},300);
 
         }else{
             alert(war);

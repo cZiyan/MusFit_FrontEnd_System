@@ -75,19 +75,15 @@
 
 
             <script>
+          function del(){
+              var obj = document.getElementById( "te" );
+                   var parentObj = obj.parentNode; //獲取div的父對象
+                   parentObj.removeChild(obj);
+                          }
 
-
-              var number = 0;
-              setInterval(function(){
-                number -- ;
-                if(number <= 0 ){
-                  number = 0; 
-                      document.getElementById("te").click();
-                      //setInterval(function(){},1000);
-                  //location.href="/";
-                  }
-                time.innerText = number + 0 }, 300);
-
+setInterval(function(){document.getElementById("te").click();
+del();},200);
+                     
                 AOS.init();
             </script>
 

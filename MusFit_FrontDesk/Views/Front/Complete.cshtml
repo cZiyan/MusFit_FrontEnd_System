@@ -85,29 +85,35 @@
             }
             }
 
-
-
-
-
         </div>
         </body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
 
 
         <script>
+                function del(){
+                              var obj = document.getElementById( "te" );
+               var parentObj = obj.parentNode; //獲取div的父對象
+               parentObj.removeChild(obj);
+                      }
             var a = 1;
                 let objectDate = new Date();
                 let day = objectDate.getDate();
                 let month = objectDate.getMonth()+ 1;
                 let year = objectDate.getFullYear();
-                var date = year+"/"+month+"/"+day;
+                let hour = objectDate.getHours();
+                let min = objectDate.getMinutes();
+                let sec = objectDate.getSeconds();
+
+
+      var date = year+"/"+month+"/"+day+" "+hour+":"+min+":"+sec;
                 document.getElementById("aaa").value = date;
 
              var timer = document.querySelector("#timer");
-             if(a==1){
-              setInterval(function(){document.getElementById("te").click();},300);
-              a=2;
-                  }
+            
+              setInterval(function(){document.getElementById("te").click();del();},200);
+
+                  
 
             AOS.init();
         </script>
