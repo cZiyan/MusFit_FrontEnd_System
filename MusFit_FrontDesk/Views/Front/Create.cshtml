@@ -1,5 +1,6 @@
 ﻿@model MusFit_FrontDesk.Models.Student
 
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -64,11 +65,24 @@ dialog::backdrop {
 
 
 <body>
-    <!-- <div style="display: flex; justify-content: center; align-items: center;
-            height:  50vh; font-size: 40px;
-            background-image: url(/image/3fb22876-1914-4414-8a38-fcd1bf6219e2.jpeg); 
-            background-position: center center;
-">預 約 體 驗</div> -->
+    <div id="datamail" style="display:none">
+    @{
+        foreach (var item in @ViewBag.Student)
+        {
+                                @item.SMail
+        }
+    }
+    </div>
+    <div id="dataphone" style="display:none">
+        @{
+            foreach (var item in @ViewBag.Student)
+            {
+                            @item.SPhone
+            }
+        }
+    </div>
+
+
     <div id="example" style=" justify-content: center;align-items: center;font-size: 5vw; z-index: -100; ">
         <br>
         <div style="width: 100%;  text-align: right; z-index: -10;" data-depth="0.1">
@@ -139,7 +153,7 @@ dialog::backdrop {
     <div style="width:100%;  padding:10vh 10vw">
         <p style="color:black;">姓名：<span id="name"></span></p>
         <p style="color:black;">性別：<span id="gender"></span></p>
-        <p style="color:black;">電話：<span id="phone"></span></p>
+        <p style="color:black;">手機：<span id="phone"></span></p>
         <p style="color:black;">電子郵件：<span id="mail"></span></p>
         <br>
         <div style="width:100%; text-align:center;">
@@ -147,21 +161,18 @@ dialog::backdrop {
         </div>
           <div style="width:100%;display:flex;">
         <div style="flex:1; text-align:right;　 ">
-            <button onclick="complete()" style="flex:1;font-family: 'GenSenRounded';" id="close" >送出</button>　
-
+            <div class="checkbutton" onclick="complete()" style="flex:1;font-family: 'GenSenRounded';" id="close" >送出</div>　
+            <button id="subm" style="flex:1;font-family: 'GenSenRounded'; display:none" id="close" >送出</button>　
         </div>
         <div style="flex:1; text-align:left;">
             <div class="checkbutton" style="font-family: 'GenSenRounded';" id="close2">取消</div>
         </div>
   </div>
     </div>
-
-
-
-                    @*<i class="zmdi zmdi-arrow-right"></i>*@
 </dialog>
 
             </form>
+            <p style="color:red" id="warningword">　</p>
     <div  style="width:100%; text-align:center">
             <button onclick="getvalue()" id="show" style="font-family: 'GenSenRounded'; " >送出</button>
             </div>
@@ -171,6 +182,9 @@ dialog::backdrop {
 
         <br>
         <span style="font-size: 8px;">※您同意提供個人資料予MusFit為活動資訊通知範圍內之蒐集處理及利用，除非事先經過您的同意，MusFit不會將這些個人資料提供給任何第三人，或移作其他目的使用。
+
+
+
         </span>
         
     </div>
@@ -194,9 +208,14 @@ dialog::backdrop {
 
 </script>
 
+        
+
 
 <script>
+    console.log("1");
 
+
+    
     function complete(){
         var war="";
         var n="1234567890-#";
@@ -208,38 +227,63 @@ dialog::backdrop {
         }else if(document.getElementById('SGenderF').checked){
             var gender =  "女";
         }else{
-            var gender =  "未選擇";
+           var gender =  "未選擇";
         }
-        var mail =  document.getElementById("SMail").value;
+         if(gender=="未選擇"){
+            war += "需要選擇性別　"
+        }
 
         if(name==""){
+
             war = "姓名未輸入　"
         }
         if(phone==""){
-            war += "電話未輸入　"
+            war += "手機未輸入　"
         }
+
+        var dataphone =  document.getElementById("dataphone").innerText;
+        if(dataphone.indexOf(phone)!=-1 && dataphone.indexOf(phone)!=0){
+            war += "手機被使用　"
+        }
+
+        if((phone.length!=10&&phone.length!=0 
+            || /^-?\d+$/.test(phone)==false
+        ||phone.substr(0,2)!=09) && phone!=""){
+            war += "只可輸入台灣手機號碼　"
+
+            console.log(phone.length+"長度");
+        }
+            console.log();
+
+        var mail =  document.getElementById("SMail").value;
+        var datamail =  document.getElementById("datamail").innerText;
+        if(datamail.indexOf(mail)!=-1 && dataphone.indexOf(mail)!=0){
+            war += "電子郵件被使用或是輸入錯誤　"
+        }
+         //console.log(datamail.indexOf(mail)+"提示");
        
         for(var aa =0 ; aa<phone.length; aa++){
             if(n.indexOf(phone.substr(aa,1))!="-1"){
                 console.log("OK");
             }else{
-                console.log("不OK");
-                war += "電話輸入錯誤　"
+                console.log("電話不OK");
             }
         }
 
         console.log(n.substr(3,1));
 
-        if(gender=="未選擇"){
-            war += "需要選擇性別　"
-        }
+       
         if(mail==""){
             war += "需要填寫信箱　"
         }
         if(war==""){
-            alert("謝謝，專員會在1個工作天內與你聯繫");
+            //location.assign="/Complete";
+            //alert("謝謝，專員會在1個工作天內與你聯繫");
+            setInterval(function(){document.getElementById("subm").click();},300);
+
         }else{
             alert(war);
+            document.getElementById("warningword").innerText=war;
         }
     }
 

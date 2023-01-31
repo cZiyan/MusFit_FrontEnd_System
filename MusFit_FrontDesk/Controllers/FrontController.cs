@@ -229,15 +229,78 @@ namespace MusFit_FrontDesk.Controllers
 
         public IActionResult Create()
         {
+            var query =
+            from s in this._context.Students
+            orderby s.SId descending
+            select new Student
+            {
+                SId = s.SId,
+                SName = s.SName,
+                SPhone = s.SPhone,
+                SMail = s.SMail
+            };
+            ViewBag.Student = query.ToList();
             return View();
+            
         }
         [HttpPost]
         public IActionResult Create(Student item)
         {
             _context.Students.Add(item);
             _context.SaveChanges();
-            return Redirect("../");
+            //return View();
+            return Redirect("Complete");
+
         }
+
+        public IActionResult OK()
+        {
+            return View();
+        }
+        public IActionResult Complete()
+        {
+            var query =
+            from s in this._context.Students
+            orderby s.SId descending
+            select new Student
+            {
+                SId = s.SId
+            };
+            ViewBag.Student = query.ToList();
+            return View();
+
+
+        }
+        [HttpPost]
+        public IActionResult Complete(ClassOrder item)
+        {
+            _context.ClassOrders.Add(item);
+            _context.SaveChanges();
+            //return View();
+            return Redirect("Complete2");
+        }
+
+        public IActionResult Complete2()
+        {
+            var query =
+            from s in this._context.Students
+            orderby s.SId descending
+            select new Student
+            {
+                SId = s.SId
+            };
+            ViewBag.Student = query.ToList();
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Complete2(ClassRecord item)
+        {
+            _context.ClassRecords.Add(item);
+            _context.SaveChanges();
+            //return View();
+            return Redirect("OK");
+        }
+
 
 
         public IActionResult Class()
