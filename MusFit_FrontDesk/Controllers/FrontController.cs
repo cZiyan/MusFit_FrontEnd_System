@@ -336,7 +336,7 @@ namespace MusFit_FrontDesk.Controllers
         {
             if (string.IsNullOrEmpty(SAccount) || string.IsNullOrEmpty(SPassword))
             {
-                ViewData["error"] = "*會員帳號或密碼輸入錯誤!";
+                ViewData["error"] = "會員帳號或密碼輸入錯誤!";
                 return View("Login");
             }
             // 轉換 password -> sha2_256 比較

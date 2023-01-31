@@ -1,7 +1,13 @@
+#calendar {
+    width: 80%;
+    height:80%;
+    margin: auto;
+    padding: 20px 20px;
+}
 
 /* classes attached to <body> */
 h2 {
-    text-align: left;
+    text-align:center;
     margin-bottom: 30px;
 }
 
