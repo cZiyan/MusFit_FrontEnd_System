@@ -65,11 +65,24 @@ dialog::backdrop {
 
 
 <body>
+        <div id="dataname" style="display:none">
+        
+            @foreach (var item in @ViewBag.Student)
+            {
+                <span>學員：</span>
+                @item.SId
+                @item.SName
+                @item.SPhone
+                    <br>
+
+            }
+        
+    </div>
     <div id="datamail" style="display:none">
     @{
         foreach (var item in @ViewBag.Student)
         {
-                                @item.SMail
+                   @item.SMail
         }
     }
     </div>
@@ -77,7 +90,7 @@ dialog::backdrop {
         @{
             foreach (var item in @ViewBag.Student)
             {
-                            @item.SPhone
+                                    @item.SPhone
             }
         }
     </div>
@@ -240,11 +253,14 @@ dialog::backdrop {
         if(phone==""){
             war += "手機未輸入　"
         }
+        var dataname =  document.getElementById("dataname").innerText;
+        var isRepeat = name+phone;
+
+        console.log(isRepeat);
+        console.log(dataname.indexOf(isRepeat));
 
         var dataphone =  document.getElementById("dataphone").innerText;
-        if(dataphone.indexOf(phone)!=-1 && dataphone.indexOf(phone)!=0){
-            war += "手機被使用　"
-        }
+
 
         if((phone.length!=10&&phone.length!=0 
             || /^-?\d+$/.test(phone)==false
@@ -257,7 +273,7 @@ dialog::backdrop {
 
         var mail =  document.getElementById("SMail").value;
         var datamail =  document.getElementById("datamail").innerText;
-        if(datamail.indexOf(mail)!=-1 && dataphone.indexOf(mail)!=0){
+        if(datamail.indexOf(mail)!=-1 && datamail.indexOf(mail)!=0){
             war += "電子郵件被使用或是輸入錯誤　"
         }
          //console.log(datamail.indexOf(mail)+"提示");
@@ -276,6 +292,12 @@ dialog::backdrop {
         if(mail==""){
             war += "需要填寫信箱　"
         }
+
+
+        if(dataname.indexOf(isRepeat)!=-1 &&name!=""&&phone!="" ){
+            war = "不可重複預約　"
+        }
+
         if(war==""){
             //location.assign="/Complete";
             //alert("謝謝，專員會在1個工作天內與你聯繫");
