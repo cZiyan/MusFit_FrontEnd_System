@@ -15,7 +15,7 @@
     }
 
     .change_information img {
-        border: 2px solid #E3E3F1;
+        border: 2px solid #FAE5ED;
         border-radius: 50%;
     }
 
@@ -23,7 +23,7 @@
     overflow: hidden;
     position: relative;
     display: block;
-    background-color: #E3E3F1;
+    background-color: #FAE5ED;
     color: black;
     text-align: center;
     -web-border-radius: 10px;
