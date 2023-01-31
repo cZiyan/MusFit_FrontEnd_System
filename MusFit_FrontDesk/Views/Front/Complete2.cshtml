@@ -1,0 +1,99 @@
+﻿@model MusFit_FrontDesk.Models.ClassRecord
+
+@{
+    ViewData["Title"] = "Complete2";
+}
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <!-- Style -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/coach_style.css">
+
+
+    <title>完成預約體驗 | MusFit - 享受生活</title>
+</head>
+<style>
+
+</style>
+
+
+<body >
+
+        @{
+            var sid = "";
+            foreach (var item in @ViewBag.Student)
+            {
+                sid = @item.SId.ToString();
+                break;
+            }
+        }
+<div class="row" style="width:100% ; display:none">
+    <div class="col-md-4" style="width:100%">
+        <form asp-action="Complete2">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SId" class="control-label"></label>
+                <input asp-for="SId" class ="form-control" value=@sid ></input>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" id="te" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+</div>
+
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+            }
+
+
+
+
+
+            </div>
+            </body>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+
+
+            <script>
+          function del(){
+              var obj = document.getElementById( "te" );
+                   var parentObj = obj.parentNode; //獲取div的父對象
+                   parentObj.removeChild(obj);
+                          }
+
+setInterval(function(){document.getElementById("te").click();
+del();},200);
+                     
+                AOS.init();
+            </script>
+
+
+
+            <!-- <script src="js/jquery.sticky.js"></script> -->
+
+
+
+
+
+
+            </html>

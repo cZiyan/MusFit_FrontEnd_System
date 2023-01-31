@@ -1,5 +1,6 @@
 ﻿@model MusFit_FrontDesk.Models.Student
 
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -42,15 +43,59 @@
         box-shadow: none;
         webkit-box-shadow: none;
     }
+    dialog{
+        
+  border: none;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 6px #ccc;
+        border-radius: 10px;
+        width: auto;
+        height: 80vh;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        margin: 10vh 20vw;
+}
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 </style>
 
 
 <body>
-    <!-- <div style="display: flex; justify-content: center; align-items: center;
-            height:  50vh; font-size: 40px;
-            background-image: url(/image/3fb22876-1914-4414-8a38-fcd1bf6219e2.jpeg); 
-            background-position: center center;
-">預 約 體 驗</div> -->
+        <div id="dataname" style="display:none">
+        
+            @foreach (var item in @ViewBag.Student)
+            {
+                <span>學員：</span>
+                @item.SId
+                @item.SName
+                @item.SPhone
+                    <br>
+
+            }
+        
+    </div>
+    <div id="datamail" style="display:none">
+    @{
+        foreach (var item in @ViewBag.Student)
+        {
+                   @item.SMail
+        }
+    }
+    </div>
+    <div id="dataphone" style="display:none">
+        @{
+            foreach (var item in @ViewBag.Student)
+            {
+                                    @item.SPhone
+            }
+        }
+    </div>
+
+
     <div id="example" style=" justify-content: center;align-items: center;font-size: 5vw; z-index: -100; ">
         <br>
         <div style="width: 100%;  text-align: right; z-index: -10;" data-depth="0.1">
@@ -75,63 +120,84 @@
 
 
 
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-action="Create" >
+                <div asp-validation-summary="ModelOnly" 
+                class="text-danger"></div>
                 <label asp-for="SName" class="form-group" 
                     style="border-color: transparent;">
-                    <input asp-for="SName" 
+                    <input id="SName"  asp-for="SName" 
                     style="background-color: rgba(0, 0, 0, 0); 
                     box-shadow :none; webkit-box-shadow:none;"
-                    type="text" class="form-control"  name="sName" required>
+                    type="text" class="form-control" name="sName" required>
                     <span>姓名</span>
                     <span class="border"></span>
                 </label>
                 <span for="">性別　</span>
-                <input asp-for="SMail" style="accent-color: rgb(255, 59, 141);" 
-                        type="radio" id="male" name="sGender" value=True>
+                <input id="SGenderM" asp-for="SGender" 
+                        style="accent-color: rgb(255, 59, 141);" 
+                        type="radio" id="male" name="sGender"
+                        value=True>
                 <label for="male">男</label>　
-                <input asp-for="SMail" style="accent-color: rgb(255, 59, 141);"
-                        type="radio" id="female" name="sGender" value=False>
+                <input id="SGenderF" asp-for="SGender" 
+                        style="accent-color: rgb(255, 59, 141);"
+                        type="radio" id="female" name="sGender" 
+                        value=False>
                     <label for="female">女</label>
                 <span><br>　</span>
                 <label class="form-group">
-                    <input asp-for="SPhone" style="background-color: rgba(0, 0, 0, 0);
+                    <input id="SPhone" asp-for="SPhone" style="background-color: rgba(0, 0, 0, 0);
                         box-shadow :none; webkit-box-shadow:none;"
                         type="phone" class="form-control" name="sPhone" required>
                     <span asp-for="SPhone" for="">電話</span>
                     <span class="border"></span>
                 </label>
                 <label class="form-group">
-                    <input asp-for="SMail" style="background-color: rgba(0, 0, 0, 0); box-shadow :none; webkit-box-shadow:none;"
+                    <input id="SMail" asp-for="SMail" style="background-color: rgba(0, 0, 0, 0); box-shadow :none; webkit-box-shadow:none;"
                         type="text" class="form-control" name="sMail" required>
                     <span asp-for="SMail" for="">電子郵件</span>
                     <span class="border"></span>
                 </label>
-
-
-                <div class="form-group">
-                <label asp-for="SNumber" class="control-label"></label>
-                <input asp-for="SNumber" value="這個數字怎麼產生ㄉ?" class="form-control" />
-                <span asp-validation-for="SNumber" class="text-danger"></span>
-            </div>
             <div class="form-group" style="display: none">
                 <label asp-for="SIsStudentOrNot" class="control-label"></label>
                 <input asp-for="SIsStudentOrNot" value="false" class="form-control" />
                 <span asp-validation-for="SIsStudentOrNot"  class="text-danger"></span>
             </div>
+<dialog id="infoModal">
+    <div style="width:100%;  padding:10vh 10vw">
+        <p style="color:black;">姓名：<span id="name"></span></p>
+        <p style="color:black;">性別：<span id="gender"></span></p>
+        <p style="color:black;">手機：<span id="phone"></span></p>
+        <p style="color:black;">電子郵件：<span id="mail"></span></p>
+        <br>
+        <div style="width:100%; text-align:center;">
+        <p style="color:black;">確定嗎？</p>
+        </div>
+          <div style="width:100%;display:flex;">
+        <div style="flex:1; text-align:right;　 ">
+            <div class="checkbutton" onclick="complete()" style="flex:1;font-family: 'GenSenRounded';" id="close" >送出</div>　
+            <button id="subm" style="flex:1;font-family: 'GenSenRounded'; display:none" id="close" >送出</button>　
+        </div>
+        <div style="flex:1; text-align:left;">
+            <div class="checkbutton" style="font-family: 'GenSenRounded';" id="close2">取消</div>
+        </div>
+  </div>
+    </div>
+</dialog>
 
-
-                <button style="font-family: 'GenSenRounded';">送出
-                    <i class="zmdi zmdi-arrow-right"></i>
-                </button>
             </form>
-
+            <p style="color:red" id="warningword">　</p>
+    <div  style="width:100%; text-align:center">
+            <button onclick="getvalue()" id="show" style="font-family: 'GenSenRounded'; " >送出</button>
+            </div>
 
 
         </div>
 
         <br>
         <span style="font-size: 8px;">※您同意提供個人資料予MusFit為活動資訊通知範圍內之蒐集處理及利用，除非事先經過您的同意，MusFit不會將這些個人資料提供給任何第三人，或移作其他目的使用。
+
+
+
         </span>
         
     </div>
@@ -155,8 +221,138 @@
 
 </script>
 
+        
+
 
 <script>
+
+    function del(){
+              var obj = document.getElementById( "subm" );
+                   var parentObj = obj.parentNode; //獲取div的父對象
+                   parentObj.removeChild(obj);
+                          }
+
+    console.log("1");
+
+
+    
+    function complete(){
+        var war="";
+        var n="1234567890-#";
+
+        var name =  document.getElementById("SName").value;
+        var phone =  document.getElementById("SPhone").value;
+        if(document.getElementById('SGenderM').checked){
+            var gender =  "男";
+        }else if(document.getElementById('SGenderF').checked){
+            var gender =  "女";
+        }else{
+           var gender =  "未選擇";
+        }
+         if(gender=="未選擇"){
+            war += "需要選擇性別　"
+        }
+
+        if(name==""){
+
+            war = "姓名未輸入　"
+        }
+        if(phone==""){
+            war += "手機未輸入　"
+        }
+        var dataname =  document.getElementById("dataname").innerText;
+        var isRepeat = name+phone;
+
+        console.log(isRepeat);
+        console.log(dataname.indexOf(isRepeat));
+
+        var dataphone =  document.getElementById("dataphone").innerText;
+
+
+        if((phone.length!=10&&phone.length!=0 
+            || /^-?\d+$/.test(phone)==false
+        ||phone.substr(0,2)!=09) && phone!=""){
+            war += "只可輸入台灣手機號碼　"
+
+            console.log(phone.length+"長度");
+        }
+            console.log();
+
+        var mail =  document.getElementById("SMail").value;
+        var datamail =  document.getElementById("datamail").innerText;
+        if(datamail.indexOf(mail)!=-1 && datamail.indexOf(mail)!=0){
+            war += "電子郵件被使用或是輸入錯誤　"
+        }
+         //console.log(datamail.indexOf(mail)+"提示");
+       
+        for(var aa =0 ; aa<phone.length; aa++){
+            if(n.indexOf(phone.substr(aa,1))!="-1"){
+                console.log("OK");
+            }else{
+                console.log("電話不OK");
+            }
+        }
+
+        console.log(n.substr(3,1));
+
+       
+        if(mail==""){
+            war += "需要填寫信箱　"
+        }
+
+
+        if(dataname.indexOf(isRepeat)!=-1 &&name!=""&&phone!="" ){
+            war = "不可重複預約　"
+        }
+
+        if(war==""){
+            //location.assign="/Complete";
+            //alert("謝謝，專員會在1個工作天內與你聯繫");
+            setInterval(function(){document.getElementById("subm").click(); del();},300);
+
+        }else{
+            alert(war);
+            document.getElementById("warningword").innerText=war;
+        }
+    }
+
+    function getvalue(){
+        var name =  document.getElementById("SName").value;
+        var phone =  document.getElementById("SPhone").value;
+        if(document.getElementById('SGenderM').checked){
+            var gender =  "男";
+        }else if(document.getElementById('SGenderF').checked){
+            var gender =  "女";
+        }else{
+            var gender =  "未選擇";
+        }
+        var mail =  document.getElementById("SMail").value;
+        
+        document.getElementById("name").innerHTML=name;
+        document.getElementById("gender").innerHTML=gender;
+        document.getElementById("phone").innerHTML=phone;
+        document.getElementById("mail").innerHTML=mail;
+
+    }
+
+
+    let btn=document.querySelector("#show");
+    let infoModal=document.querySelector("#infoModal");
+    let close=document.querySelector("#close");
+    btn.addEventListener("click", function(){
+      infoModal.showModal();
+    })
+    close.addEventListener("click", function(){
+      infoModal.close();
+    })
+
+    let close2=document.querySelector("#close2");
+
+    close2.addEventListener("click", function(){
+      infoModal.close();
+    })
+
+
     AOS.init();
 </script>
 
