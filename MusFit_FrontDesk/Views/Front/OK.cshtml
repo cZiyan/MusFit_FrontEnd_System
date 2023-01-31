@@ -1,0 +1,74 @@
+﻿
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+
+    <!-- Bootstrap CSS -->
+
+
+    <!-- Style -->
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/circlesuccess.css">
+
+
+
+    <link rel="stylesheet" href="../css/coach_style.css">
+
+
+    <title>完成預約體驗 | MusFit - 享受生活</title>
+</head>
+<style>
+
+</style>
+
+
+<body >
+    <div class="mybody">
+        <input type="checkbox" checked style="display: none;">
+<svg width="400" height="400">
+  <circle fill="none" stroke="#68E534" stroke-width="20" cx="200" cy="200" r="150" class="circle" stroke-linecap="round" transform="rotate(-90 200 200) "/>
+  <polyline fill="none" stroke="#68E534" stroke-width="20" points="122,214 183,270 284,138" stroke-linecap="round" stroke-linejoin="round" class="tick" />
+</svg>
+<h1 style="font-family: 'GenSenRounded';">預約完成啦！</h1>
+<span style="font-family: 'GenSenRounded';" class="delaytext">專員會在1個工作天內與你聯繫，謝謝。</span>
+
+<span style="font-family: 'GenSenRounded';" class="delaytext"><a href="/"><span id="time">5</span>秒後跳轉至首頁，或點選這裡回到首頁。</a></span>
+
+            </body>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+
+
+            <script>
+
+
+  var timer = document.querySelector("#timer");
+  var number = 5;
+  setInterval(function(){
+    number -- ;
+    if(number <= 0 ){
+      number = 0;
+location.href="/";
+}
+    time.innerText = number + 0 }, 1000);
+                AOS.init();
+            </script>
+
+
+
+            <!-- <script src="js/jquery.sticky.js"></script> -->
+
+
+            </html>
