@@ -32,8 +32,8 @@ var message = (string)ViewData["error"] ?? string.Empty;
             <!-- 手機板(720px)查看內容 -->
             <div style="font-family: 'GenSenRounded'; padding-left:8vw;">
                 <br><br><br>
-              <a href="@Url.Action(" Login","Front")" class="login-title" style="font-size:6vw">會員登入</a>
-              <form class="login-form" name="login-form" method="post" action="@Url.Action(" Login","Front")">
+              <a href="@Url.Action("Login","Front")" class="login-title" style="font-size:6vw">會員登入</a>
+              <form class="login-form" name="login-form" method="post" action="@Url.Action("Login","Front")">
                 <div class="from-group mb-4">
                   <span class="icon-user"></span>
                   <label asp-for="SAccount">帳號</label><br>
@@ -58,7 +58,7 @@ var message = (string)ViewData["error"] ?? string.Empty;
                 </div>
                 <div class="from-group mb-4">
                   <span class="icon-lock2">
-                    <a href="@Url.Action(" ForgetPassword","Front")" style="font-family: 'GenSenRounded';">忘記密碼</a>
+                    <a href="@Url.Action("ForgetPassword","Front")" style="font-family: 'GenSenRounded';">忘記密碼</a>
                   </span>
                 </div>
               </form>
@@ -71,8 +71,8 @@ var message = (string)ViewData["error"] ?? string.Empty;
   <div class="item-right hide-in-phone bgimg-gradient-text" data-aos="fade-up">
     <!-- 電腦版(720px)查看內容 -->
     <div style="font-family: 'GenSenRounded'; padding-left:8vw;">
-      <a href="@Url.Action(" Login","Front")" class="login-title" style="font-size:3.3vw">會員登入</a>
-      <form class="login-form" name="login-form" method="post" action="@Url.Action(" Login","Front")">
+      <a href="@Url.Action("Login","Front")" class="login-title" style="font-size:3.3vw">會員登入</a>
+      <form class="login-form" name="login-form" method="post" action="@Url.Action("Login","Front")">
         <div class="from-group mb-4">
           <span class="icon-user"></span>
           <label asp-for="SAccount">帳號</label><br>
@@ -97,7 +97,7 @@ var message = (string)ViewData["error"] ?? string.Empty;
         </div>
         <div class="from-group mb-4">
           <span class="icon-lock2">
-            <a href="@Url.Action(" ForgetPassword","Front")" style="font-family: 'GenSenRounded';">忘記密碼</a>
+            <a href="@Url.Action("ForgetPassword","Front")" style="font-family: 'GenSenRounded';">忘記密碼</a>
           </span>
         </div>
       </form>
