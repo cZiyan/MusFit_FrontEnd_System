@@ -249,7 +249,7 @@ namespace MusFit_FrontDesk.Controllers
             _context.Students.Add(item);
             _context.SaveChanges();
             //return View();
-            return Redirect("Complete");
+            return Redirect("Complete2");
 
         }
 
@@ -277,7 +277,8 @@ namespace MusFit_FrontDesk.Controllers
             _context.ClassOrders.Add(item);
             _context.SaveChanges();
             //return View();
-            return Redirect("Complete2");
+            return Redirect("OK");
+
         }
 
         public IActionResult Complete2()
@@ -298,7 +299,8 @@ namespace MusFit_FrontDesk.Controllers
             _context.ClassRecords.Add(item);
             _context.SaveChanges();
             //return View();
-            return Redirect("OK");
+            return Redirect("Complete");
+
         }
 
 
