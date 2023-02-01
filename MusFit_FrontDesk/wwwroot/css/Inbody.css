@@ -32,3 +32,8 @@
 .inbody {
     height: 100%;
 }
+
+input[type="radio"] {
+    pointer-events: none;
+    accent-color: #EE3080;
+}
