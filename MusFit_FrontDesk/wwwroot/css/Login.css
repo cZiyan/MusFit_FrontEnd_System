@@ -5,40 +5,40 @@
  /* https://github.com/ButTaiwan/gensen-font */
  
 
-.div_container {
+.div_container0 {
    display: flex;
    /*一開始需要在父層宣告為 flex 才有效*/
 }
 
-.item-right {
+.item-right0 {
    flex: 1;
    /*對應子層加上；1數值是內元件之間佔的比例*/
 }
 
-.item-left {
+.item-left0 {
    flex: 1;
    /*對應子層加上*/
 }
 
 /* 小於768 用在首頁*/
-.hide-in-phone {
+.hide-in-phone0 {
    display: none;
 }
 
 @media only screen and (min-width:768px) {
-   .hide-in-phone {
+   .hide-in-phone0 {
       display: flex;
       width: 40%;
    }
 }
 
 /* 小於768  首頁*/
-.nohide-in-phone {
+.nohide-in-phone0 {
    width: 100%;
 }
 
 @media only screen and (min-width:768px) {
-   .nohide-in-phone {
+   .nohide-in-phone0 {
       display: block;
       width: 60%;
    }
@@ -68,7 +68,7 @@
 
 
 
-.bgimg {
+.bgimg0 {
    height: 100vh;
    /* background-image: url(../pink.jpg); */
    background-size: 100% auto;
@@ -76,14 +76,14 @@
    background-position: bottom;
 }
 
-.bgimg-gradient {
+.bgimg-gradient0 {
     height: 100vh;
     /* background-image: linear-gradient(to right, rgb(255, 255, 255),  rgba(255, 0, 140, 0.126)); */
     background-image: linear-gradient(to top, rgb(255, 255, 255), rgb(255, 255, 255,0), rgb(255, 255, 255,0), rgb(255, 255, 255,0), rgb(255, 255, 255,0), rgb(255, 255, 255,0));
     /*background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(112, 212, 255, 0.11), rgba(0, 149, 255, 0.21));*/
 }
 
-.bgimg-gradient2 {
+.bgimg-gradient20 {
     height: 100vh;
     background-image: linear-gradient(to left, rgb(255, 255, 255),rgb(255, 255, 255,0.2), rgba(255, 0, 140, 0.126), rgba(255, 0, 140, 0.226));
     /*background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(177, 176, 217, 0.11), rgba(122, 166, 248, 0.31));*/
@@ -91,14 +91,14 @@
 }
 
 
-.bgimg-gradient-text {
+.bgimg-gradient-text0 {
    height: 100vh;
    
    align-items: center;
    /* background-image: linear-gradient(to left, rgb(255, 255, 255), rgba(79, 60, 161, 0.498)); */
 }
 
-.bgimg-gradient-text-mobile {
+.bgimg-gradient-text-mobile0 {
    display: flex;
    height: 100vh;
    justify-content: center;
@@ -109,7 +109,7 @@
 
 
 @media only screen and (min-width:768px) {
-   .bgimg-gradient-text-mobile {
+   .bgimg-gradient-text-mobile0 {
       display: none;
 
    }
