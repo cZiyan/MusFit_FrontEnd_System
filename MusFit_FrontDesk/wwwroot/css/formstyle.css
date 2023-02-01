@@ -76,24 +76,25 @@ a:hover {
 }
 
 button {
-  border: none;
-  width: 13vw;
-  height: 51px;
-  border: 2px solid #e6006b;
-/*  cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    width: 13vw;
+    height: 51px;
+    border: 2px solid #e6006b;
+    /*  cursor: pointer;
   display: flex;*/
-  align-items: center;
-  justify-content: center;
-  background: none;
-  color: rgb(0, 0, 0);
-  text-transform: uppercase;
-  font-family: "Montserrat-SemiBold";
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  -webkit-transition-property: color;
-  transition-property: color;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-family: "Montserrat-SemiBold";
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
 }
 
 button i {
@@ -142,8 +143,8 @@ button:hover i {
 
 
 .checkbutton {
+    border-radius: 5px;
     border: none;
-    width: 13vw;
     height: 51px;
     line-height: 51px;
     border: 2px solid #e6006b;

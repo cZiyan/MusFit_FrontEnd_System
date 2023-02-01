@@ -1,0 +1,157 @@
+
+
+
+.login {
+    position: relative;
+    padding: 10px 25px;
+}
+
+    .login .login-container {
+        position: relative;
+        display: flex;
+        height: 555px;
+    }
+
+.login-container .login-left {
+    position: relative;
+    flex: 1;
+}
+
+    .login-container .login-left img {
+        float: right;
+        padding-right: 20px;
+        padding-top: 80px;
+        width: auto;
+        height: auto;
+    }
+
+.login-container .login-right {
+    flex: 1;
+    text-align: left;
+    padding-left: 60px;
+}
+
+.login-right .login-title {
+    margin-top: 80px;
+}
+
+    .login-right .login-title a {
+        font-size: 35px;
+        text-decoration: none;
+        color: #000;
+    }
+
+    .login-right .login-title a {
+        font-size: 40px;
+    }
+
+.login-form div {
+    margin-top: 25px;
+}
+
+.from-group label {
+    font-size: 20px;
+}
+
+.from-group input {
+    font-size: 19px;
+    width: 300px;
+    background-color: transparent;
+    border-bottom: 2px solid #000;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-top: 20px;
+}
+
+input:focus {
+    outline: 0px;
+    border-bottom: 2.5px solid #000;
+}
+
+input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px transparent inset;
+    -webkit-text-fill-color: #000;
+    -webkit-background-clip: text;
+}
+
+i {
+    color: #17202A;
+}
+
+.from-group a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #000;
+}
+
+
+.login-form button {
+    margin-top: 0px;
+    background-color: #F5B7B1;
+    color: white;
+    font-size: 22px;
+    border-radius: 4px;
+    border-color: transparent;
+    width: 170px;
+    height: 35px;
+}
+
+
+
+button:hover {
+    border-color: transparent;
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+@media(max-width:1000px) {
+    body {
+        width: auto;
+    }
+
+    .icon-menu {
+        color: #17202A;
+    }
+
+    .login-container .login-left img {
+        opacity: 0.2;
+        min-width: 300px;
+        min-height: 350px;
+    }
+
+    .login-container .login-right {
+        position: absolute;
+        padding: 0%;
+    }
+}
+
+@media(max-width:800px) {
+    body {
+        width: auto;
+    }
+
+    .icon-menu {
+        color: #17202A;
+    }
+
+    .login-container .login-left img {
+        opacity: 0.2;
+        min-width: 300px;
+        min-height: 350px;
+    }
+
+    .login-container .login-right {
+        position: absolute;
+        padding: 0%;
+    }
+}
+
+@media(max-width:600px) {
+    .login-container .login-left img {
+        display: none;
+    }
+
+    .icon-menu {
+        color: #17202A;
+    }
+}
