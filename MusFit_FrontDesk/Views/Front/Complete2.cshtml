@@ -45,6 +45,10 @@
         <form asp-action="Complete2">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="ClassTimeId" class="control-label"></label>
+                <input asp-for="ClassTimeId" class ="form-control" value="63" ></input>
+            </div>
+            <div class="form-group">
                 <label asp-for="SId" class="control-label"></label>
                 <input asp-for="SId" class ="form-control" value=@sid ></input>
             </div>
