@@ -960,7 +960,7 @@ namespace MusFit_FrontDesk.Controllers
             ViewData["className"] = query;
             if (!string.IsNullOrEmpty(LcNameAndCtLession))
             {
-                query = query.Where(x => (x.LcName + " (第 " + x.CtLession + " 堂)") == LcNameAndCtLession).ToList();
+                query = query.Where(x => (x.CName + " (第 " + x.CtLession + " 堂)") == LcNameAndCtLession).ToList();
             }
 
             if (!string.IsNullOrEmpty(CtDateFrom))
