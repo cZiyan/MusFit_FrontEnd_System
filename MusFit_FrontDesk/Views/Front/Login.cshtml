@@ -1,55 +1,113 @@
 ﻿@model MusFit_FrontDesk.Models.Student
 @{
-    var message = (string)ViewData["error"] ?? string.Empty;
+var message = (string)ViewData["error"] ?? string.Empty;
 }
+
 <head>
-    <title>會員登入 | MusFit - 享受生活</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+  <!-- Style -->
+
+  <link rel="stylesheet" href="../css/Login.css">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <title>會員登入 | MusFit - 享受生活</title>
 </head>
 
 
-<link rel="stylesheet" href="~/css/Login.css"/>
 
-<div class="login container-fluid">
-    <div class="row justify-content-around login-container">
-        <div class="col-6 login-left">
-            <img src="~/image/LOGO.png" class="img-fluid">
-        </div>
-        <div class="col-6 login-right">
-            <div class="login-title">
-                <h3>
-                    <a href="@Url.Action("Login","Front")">會員登入</a>
-                </h3>
-            </div>
-            <div class="login-content">
-                <form class="login-form" name="login-form" method="post" action="@Url.Action("Login","Front")">
-                    <div class="from-group mb-4">
-                        <span class="icon-user"></span>
-                        <label asp-for="SAccount">帳號</label><br>
-                        <input asp-for="SAccount" type="text" name="SAccount" >
-                    </div>
-                    <div class="from-group mb-4">
-                        <span class="icon-lock"></span>
-                        <label asp-for="SPassword">密碼</label><br>
-                        <input asp-for="SPassword" type="password" name="SPassword">
+<div class="div_container" style="width: 100%;">
 
-                        @{
-                            if (message != "")
-                            {
-                                <h6 id="error" style="color: red;margin-top:10px;"><b>@ViewData["error"]</b></h6>
-                            }
-                        }
-                    </div>
-                    <div class="from-group mb-4">
-                        <button type="submit" name="login" value="login" role="button" aria-pressed="true">登入</button>
-                    </div>
-                    <div class="from-group mb-4">
-                        <span class="icon-lock2">
-                            <a href="@Url.Action("ForgetPassword","Front")">忘記密碼</a>
-                        </span>
-                    </div>
-                </form>
+  <div class="item-left nohide-in-phone bgimg" style="background-image: url(/image/pink.jpg); " data-aos="fade-zoom-in"
+    data-aos-easing="ease-in-back" data-aos-delay="100" data-aos-offset="0" data-aos-duration="1400">
+    <div class="bgimg-gradient2" data-aos="fade-up">
+      <div class="bgimg-gradient" data-aos="fade-up">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="bgimg-gradient-text-mobile" style="background-color:#FFFFFF99;">
+            <!-- 手機板(720px)查看內容 -->
+            <div style="font-family: 'GenSenRounded'; padding-left:8vw;">
+                <br><br><br>
+              <a href="@Url.Action(" Login","Front")" class="login-title" style="font-size:6vw">會員登入</a>
+              <form class="login-form" name="login-form" method="post" action="@Url.Action(" Login","Front")">
+                <div class="from-group mb-4">
+                  <span class="icon-user"></span>
+                  <label asp-for="SAccount">帳號</label><br>
+                  <input asp-for="SAccount" type="text" name="SAccount">
+                </div>
+                <div class="from-group mb-4">
+                  <span class="icon-lock"></span>
+                  <label asp-for="SPassword">密碼</label><br>
+                  <input asp-for="SPassword" type="password" name="SPassword">
+        
+                  @{
+                  if (message != "")
+                  {
+                      <h6 id="error" style="color: red;margin-top:10px;"><b>@ViewData["error"]</b></h6>
+                  }
+                  }
+                </div>
+                <div class="from-group">
+                    <br>
+                  <button type="submit" name="login" value="login" role="button" aria-pressed="true"
+                    style="font-family: 'GenSenRounded';">登入</button>
+                </div>
+                <div class="from-group mb-4">
+                  <span class="icon-lock2">
+                    <a href="@Url.Action(" ForgetPassword","Front")" style="font-family: 'GenSenRounded';">忘記密碼</a>
+                  </span>
+                </div>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+  <div class="item-right hide-in-phone bgimg-gradient-text" data-aos="fade-up">
+    <!-- 電腦版(720px)查看內容 -->
+    <div style="font-family: 'GenSenRounded'; padding-left:8vw;">
+      <a href="@Url.Action(" Login","Front")" class="login-title" style="font-size:3.3vw">會員登入</a>
+      <form class="login-form" name="login-form" method="post" action="@Url.Action(" Login","Front")">
+        <div class="from-group mb-4">
+          <span class="icon-user"></span>
+          <label asp-for="SAccount">帳號</label><br>
+          <input asp-for="SAccount" type="text" name="SAccount">
+        </div>
+        <div class="from-group mb-4">
+          <span class="icon-lock"></span>
+          <label asp-for="SPassword">密碼</label><br>
+          <input asp-for="SPassword" type="password" name="SPassword">
 
+          @{
+          if (message != "")
+          {
+              <h6 id="error" style="color: red;margin-top:10px;"><b>@ViewData["error"]</b></h6>
+          }
+          }
+        </div>
+        <div class="from-group">
+            <br>
+          <button type="submit" name="login" value="login" role="button" aria-pressed="true"
+            style="font-family: 'GenSenRounded';">登入</button>
+        </div>
+        <div class="from-group mb-4">
+          <span class="icon-lock2">
+            <a href="@Url.Action(" ForgetPassword","Front")" style="font-family: 'GenSenRounded';">忘記密碼</a>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--   background-image: linear-gradient(to right, rgb(255, 255, 255),rgb(255, 255, 255),rgb(255, 255, 255), rgba(124, 5, 160, 0.11), rgba(255, 0, 140, 0.21)); -->
+<br>
+
+<script>
+
+  AOS.init();
+</script>

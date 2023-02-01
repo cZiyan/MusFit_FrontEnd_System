@@ -1,3 +1,262 @@
+@font-face {
+   font-family:"GenSenRounded";
+   src: local("GenSenRounded"), url('../fonts/GenSenRounded-M.ttc')format('truetype');
+ }
+ /* https://github.com/ButTaiwan/gensen-font */
+ 
+
+.div_container {
+   display: flex;
+   /*一開始需要在父層宣告為 flex 才有效*/
+}
+
+.item-right {
+   flex: 1;
+   /*對應子層加上；1數值是內元件之間佔的比例*/
+}
+
+.item-left {
+   flex: 1;
+   /*對應子層加上*/
+}
+
+/* 小於768 用在首頁*/
+.hide-in-phone {
+   display: none;
+}
+
+@media only screen and (min-width:768px) {
+   .hide-in-phone {
+      display: flex;
+      width: 40%;
+   }
+}
+
+/* 小於768  首頁*/
+.nohide-in-phone {
+   width: 100%;
+}
+
+@media only screen and (min-width:768px) {
+   .nohide-in-phone {
+      display: block;
+      width: 60%;
+   }
+}
+
+/* 小於768 */
+.hide-in-phone-b {
+   display: none;
+}
+
+@media only screen and (min-width:768px) {
+   .hide-in-phone-b {
+      display: flex;
+   }
+}
+
+/* 小於768 */
+.nohide-in-phone-b {
+   width: 100%;
+}
+
+@media only screen and (min-width:768px) {
+   .nohide-in-phone-b {
+      display: block;
+   }
+}
+
+
+
+.bgimg {
+   height: 100vh;
+   /* background-image: url(../pink.jpg); */
+   background-size: 100% auto;
+   background-repeat: no-repeat;
+   background-position: bottom;
+}
+
+.bgimg-gradient {
+    height: 100vh;
+    /* background-image: linear-gradient(to right, rgb(255, 255, 255),  rgba(255, 0, 140, 0.126)); */
+    background-image: linear-gradient(to top, rgb(255, 255, 255), rgb(255, 255, 255,0), rgb(255, 255, 255,0), rgb(255, 255, 255,0), rgb(255, 255, 255,0), rgb(255, 255, 255,0));
+    /*background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(112, 212, 255, 0.11), rgba(0, 149, 255, 0.21));*/
+}
+
+.bgimg-gradient2 {
+    height: 100vh;
+    background-image: linear-gradient(to left, rgb(255, 255, 255),rgb(255, 255, 255,0.2), rgba(255, 0, 140, 0.126), rgba(255, 0, 140, 0.226));
+    /*background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(177, 176, 217, 0.11), rgba(122, 166, 248, 0.31));*/
+    /*background-image: linear-gradient(to right, rgb(255, 255, 255), rgba(177, 176, 217, 0.11), rgba(194, 166, 248, 0.21));*/
+}
+
+
+.bgimg-gradient-text {
+   height: 100vh;
+   
+   align-items: center;
+   /* background-image: linear-gradient(to left, rgb(255, 255, 255), rgba(79, 60, 161, 0.498)); */
+}
+
+.bgimg-gradient-text-mobile {
+   display: flex;
+   height: 100vh;
+   justify-content: center;
+   align-items: center;
+   color: black;
+   
+}
+
+
+@media only screen and (min-width:768px) {
+   .bgimg-gradient-text-mobile {
+      display: none;
+
+   }
+}
+
+.nav-link{
+   text-shadow: 0px 0px 5px white;
+}
+
+.text-center{
+   
+   justify-content: center;
+   align-items: center;
+}
+
+.mobile-mode {
+   display: flex;
+
+}
+
+@media only screen and (min-width:768px) {
+   .mobile-mode {
+      display: none;
+
+   }
+}
+
+
+.nomobile-mode {
+   display: none;
+}
+
+@media only screen and (min-width:768px) {
+   .nomobile-mode {
+      display: flex;
+   }
+}
+
+.nomobile-mode2 {
+   background-image:url(/image/cherry.png);
+   background-size: 100% 100%;
+
+
+}
+
+@media only screen and (min-width:768px) {
+   .nomobile-mode2 {
+      background-image: none;
+
+   }
+}
+
+
+.mobile-cantsee {
+    width: 5%;
+}
+
+@media only screen and (min-width:768px) {
+    .mobile-cantsee {
+        width: 20%;
+    }
+}
+
+.mobile-see {
+    width: 90%;
+}
+
+@media only screen and (min-width:768px) {
+    .mobile-see {
+        width: 60%;
+    }
+}
+
+
+
+
+
+button {
+    border-radius:5px;
+    border: none;
+    width: 13vw;
+    height: 51px;
+    border: 2px solid #e6006b;
+    /*  cursor: pointer;
+  display: flex;*/
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-family: "Montserrat-SemiBold";
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+    button i {
+        margin-left: 10px;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-transition-duration: 0.1s;
+        transition-duration: 0.1s;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+
+    button:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #ffabc6;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: 0 50%;
+        transform-origin: 0 50%;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+
+
+    button:hover:before {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+
+    button:hover i {
+        -webkit-transform: translateX(4px);
+        transform: translateX(4px);
+    }
+
+
+
+
+
 
 
 
@@ -30,20 +289,6 @@
     text-align: left;
     padding-left: 60px;
 }
-
-.login-right .login-title {
-    margin-top: 80px;
-}
-
-    .login-right .login-title a {
-        font-size: 35px;
-        text-decoration: none;
-        color: #000;
-    }
-
-    .login-right .login-title a {
-        font-size: 40px;
-    }
 
 .login-form div {
     margin-top: 25px;
@@ -85,73 +330,9 @@ i {
     color: #000;
 }
 
-
-.login-form button {
-    margin-top: 0px;
-    background-color: #F5B7B1;
-    color: white;
-    font-size: 22px;
-    border-radius: 4px;
-    border-color: transparent;
-    width: 170px;
-    height: 35px;
+.login-title {
+    color: #000;
 }
-
-
-
-button:hover {
-    border-color: transparent;
-    background-color: rgba(255, 0, 0, 0.6);
-}
-
-@media(max-width:1000px) {
-    body {
-        width: auto;
-    }
-
-    .icon-menu {
-        color: #17202A;
-    }
-
-    .login-container .login-left img {
-        opacity: 0.2;
-        min-width: 300px;
-        min-height: 350px;
-    }
-
-    .login-container .login-right {
-        position: absolute;
-        padding: 0%;
-    }
-}
-
-@media(max-width:800px) {
-    body {
-        width: auto;
-    }
-
-    .icon-menu {
-        color: #17202A;
-    }
-
-    .login-container .login-left img {
-        opacity: 0.2;
-        min-width: 300px;
-        min-height: 350px;
-    }
-
-    .login-container .login-right {
-        position: absolute;
-        padding: 0%;
-    }
-}
-
-@media(max-width:600px) {
-    .login-container .login-left img {
-        display: none;
-    }
-
-    .icon-menu {
-        color: #17202A;
-    }
+.login-title:hover {
+    color: #555;
 }
