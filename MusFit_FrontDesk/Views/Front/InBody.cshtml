@@ -249,9 +249,9 @@
                                                     <tbody>
                                                         <tr>
                                                             <th scope="row">體脂肪率</th>
-                                                            <th scope="col"><input asp-for="Pbflevel" type="radio" value="1">正常</th>
-                                                            <th scope="col"><input asp-for="Pbflevel" type="radio" value="0">低</th>
-                                                            <th scope="col"><input asp-for="Pbflevel" type="radio" value="2">高</th>
+                                                                    <th scope="col"><input asp-for="Pbflevel" type="radio" value="1" >正常</th>
+                                                                            <th scope="col"><input asp-for="Pbflevel" type="radio" value="0" >低</th>
+                                                                            <th scope="col"><input asp-for="Pbflevel" type="radio" value="2" >高</th>
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">腰臀圍比</th>
@@ -301,32 +301,32 @@
                             <div class="col-4" id="inBodyThree" hidden>
                                 <div class="col-12 text-center" >
                                     <h6><b>部位別肌肉量</b></h6>
-                                    <img src="~/image/InBody Man.png" style="height: 40%;width: 50%;">
+                                    <img src="~/image/InBody Man.png" style="height: 60%;width: 70%;">
                             @{
                                 if (Model.UpperLeftMuscleLevel == 0)
                                 {
-                                                    <label id="ulMuscle" style="position: absolute; top: 8%; left: 30%;">@Model.UpperLeftMuscle<br>不足</label>
+                                                    <label id="ulMuscle" style="position: absolute; top: 8%; left: 20%;">@Model.UpperLeftMuscle<br>不足</label>
                                 }
                                 else if (Model.UpperLeftMuscleLevel == 1)
                                 {
-                                    <label id="ulMuscle" style="position: absolute; top: 8%; left: 30%;">@Model.UpperLeftMuscle<br>正常</label>
+                                    <label id="ulMuscle" style="position: absolute; top: 8%; left: 20%;">@Model.UpperLeftMuscle<br>正常</label>
                                 }
                                 else
                                 {
-                                    <label id="ulMuscle" style="position: absolute; top: 8%; left: 30%;">@Model.UpperLeftMuscle<br>高</label>
+                                    <label id="ulMuscle" style="position: absolute; top: 8%; left: 20%;">@Model.UpperLeftMuscle<br>高</label>
                                 }
 
                                 if (Model.UpperRightMuscleLevel == 0)
                                 {
-                                                    <label id="urMuscle" style="position: absolute; top: 8%; right: 30%;">@Model.UpperRightMuscle<br>不足</label>
+                                                    <label id="urMuscle" style="position: absolute; top: 8%; right: 20%;">@Model.UpperRightMuscle<br>不足</label>
                                 }
                                 else if (Model.UpperRightMuscleLevel == 1)
                                 {
-                                                    <label id="urMuscle" style="position: absolute; top: 8%; right: 30%;">@Model.UpperRightMuscle<br>正常</label>
+                                                    <label id="urMuscle" style="position: absolute; top: 8%; right: 20%;">@Model.UpperRightMuscle<br>正常</label>
                                 }
                                 else
                                 {
-                                    <label id="urMuscle" style="position: absolute; top: 8%; right: 30%;">@Model.UpperRightMuscle<br>高</label>
+                                    <label id="urMuscle" style="position: absolute; top: 8%; right: 20%;">@Model.UpperRightMuscle<br>高</label>
                                 }
 
                                 if (Model.CenterMuscleLevel == 0)
@@ -345,99 +345,99 @@
 
                                 if (Model.BottomLeftMuscleLevel == 0)
                                 {
-                                                    <label id="blMuscle" style="position: absolute; bottom: 2%; left: 30%;">@Model.BottomLeftMuscle<br>不足</label>
+                                                    <label id="blMuscle" style="position: absolute; bottom: 2%; left: 20%;">@Model.BottomLeftMuscle<br>不足</label>
                                 }
                                 else if (Model.BottomLeftMuscleLevel == 1)
                                 {
-                                                   <label id="blMuscle" style="position: absolute; bottom: 2%; left: 30%;">@Model.BottomLeftMuscle<br>正常</label>
+                                                   <label id="blMuscle" style="position: absolute; bottom: 2%; left: 20%;">@Model.BottomLeftMuscle<br>正常</label>
                                 }
                                 else
                                 {
-                                    <label id="blMuscle" style="position: absolute; bottom: 2%; left: 30%;">@Model.BottomLeftMuscle<br>高</label>
+                                    <label id="blMuscle" style="position: absolute; bottom: 2%; left: 20%;">@Model.BottomLeftMuscle<br>高</label>
                                 }
 
                                 if (Model.BottomRightMuscleLevel == 0)
                                 {
-                                                    <label id="brMuscle" style="position: absolute; bottom: 2%; right: 30%;">@Model.BottomRightMuscle<br>不足</label>
+                                                    <label id="brMuscle" style="position: absolute; bottom: 2%; right: 20%;">@Model.BottomRightMuscle<br>不足</label>
                                 }
                                 else if (Model.BottomRightMuscleLevel == 1)
                                 {
-                                    <label id="brMuscle" style="position: absolute; bottom: 2%; right: 30%;">@Model.BottomRightMuscle<br>正常</label>
+                                    <label id="brMuscle" style="position: absolute; bottom: 2%; right: 20%;">@Model.BottomRightMuscle<br>正常</label>
                                 }
                                 else
                                 {
-                                    <label id="brMuscle" style="position: absolute; bottom: 2%; right: 30%;">@Model.BottomRightMuscle<br>高</label>
+                                    <label id="brMuscle" style="position: absolute; bottom: 2%; right: 20%;">@Model.BottomRightMuscle<br>高</label>
                                 }
                             }
                                 </div>
                                 <div class="col-12 text-center">
                                     <h6><b>部位別脂肪量</b></h6>
-                                    <img src="~/image/InBody Man.png" style="height: 40%;width: 50%;">
+                                    <img src="~/image/InBody Man.png" style="height: 60%;width: 70%;">
                             @{
                                 if (Model.UpperLeftFatLevel == 0)
                                 {
-                                                   <label id="ulFat" style="position: absolute; top: 8%; left: 30%;">@Model.UpperLeftFat<br>@Model.UpperLeftFatPercentage %<br>不足</label>
+                                                   <label id="ulFat" style="position: absolute; top: 8%; left: 20%;">@Model.UpperLeftFat<br>@Model.UpperLeftFatPercentage %<br>不足</label>
                                 }
                                 else if (Model.UpperLeftFatLevel == 1)
                                 {
-                                                   <label id="ulFat" style="position: absolute; top: 8%; left: 30%;">@Model.UpperLeftFat <br>@Model.UpperLeftFatPercentage %<br>正常</label>
+                                                   <label id="ulFat" style="position: absolute; top: 8%; left: 20%;">@Model.UpperLeftFat <br>@Model.UpperLeftFatPercentage %<br>正常</label>
                                 }
                                 else
                                 {
-                                    <label id="ulFat" style="position: absolute; top: 8%; left: 30%;">@Model.UpperLeftFat <br>@Model.UpperLeftFatPercentage %<br>高</label>
+                                    <label id="ulFat" style="position: absolute; top: 8%; left: 20%;">@Model.UpperLeftFat <br>@Model.UpperLeftFatPercentage %<br>高</label>
                                 }
 
                                 if (Model.UpperRightFatLevel == 0)
                                 {
-                                                    <label id="urFat" style="position: absolute; top: 8%; right: 30%;">@Model.UpperRightFat<br>@Model.UpperRightFatPercentage %<br>不足</label>
+                                                    <label id="urFat" style="position: absolute; top: 8%; right: 20%;">@Model.UpperRightFat<br>@Model.UpperRightFatPercentage %<br>不足</label>
                                 }
                                 else if (Model.UpperRightFatLevel == 1)
                                 {
-                                                    <label id="urFat" style="position: absolute; top: 8%; right: 30%;">@Model.UpperRightFat<br>@Model.UpperRightFatPercentage %<br>正常</label>
+                                                    <label id="urFat" style="position: absolute; top: 8%; right: 20%;">@Model.UpperRightFat<br>@Model.UpperRightFatPercentage %<br>正常</label>
                                 }
                                 else
                                 {
-                                    <label id="urFat" style="position: absolute; top: 8%; right: 30%;">@Model.UpperRightFat<br>@Model.UpperRightFatPercentage %<br>高</label>
+                                    <label id="urFat" style="position: absolute; top: 8%; right: 20%;">@Model.UpperRightFat<br>@Model.UpperRightFatPercentage %<br>高</label>
                                 }
 
                                 if (Model.CenterFatLevel == 0)
                                 {
-                                                   <label id="cFat" style="position: absolute; top: 30%; right: 45%;">@Model.CenterFat<br>@Model.CenterFatPercentage %<br>不足</label>
+                                                   <label id="cFat" style="position: absolute; top: 30%; right: 44%;">@Model.CenterFat<br>@Model.CenterFatPercentage %<br>不足</label>
                                 }
                                 else if (Model.CenterFatLevel == 1)
                                 {
-                                                   <label id="cFat" style="position: absolute; top: 30%; right: 45%;">@Model.CenterFat<br>@Model.CenterFatPercentage %<br>正常</label>
+                                                   <label id="cFat" style="position: absolute; top: 30%; right: 44%;">@Model.CenterFat<br>@Model.CenterFatPercentage %<br>正常</label>
                                 }
                                 else
                                 {
-                                                   <label id="cFat" style="position: absolute; top: 30%; right: 45%;">@Model.CenterFat<br>@Model.CenterFatPercentage %<br>高</label>
+                                                   <label id="cFat" style="position: absolute; top: 30%; right: 44%;">@Model.CenterFat<br>@Model.CenterFatPercentage %<br>高</label>
                                 }
 
                                 if (Model.BottomLeftFatLevel == 0)
                                 {
-                                                    <label id="blFat" style="position: absolute; bottom: 2%; left: 30%;">@Model.BottomLeftFat<br>@Model.BottomLeftFatPercentage %<br>不足</label>
+                                                    <label id="blFat" style="position: absolute; bottom: 2%; left: 20%;">@Model.BottomLeftFat<br>@Model.BottomLeftFatPercentage %<br>不足</label>
                                 }
                                 else if (Model.BottomLeftFatLevel == 1)
                                 {
-                                                    <label id="blFat" style="position: absolute; bottom: 2%; left: 30%;">@Model.BottomLeftFat<br>@Model.BottomLeftFatPercentage %<br>正常</label>
+                                                    <label id="blFat" style="position: absolute; bottom: 2%; left: 20%;">@Model.BottomLeftFat<br>@Model.BottomLeftFatPercentage %<br>正常</label>
                                 }
                                 else
                                 {
-                                    <label id="blFat" style="position: absolute; bottom: 2%; left: 30%;">@Model.BottomLeftFat<br>@Model.BottomLeftFatPercentage %<br>高</label>
+                                    <label id="blFat" style="position: absolute; bottom: 2%; left: 20%;">@Model.BottomLeftFat<br>@Model.BottomLeftFatPercentage %<br>高</label>
                                 }
 
                                 if (Model.BottomRightFatLevel == 0)
                                 {
-                                    <label id="brFat" style="position: absolute; bottom: 2%; right: 30%;">@Model.BottomRightFat<br>@Model.BottomRightFatPercentage %<br>不足</label>
+                                    <label id="brFat" style="position: absolute; bottom: 2%; right: 20%;">@Model.BottomRightFat<br>@Model.BottomRightFatPercentage %<br>不足</label>
 
                                 }
                                 else if (Model.BottomRightFatLevel == 1)
                                 {
-                                    <label id="brFat" style="position: absolute; bottom: 2%; right: 30%;">@Model.BottomRightFat<br>@Model.BottomRightFatPercentage %<br>不足</label>
+                                    <label id="brFat" style="position: absolute; bottom: 2%; right: 20%;">@Model.BottomRightFat<br>@Model.BottomRightFatPercentage %<br>不足</label>
                                 }
                                 else
                                 {
-                                    <label id="brFat" style="position: absolute; bottom: 2%; right: 30%;">@Model.BottomRightFat<br>@Model.BottomRightFatPercentage %<br>不足</label>
+                                    <label id="brFat" style="position: absolute; bottom: 2%; right: 20%;">@Model.BottomRightFat<br>@Model.BottomRightFatPercentage %<br>不足</label>
                                 }
 
                             }
