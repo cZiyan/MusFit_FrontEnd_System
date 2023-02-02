@@ -222,7 +222,7 @@
                                                 {
                                                     @if (@item4.CId == @item.CId)
                                                     {
-                                                        if (@item4.InPhoto != null)
+                                                        if (@item4.InPhoto != null && flag == false)
                                                         {
                                                     <img class="class-img" style="width: 100%;" src=@item4.InPhoto alt="">
                                                             flag = true;
@@ -234,7 +234,6 @@
                                                 {
 
                                             <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=1" alt="">
-                                                    flag = true;
                                                 }
                                     </div>
                                         }
