@@ -94,6 +94,20 @@
   display: inline-block;
   opacity: 0;
 }
+
+.box{
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+}
+.box img{
+	width: 200px;
+	height: 200px;
+	border-radius:50%;
+	object-fit: cover;
+}
+
+
 </style>
 
 
@@ -127,21 +141,28 @@
 			
 			@{
 				var i = 1;
+				string j = "";
 
 				foreach (var item in @ViewBag.Coach)
 				{
-					string j = "../image/avatar/default" + i +".png";
-					<div style="position: relative;">
-					<span class="coach-text">
-					@item.EEngName
-					</span>
-					<img class="coach-img" 
-					style="width: 100%;" src=@j alt="">    
-					</div>
+
+					if(item.EPhoto!=null){
+						j = "data:image/jpeg;base64," + item.EPhoto;
+					}else{
+					 j = "../image/avatar/default" + i +".png";
+						i++;
+					}
+						<div style="position: relative;">
+						<span class="coach-text">
+						@item.EEngName
+						</span>
+						<div class="box">
+						<img class="coach-img" 
+						style="" src=@j alt="">  
+						</div>
+						</div>
 					if(i==5){
 						i = 1;
-					}else{
-					i++;
 					}
 				}
 			}
@@ -158,29 +179,31 @@
 			@{
 				foreach (var item in @ViewBag.Coach)
 				{
-					<div class="coach-text2">
-					@item.EExplain
-					<br>
-					專長：
-					@{foreach (var item2 in @ViewBag.CoachSpecial)
+						<div class="coach-text2">
+						<span style="white-space:pre-line; ">
+						@item.EExplain
+						</span>
+						<br>
+						專長：
+						@{foreach (var item2 in @ViewBag.CoachSpecial)
 					{
 						
 
 						if (@item.EId ==@item2.EId)
 						{
-								<br>
+										<br>
 								int a = Convert.ToInt32(@item2.LcId);
-								@LCN[a-1];
-								<span>(@LCT[a-1])</span>
+										@LCN[a-1];
+										<span>(@LCT[a-1])</span>
 								
 								
 						}
 						
 					}
-					}
-			
+						}
+				
 
-				</div>
+					</div>
 				}
 			}
 			<div class="class-text2"></div>
@@ -219,7 +242,7 @@
 			{
 				breakpoint: 768,
 				settings: {
-					slidesToShow: 1
+					slidesToShow: 3
 				}
 			}
 		]
