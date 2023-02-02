@@ -147,8 +147,9 @@ dialog::backdrop {
                 <label class="form-group">
                     <input id="SPhone" asp-for="SPhone" style="background-color: rgba(0, 0, 0, 0);
                         box-shadow :none; webkit-box-shadow:none;"
-                        type="phone" class="form-control" name="sPhone" required>
-                    <span asp-for="SPhone" for="">電話</span>
+                        type="phone" class="form-control"
+                        maxlength="10" name="sPhone" required>
+                    <span asp-for="SPhone" for="">手機</span>
                     <span class="border"></span>
                 </label>
                 <label class="form-group">
@@ -175,7 +176,7 @@ dialog::backdrop {
           <div style="width:100%;display:flex;">
         <div style="flex:1;">
             <div class="checkbutton" onclick="complete()" style="flex:1;font-family: 'GenSenRounded';" id="close" >送出</div>　
-            <button id="subm" style="flex:1;font-family: 'GenSenRounded'; display:none" id="close" >送出</button>　
+            <button  id="subm" style="flex:1;font-family: 'GenSenRounded'; display:none" id="close" >送出</button>　
         </div>
         <div style="flex:.2;"></div>
         <div style="flex:1; text-align:left;">
@@ -226,6 +227,14 @@ dialog::backdrop {
 
 
 <script>
+
+    $(document).on("keypress", "form", function (e) {
+    var code = e.keyCode || e.which;
+    if (code == 13) {
+        e.preventDefault();
+        return false;
+    }
+});
 
     function del(){
               var obj = document.getElementById( "subm" );

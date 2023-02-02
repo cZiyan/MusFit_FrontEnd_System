@@ -192,9 +192,12 @@ namespace MusFit_FrontDesk.Controllers
                          select n;
             List<News> dataList = query2.ToList();
 
+            var date_start = DateTime.Now;
+
             var query =
             from n in this._context.News
-            where n.NTakeDownTime == null
+            where n.NTakeDownTime == null ||
+                n.NTakeDownTime > DateTime.Now
             orderby n.NPostDate descending
             select new News
             {
@@ -435,6 +438,7 @@ namespace MusFit_FrontDesk.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> ForgetPassword(Student student)
         {
+            if (student.SAccount != null) { 
             var query = await _context.Students.FirstOrDefaultAsync(x => x.SAccount == student.SAccount);
             if (query == null)
             {
@@ -504,6 +508,11 @@ namespace MusFit_FrontDesk.Controllers
             
 
                 return View("ForgetPassword");
+            }
+            }
+            else
+            {
+                return View();
             }
         }
 
