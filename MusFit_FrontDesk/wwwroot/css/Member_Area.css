@@ -1,3 +1,6 @@
+body {
+    height: 300px;
+}
 
 .change_information {
     position: relative;
@@ -20,7 +23,9 @@
 }
 
 .change_information img {
+    border: 2px solid #FAE5ED;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 
