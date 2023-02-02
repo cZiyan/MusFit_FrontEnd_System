@@ -447,7 +447,7 @@ namespace MusFit_FrontDesk.Controllers
 
             //取到SAccount 傳到Server 存下 Session
             HttpContext.Session.SetString("SAccount", SAccount);
-            return View("Index", query[0]);
+            return View("MemberArea", query[0]);
         }
 
         public IActionResult ForgetPassword()

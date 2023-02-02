@@ -1,3 +1,6 @@
+body{
+    height:500px;
+}
 
 .change_information {
     position: relative;
@@ -18,10 +21,11 @@ input[type="radio"] {
         justify-content: right;
     }
 
-    .change_information img {
-        border: 2px solid #FAE5ED;
-        border-radius: 50%;
-    }
+.change_information img {
+    border: 2px solid #FAE5ED;
+    border-radius: 50%;
+    object-fit:cover;
+}
 
 .photoFile {
     overflow: hidden;

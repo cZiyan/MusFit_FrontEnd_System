@@ -21,7 +21,7 @@
             <div class="col-6 ">
                 <hr>
                 <div>
-                    <img src="@string.Format("data:image/png;base64,{0}", Model.SPhoto)" class="d-block mx-auto mb-4" id="myPhoto" width="200" height="200">
+                    <img src="@string.Format("data:image/png;base64,{0}", Model.SPhoto)" class="d-block mx-auto mb-4" id="myPhoto" width="200px" height="200px">
                     <div class="row justify-content-center photoFile ">
                         <span>請選擇</span>
                         <input type="file" asp-for="SPhoto" id="SPhoto" accept=".png, .jpg, .jpeg" onchange='imgUploadCheck(this)' />
