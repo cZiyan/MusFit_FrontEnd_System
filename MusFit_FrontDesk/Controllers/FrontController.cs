@@ -349,6 +349,17 @@ namespace MusFit_FrontDesk.Controllers
             };
             ViewBag.LC = query3.ToList();
 
+            var query4 =
+            from ci in this._context.ClassIntroduces
+            select new ClassIntroduce
+            {
+                InContent = ci.InContent,
+                InPhoto = ci.InPhoto,
+                CId = ci.CId,
+                InTitle = ci.InTitle,
+            };
+            ViewBag.ClassI = query4.ToList();
+
             return View();
         }
         public IActionResult Aerobic()
@@ -388,6 +399,16 @@ namespace MusFit_FrontDesk.Controllers
             };
             ViewBag.LC = query3.ToList();
 
+            var query4 =
+            from ci in this._context.ClassIntroduces
+            select new ClassIntroduce
+            {
+                InContent = ci.InContent,
+                InPhoto = ci.InPhoto,
+                CId = ci.CId,
+                InTitle = ci.InTitle,
+            };
+            ViewBag.ClassI = query4.ToList();
             return View();
         }
 

@@ -256,6 +256,15 @@
                                         {
                                             string date = @item2.CtDate.ToString();
                                             <div class="class-text2">
+                                                @foreach (var item4 in @ViewBag.ClassI)
+                                                {
+                                                    @if (@item4.CId == @item.CId)
+                                                    {
+                                                        @item4.InContent
+
+                                                                                  <br>
+                                                    }
+                                                }
                                                 價錢：@item.Cprice<br>
                                                 堂數：@item.CTotalLession<br>
                                                 人數上限：@item.CExpect<br>
