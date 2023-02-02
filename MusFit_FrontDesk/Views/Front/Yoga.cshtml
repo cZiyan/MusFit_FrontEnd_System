@@ -221,9 +221,25 @@
                                                     <span class="class-text">
                                                     @item.CName
                                                     </span>
-                                                    <img class="class-img" style="height:200px;" src="https://picsum.photos/200/200/?random=1"
-                                alt="">
-                                            </div>
+                                                @foreach (var item4 in @ViewBag.ClassI)
+                                                {
+                                                    @if (@item4.CId == @item.CId)
+                                                    {
+                                                        if (@item4.InPhoto != null)
+                                                        {
+                                                                                            <img class="class-img" style="width: 100%;" src=@item4.InPhoto alt="">
+                                                            flag = true;
+                                                        }
+
+                                                    }
+                                                }
+                                                @if (flag == false)
+                                                {
+
+                                                                            <img class="class-img" style="width: 100%;" src="https://picsum.photos/200/200/?random=1" alt="">
+                                                    flag = true;
+                                                }
+                                                                </div>
                                         }
                                     }
                                 }
