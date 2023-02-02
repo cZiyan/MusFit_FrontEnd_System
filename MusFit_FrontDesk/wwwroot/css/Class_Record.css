@@ -8,14 +8,32 @@
 
 
 thead {
-    background-color: #F9CAE0;
+    background-color: #FFDFED;
 }
 
+.table-hover tbody tr:hover {
+    color: #212529;
+    background-color: #FEE3EF;
+}
+
+tr:nth-of-type(even) td {
+    background-color: #FEF2F8;
+}
+
+tr:nth-of-type(even) th {
+    background-color: #FEF2F8;
+}
 
 #search {
-    background-color: #737576;
-    color: white;
+    background-color: transparent;
     margin-left: 30px;
+    border: 2px solid #FA9FB6;
+}
+
+#all {
+    background-color: transparent;
+    margin-left: 30px;
+    border: 2px solid #FA9FB6;
 }
 
 .classRecord_center {
@@ -28,16 +46,30 @@ thead {
     width: 100%;
 }
 
+.pagination .active a {
+    background-color: #666ea2 !important;
+    border: none;
+}
+
+.pagination a {
+    color: #fff !important;
+    background-color: #9092AD;
+}
+
+    .pagination a:hover {
+        background-color: #666ea2 !important;
+    }
 
 
-#search:active {
-    border-color: transparent;
-    background-color: rgba(255, 0, 0, 0.6);
+
+#all:hover {
+    border-color: #F9B9C9;
+    background-color: #F9B9C9;
 }
 
 #search:hover {
-    border-color: transparent;
-    background-color: rgba(255, 0, 0, 0.6);
+    border-color: #F9B9C9;
+    background-color: #F9B9C9;
 }
 
 @media(max-width:1000px) {

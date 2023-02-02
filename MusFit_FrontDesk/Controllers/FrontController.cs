@@ -949,6 +949,7 @@ namespace MusFit_FrontDesk.Controllers
                          join t in _context.Terms on ct.TId equals t.TId
                          join lc in _context.LessionCategories on c.LcId equals lc.LcId
                          where s.SAccount == sAccount && ct.CtDate <= DateTime.UtcNow
+                         orderby ct.CtDate descending
                          select new ClassRecordViewModel()
                          {
                              CrAttendance = (cr.CrAttendance == true) ? "出席" : "缺席",
