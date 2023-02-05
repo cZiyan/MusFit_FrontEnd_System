@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
-                    <label class="col-sm-3 col-form-label" asp-for="SAddress">地址</label>
+                    <label class="col-sm-3 col-form-label" asp-for="SAddress" onclick=EditAddress()>地址</label>
                     <div class="col-sm-8">
                         <input class="form-control" data-val="true" asp-for="SAddress"
                                name="SAddress" type="text" />
@@ -151,7 +151,10 @@
 
 
 
-        
+        //一鍵加入
+        function EditAddress() {
+            $('input[id="SAddress"]').val('台中市南屯區公益路二段38號');
+        }
 
 
 

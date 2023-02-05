@@ -60,7 +60,9 @@ tr:nth-of-type(even) th {
         background-color: #666ea2 !important;
     }
 
-
+.select2 {
+    height: 28px;
+}
 
 #all:hover {
     border-color: #F9B9C9;
