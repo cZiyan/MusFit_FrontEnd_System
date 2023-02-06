@@ -181,6 +181,9 @@ background-position:top">
             {
                 var photo = item.KPhoto1;
                 var photo2 = item.KPhoto2;
+                var photonum = @item.KColumnId;
+                var photohref1 = "PhotoK/?photo=" + @photonum;
+                var photohref2 = "PhotoK/?picture=" + @photonum;
 
                 //string j = "https://picsum.photos/900/500/?random=" + @i;
                 var show = "show" + @i; var infoModal = "infoModal" + @i; var close = "close" + @i;
@@ -216,11 +219,13 @@ background-position:top">
                 <div style="display: flex;">
                     <div style="width: 85%;">
                                  <h1 style='font-family: "GenSenRounded";'>@item.KTitle</h1>
-                                                <img  style="max-width:70vw; max-height:60vh;" src=@photo><br>
+                                         <a href=@photohref1 target="_blank">               
+                                         <img  style="max-width:70vw; max-height:60vh;" src=@photo></a><br>
                                         <span style="white-space:pre-line;">
                          @item.KContent
                          </span>
-                                   <img style="max-width:70vw; max-height:60vh;" src=@photo2><br>
+                                 <a href=@photohref2 target="_blank"> 
+                                   <img style="max-width:70vw; max-height:60vh;" src=@photo2></a><br>
                     </div>
                     <div style="width: 15%;
                          text-align: right;

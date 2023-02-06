@@ -175,8 +175,9 @@
             foreach (var item in @ViewBag.News)
             {
                 var photo = item.NPhoto;
+                var photonum = item.NId;
+                var photohref = "PhotoN/?photo=" + @photonum;
                 string date = @item.NPostDate.ToString();
-
                 string j = "https://picsum.photos/900/500/?random=" + @i;
                 var show = "show" + @i; var infoModal = "infoModal" + @i; var close = "close" + @i;
                           <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900" id=@show
@@ -218,7 +219,8 @@
             " id="testarea">
                                                                 
                        <h1 style='font-family: "GenSenRounded";'>@item.NTitle</h1>
-                                    <img style="max-width:70vw; max-height:60vh;"  src=@photo><br>
+                   <a  href=@photohref  target="_blank">
+                                    <img style="max-width:70vw; max-height:60vh;"  src=@photo></a><br>@item.NId
                                     <span style="white-space:pre-line;">
                                     @item.NContent
                                     </span>
