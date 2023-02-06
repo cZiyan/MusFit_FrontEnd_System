@@ -473,7 +473,7 @@ namespace MusFit_FrontDesk.Controllers
 
             if (!query.Any())
             {
-                ViewData["error"] = "*會員帳號或密碼輸入錯誤!";
+                ViewData["error"] = "會員帳號或密碼輸入錯誤!";
                 return View("Login");
             }
 
