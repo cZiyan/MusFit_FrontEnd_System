@@ -60,7 +60,10 @@ tr:nth-of-type(even) th {
         background-color: #666ea2 !important;
     }
 
-
+select {
+    height: 20px;
+    overflow: scroll;
+}
 
 #all:hover {
     border-color: #F9B9C9;
