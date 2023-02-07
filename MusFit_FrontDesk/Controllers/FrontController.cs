@@ -201,6 +201,7 @@ namespace MusFit_FrontDesk.Controllers
             orderby n.NPostDate descending
             select new News
             {
+                NId = n.NId,
                 NTitle = n.NTitle,
                 NContent = n.NContent,
                 NCategory = n.NCategory,
@@ -214,6 +215,37 @@ namespace MusFit_FrontDesk.Controllers
 
             //return View();
         }
+
+        public IActionResult PhotoN()
+        {
+            var query =
+            from n in this._context.News
+            select new News
+            {
+                NId = n.NId,
+                NPhoto = n.NPhoto
+            };
+            ViewBag.News = query.ToList();
+
+            return View();
+        }
+
+        public IActionResult PhotoK()
+        {
+            var query =
+            from kc in this._context.KnowledgeColumns
+            select new KnowledgeColumn
+            {
+                KColumnId = kc.KColumnId,
+                KPhoto1 = kc.KPhoto1,
+                KPhoto2 = kc.KPhoto2
+            };
+            ViewBag.KnowledgeColumns = query.ToList();
+
+            return View();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
