@@ -82,7 +82,7 @@ dialog::backdrop {
     @{
         foreach (var item in @ViewBag.Student)
         {
-                               @item.SMail
+                                           @item.SMail
         }
     }
     </div>
@@ -90,7 +90,7 @@ dialog::backdrop {
         @{
             foreach (var item in @ViewBag.Student)
             {
-                                                @item.SPhone
+                                                            @item.SPhone
             }
         }
     </div>
@@ -110,7 +110,7 @@ dialog::backdrop {
 
     <div class="formscreen" data-aos="fade-up" data-aos-duration="1000">
         <div style="width: 100%; text-align: center;">
-            <span class="text-size">預約參觀</span><br>
+            <span class="text-size" onclick="cheat()">預約參觀</span><br>
 
             至店內參觀就可享免費身體質量檢測，掌握身體狀況事不宜遲！<br>
             請留下您的聯絡方式，我們將有專人於24小時之內與您聯繫<br><br>
@@ -227,6 +227,16 @@ dialog::backdrop {
 
 
 <script>
+
+    function cheat(){
+        document.getElementById( "SName" ).value="謝金燕";
+        document.getElementById( "SPhone" ).value="0982112989";
+        document.getElementById( "SMail" ).value="wendywang0820@@gmail.com";
+        document.getElementById( "SGenderF" ).checked=true;
+
+
+    }
+
 
     $(document).on("keypress", "form", function (e) {
     var code = e.keyCode || e.which;
